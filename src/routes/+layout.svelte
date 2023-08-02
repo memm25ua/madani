@@ -2,4 +2,6 @@
   import "../app.css";
 </script>
 
-<slot />
+<div class="bg-codgray-950 text-pampas-100 h-screen ">
+    <slot/>
+</div>

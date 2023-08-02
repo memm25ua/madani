@@ -6,6 +6,43 @@ export default {
       fontFamily: {
         navlink: ['"MADE Bon Voyage"', "sans-serif"],
       },
+      colors: {
+        codgray: {
+          50: "#f7f6f6",
+          100: "#e5e2e3",
+          200: "#cac5c6",
+          300: "#a7a1a2",
+          400: "#847d7e",
+          500: "#6a6263",
+          600: "#544d4e",
+          700: "#454040",
+          800: "#393636",
+          900: "#322f2f",
+          950: "#1a1818",
+        },
+        pampas: {
+          50: "#f8f6f4",
+          100: "#ece7e1",
+          200: "#ddd5cb",
+          300: "#c8b8a9",
+          400: "#b19886",
+          500: "#a1826e",
+          600: "#947262",
+          700: "#7b5d53",
+          800: "#654d47",
+          900: "#53403b",
+          950: "#2c211e",
+        },
+      },
+      animation: {
+        "slide-left": "slide 0.5s ease-in-out forwards",
+      },
+      keyframes: {
+        "slide": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(10px)" },
+        },
+      },
     },
   },
   plugins: [],
