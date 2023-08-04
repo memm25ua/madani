@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        navlink: ['"MADE Bon Voyage"', "sans-serif"],
+        logo: ['"Dispence"', "sans-serif"],
       },
       colors: {
         codgray: {
@@ -38,7 +38,7 @@ export default {
         "slide-left": "slide 0.5s ease-in-out forwards",
       },
       keyframes: {
-        "slide": {
+        slide: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(10px)" },
         },

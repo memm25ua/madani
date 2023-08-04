@@ -14,8 +14,5 @@
     </p>
   </div>
   <div class="container-col">
-    <div class="nav-link">WORK</div>
-    <div class="nav-link">CONTACT</div>
-    <div class="nav-link">ABOUT</div>
   </div>
 </div>

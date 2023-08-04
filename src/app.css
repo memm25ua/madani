@@ -1,11 +1,12 @@
-@import url("https://fonts.cdnfonts.com/css/made-bon-voyage");
+
+@import url('https://fonts.cdnfonts.com/css/dispence');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
   .nav-link {
-    @apply mb-4 cursor-pointer text-left font-navlink text-9xl font-normal hover:animate-slide-left hover:italic;
+    @apply mb-4 cursor-pointer text-left text-9xl font-normal hover:animate-slide-left hover:italic;
   }
   .container-col {
     @apply flex flex-grow flex-col items-start justify-center;
