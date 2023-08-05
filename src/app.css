@@ -1,13 +1,14 @@
-@import url("https://fonts.cdnfonts.com/css/made-bon-voyage");
+@import url("https://fonts.cdnfonts.com/css/salaryman");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
   .nav-link {
-    @apply mb-4 cursor-pointer text-left font-navlink text-9xl font-normal hover:animate-slide-left hover:italic;
+    @apply mb-4 cursor-pointer text-left text-9xl font-normal hover:animate-slide-left hover:italic;
   }
   .container-col {
-    @apply flex flex-grow flex-col items-start justify-center;
+    @apply flex flex-grow flex-col items-start justify-center p-4
   }
 }

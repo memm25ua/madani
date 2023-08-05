@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        navlink: ['"MADE Bon Voyage"', "sans-serif"],
+        logo: ['"Salaryman"', "sans-serif"],
+        primary: ['"Inconsolata"', "monospace"],
       },
       colors: {
         codgray: {
@@ -36,12 +37,24 @@ export default {
       },
       animation: {
         "slide-left": "slide 0.5s ease-in-out forwards",
+        "slide-down": "slide-y 0.5s ease-in-out forwards",
+        "slide-down-xl": "slide-y-xl 0.5s ease-in-out forwards",
+        "slide-up-xl": "slide-y-xl 0.5s ease-in-out reverse forwards",
       },
       keyframes: {
-        "slide": {
+        "slide-x": {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(10px)" },
         },
+        "slide-y": {
+          "0%": { transform: "translateY(-10px)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        "slide-y-xl": {
+          "0%": { transform: "translateY(-170px)" },
+          "100%": { transform: "translateY(0)" },
+        }
+
       },
     },
   },
