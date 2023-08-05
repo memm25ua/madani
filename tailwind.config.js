@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        logo: ['"Dispence"', "sans-serif"],
+        logo: ['"Salaryman"', "sans-serif"],
+        primary: ['"Inconsolata"', "monospace"],
       },
       colors: {
         codgray: {

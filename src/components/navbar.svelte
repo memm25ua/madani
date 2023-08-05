@@ -22,6 +22,6 @@
 </script>
 
 <div class="flex justify-between items-center px-6 pt-3">
-  <span class="font-bold text-2xl font-logo"> MADANI </span>
+  <span class="text-2xl font-logo font-"> MADANI </span>
   <LangSelector/>
 </div>
