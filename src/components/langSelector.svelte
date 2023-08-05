@@ -24,7 +24,7 @@
 </script>
 
 <div
-  class="absolute right-2 flex flex-col items-center top-[-6px] text-codgray-300 font-light "
+  class="absolute right-2 flex flex-col items-center top-[-6px] text-codgray-300 font-light"
 >
   {#if open}
     <div
@@ -46,6 +46,11 @@
     on:click={() => (open = !open)}
   >
     <span class="absolute z-90">{selectedLanguage}</span>
-    <span class="material-symbols-sharp text-7xl text-codgray-600 ">bookmark</span>
+    <span class="material-symbols-sharp !text-7xl text-codgray-600"
+      >bookmark</span
+    >
   </button>
 </div>
+
+<style>
+</style>
