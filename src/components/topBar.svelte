@@ -1,4 +1,4 @@
-<!-- Navbar -->
+<!-- Topbar -->
 <script lang="ts">
     import LangSelector from "./langSelector.svelte";
 
@@ -22,6 +22,6 @@
 </script>
 
 <div class="flex justify-between items-center px-6 pt-3">
-  <span class="text-2xl font-logo font-"> MADANI </span>
+  <span class="text-2xl font-logo"> MADANI </span>
   <LangSelector/>
 </div>

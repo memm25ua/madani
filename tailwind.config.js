@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         logo: ['"Salaryman"', "sans-serif"],
-        primary: ['"Inconsolata"', "monospace"],
+        primary: ['"Tajawal"', "monospace"],
       },
       colors: {
         codgray: {

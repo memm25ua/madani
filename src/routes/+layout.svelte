@@ -1,9 +1,11 @@
 <script>
   import "../app.css";
-  import Navbar from "../components/navbar.svelte";
+  import TopBar from "../components/topBar.svelte";
 </script>
 
-<div class="bg-codgray-950 text-pampas-50 h-screen flex flex-col font-primary">
-  <Navbar />
+<div
+  class="bg-codgray-950 text-pampas-50 h-screen w-screen flex flex-col font-primary"
+>
+  <TopBar />
   <slot />
 </div>
