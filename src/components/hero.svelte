@@ -35,18 +35,14 @@
       }, 1200);
     }, 200);
   }
-
-  function speedUpScramble() {
-    scrambleDuration = 1000;
-  }
 </script>
 
-<div class="h-full w-full flex flex-wrap font-primary">
+<div class="flex flex-wrap font-primary">
   <div class="container-col">
     <div class="title flex">
-      <h1 class="text-[1.65rem] font-thin mb-4" on:mouseenter={speedUpScramble}>
+      <h1 class="text-[1.65rem] font-thin mb-4">
         {title} &nbsp;
-        <Typewriter mode="scramble" {scrambleDuration}>
+        <Typewriter mode="scramble" scrambleDuration={1000}>
           {name}
         </Typewriter>
       </h1>
@@ -56,7 +52,13 @@
       {subtitle}
     </span>
     <div class="flex font-black">
-      <Typewriter mode="loop" cursor={true} interval={100} on:done={handleDone}>
+      <Typewriter
+        class="typewriter"
+        keepCursorOnFinish={true}
+        cursor={true}
+        interval={100}
+        on:done={handleDone}
+      >
         {#each words as word}
           <span
             class="text-2xl mb-8 animate__animated animate__fadeIn animate__delay-1s"
@@ -72,3 +74,15 @@
     </div>
   </div>
 </div>
+
+<style>
+  :root {
+    --cursor-color: white; /* Sets the cursor color to red */
+    --cursor-width: 2px; /* Sets the cursor width to 2 pixels */
+  }
+
+  .typing::after {
+    content: "";
+    height: 2px;
+  }
+</style>
