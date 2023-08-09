@@ -36,7 +36,7 @@ export default {
         },
       },
       animation: {
-        "slide-left": "slide 0.5s ease-in-out forwards",
+        "slide-left": "slide-x 0.5s ease-in-out forwards",
         "slide-down": "slide-y 0.5s ease-in-out forwards",
         "slide-down-xl": "slide-y-xl 0.5s ease-in-out forwards",
         "slide-up-xl": "slide-y-xl 0.5s ease-in-out reverse forwards",
