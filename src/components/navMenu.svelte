@@ -3,7 +3,7 @@
 -->
 
 
-<div class="flex w-full flex-col items-left justify-center">
+<div class="container-col">
     <div class="nav-link">
         About
     </div>   
