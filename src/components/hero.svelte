@@ -37,13 +37,22 @@
 </script>
 
 <div class="container-col">
-  <iframe src="https://giphy.com/embed/lrrBalkpfCcbVqaQPU" width="300" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+  <lottie-player
+    src="https://lottie.host/272b60dd-462d-42a3-8ed6-fec4143633d6/X4FxBascRI.json"
+    background="Transparent"
+    speed="1"
+    class="lottie-anim"
+    direction="{1}"
+    mode="normal"
+    loop
+    autoplay
+  ></lottie-player>
 </div>
 
-<div class="container-col">
+<div class="container-col font-light">
   <div class="title flex">
-    <h1 class="text-2xl  font-thin mb-1">
-      {title} 
+    <h1 class="text-2xl mb-1">
+      {title}
       <Typewriter mode="scramble" scrambleDuration={1000}>
         <span data-static>I'm</span>
         <span>{name}</span>
@@ -51,8 +60,8 @@
     </h1>
   </div>
 
-  <div class="flex font-black">
-    <span class="text-2xl font-thin">
+  <div class="flex">
+    <span class="text-2xl">
       {subtitle}
       &nbsp;
     </span>
@@ -61,12 +70,13 @@
       class="typewriter"
       mode="loop"
       cursor={false}
-      interval={80}
+      interval={100}
+      unwriteInterval={50}
       wordInterval={2000}
       on:done={handleDone}
     >
       {#each words as word}
-        <span class="text-2xl mb-8">{word}</span>
+        <span class="text-2xl mb-8 font-black">{word}</span>
       {/each}
     </Typewriter>
     {#if showEmoji}
@@ -81,5 +91,10 @@
   :root {
     --cursor-color: white; /* Sets the cursor color to red */
     --cursor-width: 2px; /* Sets the cursor width to 2 pixels */
+  }
+
+  .lottie-anim {
+    width: 300px;
+    height: 300px;
   }
 </style>
