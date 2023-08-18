@@ -38,13 +38,12 @@
 
 <div class="container-col">
   <lottie-player
-    src="https://lottie.host/272b60dd-462d-42a3-8ed6-fec4143633d6/X4FxBascRI.json"
+    src="https://lottie.host/b81108f5-0cf7-4152-951e-1aef5bafd9f9/Nrn4ELrdcy.json"
     background="Transparent"
-    speed="1"
+    speed=".5"
     class="lottie-anim"
     direction="{1}"
     mode="normal"
-    loop
     autoplay
   ></lottie-player>
 </div>

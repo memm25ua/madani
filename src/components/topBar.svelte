@@ -1,27 +1,24 @@
 <!-- Topbar -->
 <script lang="ts">
-    import LangSelector from "./langSelector.svelte";
+  import LangSelector from "./LangSelector.svelte";
+  import theme from "../stores/themeStore";
+  import ToogleThemeButton from "./ToogleThemeButton.svelte";
+  import { onMount } from "svelte";
 
-  let language = "en"; // default language
-  let showLanguages = false;
+  let currentTheme;
 
-  function toggleLanguage() {
-    showLanguages = !showLanguages;
-  }
-
-  function selectLanguage(lang: string) {
-    language = lang;
-    showLanguages = false;
-  }
-
-  function handleKeyDown(event: KeyboardEvent) {
-    if (event.key === "Enter") {
-      toggleLanguage();
-    }
-  }
+  onMount(() => {
+    theme.subscribe((value) => {
+      currentTheme = value;
+      document.body.className = currentTheme === "dark" ? "dark" : "";
+    });
+  });
 </script>
 
-<div class="flex justify-between items-center px-6 pt-3">
+<div class="flex justify-between items-center pl-6 pr-20 pt-1">
   <span class="text-2xl font-logo"> MADANI </span>
-  <LangSelector/>
+  <div class="self-end">
+    <ToogleThemeButton />
+  </div>
+  <LangSelector />
 </div>
