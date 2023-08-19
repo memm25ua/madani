@@ -2,7 +2,7 @@
 <script lang="ts">
   import LangSelector from "./langSelector.svelte";
   import theme from "../stores/themeStore";
-  import ToogleThemeButton from "./toogleThemeButton.svelte";
+  import ToggleThemeButton from "./toggleThemeButton.svelte";
   import { onMount } from "svelte";
 
   let currentTheme;
@@ -19,7 +19,7 @@
   <span class="text-2xl font-logo"> MADANI </span>
   <div class="top-right-toolbar">
     <div class="toolbar-item">
-      <ToogleThemeButton />
+      <ToggleThemeButton />
     </div>
     <div class="toolbar-item w-14">
       <LangSelector />
