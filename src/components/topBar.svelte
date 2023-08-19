@@ -1,8 +1,8 @@
 <!-- Topbar -->
 <script lang="ts">
-  import LangSelector from "./LangSelector.svelte";
+  import LangSelector from "./langSelector.svelte";
   import theme from "../stores/themeStore";
-  import ToogleThemeButton from "./ToogleThemeButton.svelte";
+  import ToogleThemeButton from "./toogleThemeButton.svelte";
   import { onMount } from "svelte";
 
   let currentTheme;

@@ -1,6 +1,6 @@
 <script>
-  import Hero from "../components/Hero.svelte";
-  import NavMenu from "../components/NavMenu.svelte";
+  import Hero from "../components/hero.svelte";
+  import NavMenu from "../components/navMenu.svelte";
 </script>
 
 <div class="h-full w-full flex flex-wrap font-primary">
