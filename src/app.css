@@ -7,7 +7,7 @@
 
 @layer components {
   .nav-link {
-    @apply mb-4 cursor-pointer mx-5 text-left font-primary text-6xl font-thin hover:animate-slide-left hover:italic;
+    @apply mb-4 cursor-pointer mx-5 text-left font-primary text-6xl font-thin hover:font-normal hover:animate-slide-left hover:italic;
   }
   .container-col {
     @apply flex flex-grow flex-col items-start justify-center p-4;
