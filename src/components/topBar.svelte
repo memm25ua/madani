@@ -15,10 +15,23 @@
   });
 </script>
 
-<div class="flex justify-between items-center pl-6 pr-20 pt-1">
+<div class="flex justify-between items-center px-4 pr-0 pt-1">
   <span class="text-2xl font-logo"> MADANI </span>
-  <div class="self-end">
-    <ToogleThemeButton />
+  <div class="top-right-toolbar">
+    <div class="toolbar-item">
+      <ToogleThemeButton />
+    </div>
+    <div class="toolbar-item w-14">
+      <LangSelector />
+    </div>
   </div>
-  <LangSelector />
 </div>
+
+<style>
+  .top-right-toolbar {
+    @apply relative flex h-full w-1/3 self-end max-w-[200px];
+  }
+  .toolbar-item{
+    @apply relative flex h-full flex-grow items-center justify-center;
+  }
+</style>

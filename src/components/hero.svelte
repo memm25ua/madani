@@ -37,15 +37,15 @@
 </script>
 
 <div class="container-col">
-  <lottie-player
-    src="https://lottie.host/b81108f5-0cf7-4152-951e-1aef5bafd9f9/Nrn4ELrdcy.json"
-    background="Transparent"
-    speed=".5"
-    class="lottie-anim"
-    direction="{1}"
-    mode="normal"
-    autoplay
-  ></lottie-player>
+  <iframe
+    title="bad bunny un verano sin ti GIF by Bad Bunny"
+    src="https://giphy.com/embed/lrrBalkpfCcbVqaQPU"
+    width="300"
+    height="300"
+    frameBorder="0"
+    class="giphy-embed"
+    allowFullScreen
+  ></iframe>
 </div>
 
 <div class="container-col font-light">
@@ -90,10 +90,5 @@
   :root {
     --cursor-color: white; /* Sets the cursor color to red */
     --cursor-width: 2px; /* Sets the cursor width to 2 pixels */
-  }
-
-  .lottie-anim {
-    width: 300px;
-    height: 300px;
   }
 </style>
