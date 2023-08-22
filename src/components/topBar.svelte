@@ -1,7 +1,7 @@
 <!-- Topbar -->
 <script lang="ts">
-  import LangSelector from "./langSelector.svelte";
   import theme from "../stores/themeStore";
+    import LangSelector from "./langSelector.svelte";
   import ToggleThemeButton from "./toggleThemeButton.svelte";
   import { onMount } from "svelte";
 
@@ -16,7 +16,7 @@
 </script>
 
 <div class="flex justify-between items-center px-4 pr-0 pt-1">
-  <span class="text-2xl font-logo"> MADANI </span>
+  <span class="text-2xl font-logo animate-fade-in"> MADANI </span>
   <div class="top-right-toolbar">
     <div class="toolbar-item">
       <ToggleThemeButton />

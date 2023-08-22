@@ -41,6 +41,7 @@ export default {
         "slide-down": "slide-y 0.5s ease-in-out forwards",
         "slide-down-xl": "slide-y-xl 0.5s ease-in-out forwards",
         "slide-up-xl": "slide-y-xl 0.5s ease-in-out reverse forwards",
+        "fade-in": "fade 1.5s ease-in-out forwards",
       },
       keyframes: {
         "slide-x": {
@@ -54,6 +55,10 @@ export default {
         "slide-y-xl": {
           "0%": { transform: "translateY(-170px)" },
           "100%": { transform: "translateY(0)" },
+        },
+        "fade": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
         }
 
       },

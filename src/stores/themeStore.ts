@@ -1,5 +1,17 @@
 import { writable } from 'svelte/store';
 
-const theme = writable('dark');
+export const enum ThemeEnum {
+    DARK = 'Dark',
+    LIGHT = 'light',
+}
+
+const storedTheme = typeof window !== 'undefined' ? localStorage.getItem('theme') : ThemeEnum.DARK;
+const theme = writable(storedTheme || ThemeEnum.DARK);
+
+theme.subscribe(value => {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('theme', value);
+  }
+});
 
 export default theme;
