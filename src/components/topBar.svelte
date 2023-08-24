@@ -10,7 +10,7 @@
   onMount(() => {
     theme.subscribe((value) => {
       currentTheme = value;
-      document.body.className = currentTheme === "dark" ? "dark" : "";
+      document.body.className = currentTheme === "dark" ? "dark" : "light";
     });
   });
 </script>
@@ -21,7 +21,7 @@
     <div class="toolbar-item">
       <ToggleThemeButton />
     </div>
-    <div class="toolbar-item w-14">
+    <div class="toolbar-item w-14 justify-end items-end">
       <LangSelector />
     </div>
   </div>

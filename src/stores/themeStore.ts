@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 export const enum ThemeEnum {
-    DARK = 'Dark',
+    DARK = 'dark',
     LIGHT = 'light',
 }
 

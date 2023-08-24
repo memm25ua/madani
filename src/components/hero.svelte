@@ -49,7 +49,7 @@
 </div>
 
 <div class="container-col font-light">
-  <div class="title flex">
+  <div class="title flex w-full">
     <h1 class="text-2xl mb-1">
       {title}
       <Typewriter mode="scramble" scrambleDuration={1000}>
@@ -59,7 +59,7 @@
     </h1>
   </div>
 
-  <div class="flex">
+  <div class="flex w-full">
     <span class="text-2xl">
       {subtitle}
       &nbsp;
