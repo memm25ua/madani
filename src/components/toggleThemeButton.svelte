@@ -19,9 +19,7 @@
 
   onMount(() => {
     initVariables($theme);
-    setTimeout(() => {
       initLottie();
-    }, 600);
   });
 
   function initVariables(theme: string) {
@@ -36,7 +34,7 @@
 
   const initLottie = () => {
     lottie = document.getElementById("lottie-theme");
-    lottie?.setSpeed(0.5);
+    lottie?.setSpeed(0.35);
     lottie?.setDirection(dir);
     if (dir === Direction.BACKWARD) {
       const lastFrame = lottie?.getLottie().totalFrames;
@@ -45,7 +43,6 @@
   }
 
   const toggleTheme = () => {
-    console.log("toggle theme", $theme);
     theme.update((value) => (value === "dark" ? "light" : "dark"));
     playAnimation(dir);
     if (dir === Direction.FORWARD) {
@@ -93,13 +90,15 @@
 <div class="h-12 flex items-center flex-grow">
   <button
     on:click={toggleTheme}
-    class="color-white text-white w-full h-full flex items-center justify-center animate-[fade_4s_ease-in_forwards]"
+    class="color-white text-white w-full h-full flex items-center justify-center animate-fade-in"
     ><lottie-player
       id="lottie-theme"
       src="https://lottie.host/b81108f5-0cf7-4152-951e-1aef5bafd9f9/Nrn4ELrdcy.json"
       background="Transparent"
       speed=".5"
-      class="dark:invert w-[{w}px] h-[{w}px]"
+      class="dark:invert"
+      style:width="{w}px"
+      style:height="{w}px"
       direction={dir}
       mode="normal"
     ></lottie-player>

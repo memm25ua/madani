@@ -3,7 +3,7 @@
   import NavMenu from "../components/navMenu.svelte";
 </script>
 
-<div class="h-full w-full flex flex-wrap font-primary">
+<div class="h-full w-full flex flex-wrap font-primary flex-grow">
   <Hero />
   <NavMenu />
 </div>

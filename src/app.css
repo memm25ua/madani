@@ -7,9 +7,17 @@
 
 @layer components {
   .nav-link {
-    @apply mb-4 cursor-pointer mx-5 text-left font-primary text-6xl font-thin hover:font-normal hover:animate-slide-left hover:italic;
+    @apply mx-5 mb-4 w-full cursor-pointer text-left font-primary text-6xl font-thin hover:animate-slide-left hover:font-normal hover:italic;
   }
   .container-col {
-    @apply flex flex-grow flex-col items-start justify-center p-4;
+    @apply flex w-80 flex-grow flex-col items-center justify-center px-6 py-4 sm:p-8;
   }
+}
+
+.dark {
+  @apply bg-codgray-950;
+}
+
+.light {
+  @apply bg-pampas-100;
 }

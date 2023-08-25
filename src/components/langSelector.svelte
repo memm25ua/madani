@@ -24,7 +24,7 @@
 </script>
 
 <div
-  class="absolute right-0 flex flex-col items-center text-codgray-300 font-light"
+  class="flex flex-col items-center text-codgray-300 font-light"
 >
   {#if open}
     <div

@@ -10,18 +10,18 @@
   onMount(() => {
     theme.subscribe((value) => {
       currentTheme = value;
-      document.body.className = currentTheme === "dark" ? "dark" : "";
+      document.body.className = currentTheme === "dark" ? "dark" : "light";
     });
   });
 </script>
 
-<div class="flex justify-between items-center px-4 pr-0 pt-1">
+<div class="flex justify-between items-center px-4 pr-0 pt-1 h-12">
   <span class="text-2xl font-logo animate-fade-in"> MADANI </span>
   <div class="top-right-toolbar">
     <div class="toolbar-item">
       <ToggleThemeButton />
     </div>
-    <div class="toolbar-item w-14">
+    <div class="toolbar-item w-14 justify-end items-end">
       <LangSelector />
     </div>
   </div>
