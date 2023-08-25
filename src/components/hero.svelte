@@ -38,7 +38,7 @@
 
 <div class="container-col pb-0">
   <div class="image-wrapper w-full sm:w-4/5 h-auto animate-fade-in">
-    <img class="w-full h-auto" src="src/assets/hero.png" alt="Hero" />
+    <img class="w-full h-auto" src="assets/hero.png" alt="Hero" />
   </div>
 </div>
 
