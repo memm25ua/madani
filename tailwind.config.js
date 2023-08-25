@@ -41,7 +41,7 @@ export default {
         "slide-down": "slide-y 0.5s ease-in-out forwards",
         "slide-down-xl": "slide-y-xl 0.5s ease-in-out forwards",
         "slide-up-xl": "slide-y-xl 0.5s ease-in-out reverse forwards",
-        "fade-in": "fade 1.5s ease-in-out forwards",
+        "fade-in": "fade 2.2s ease-in-out forwards",
       },
       keyframes: {
         "slide-x": {

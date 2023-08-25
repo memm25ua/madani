@@ -36,19 +36,13 @@
   }
 </script>
 
-<div class="container-col">
-  <iframe
-    title="bad bunny un verano sin ti GIF by Bad Bunny"
-    src="https://giphy.com/embed/lrrBalkpfCcbVqaQPU"
-    width="300"
-    height="300"
-    frameBorder="0"
-    class="giphy-embed"
-    allowFullScreen
-  ></iframe>
+<div class="container-col pb-0">
+  <div class="image-wrapper w-full sm:w-4/5 h-auto animate-fade-in">
+    <img class="w-full h-auto" src="src/assets/hero.png" alt="Hero" />
+  </div>
 </div>
 
-<div class="container-col font-light">
+<div class="container-col pt-0 font-light">
   <div class="title flex w-full">
     <h1 class="text-2xl mb-1">
       {title}
