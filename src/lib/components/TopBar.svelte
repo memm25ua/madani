@@ -16,7 +16,11 @@
 </script>
 
 <div class="flex justify-between items-center px-4 pr-0 pt-1 h-12">
-  <span class="text-2xl font-logo animate-fade-in"> MADANI </span>
+  <span class="text-2xl font-logo animate-fade-in"> 
+    <a href="/">
+      Madani
+    </a>  
+  </span>
   <div class="top-right-toolbar">
     <div class="toolbar-item">
       <ToggleThemeButton />

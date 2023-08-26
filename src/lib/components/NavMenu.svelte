@@ -6,7 +6,7 @@
   <div class="nav-link">
     <a href="/about"> About </a>
   </div>
-  <div class="nav-link">ç
+  <div class="nav-link">
     <a href="/projects"> Projects </a>
   </div>
   <div class="nav-link">
