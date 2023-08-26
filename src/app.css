@@ -21,3 +21,16 @@
 .light {
   @apply bg-pampas-100;
 }
+
+body {
+  cursor:
+    url("/assets/cursor.png") 8 8,
+    auto;
+}
+
+button,
+a {
+  cursor:
+    url("/assets/cursor.png") 8 8,
+    auto;
+}
