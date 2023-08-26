@@ -1,8 +1,8 @@
 <!-- Topbar -->
 <script lang="ts">
   import theme from "../stores/themeStore";
-    import LangSelector from "./langSelector.svelte";
-  import ToggleThemeButton from "./toggleThemeButton.svelte";
+  import LangSelector from "./LangSelector.svelte";
+  import ToggleThemeButton from "./ToggleThemeButton.svelte";
   import { onMount } from "svelte";
 
   let currentTheme;
@@ -29,9 +29,9 @@
 
 <style>
   .top-right-toolbar {
-    @apply relative flex h-full w-1/3 self-end max-w-[200px];
+    @apply relative flex h-full w-1/3 max-w-[200px] self-end;
   }
-  .toolbar-item{
+  .toolbar-item {
     @apply relative flex h-full flex-grow items-center justify-center;
   }
 </style>

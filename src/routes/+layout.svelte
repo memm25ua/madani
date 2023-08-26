@@ -1,6 +1,6 @@
 <script>
   import "../app.css";
-  import TopBar from "../components/topBar.svelte";
+  import TopBar from '$lib/components/TopBar.svelte';
 </script>
 
 <div
