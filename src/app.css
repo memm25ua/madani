@@ -7,7 +7,7 @@
 
 @layer components {
   .nav-link {
-    @apply mx-5 mb-4 w-full cursor-pointer text-left font-primary text-6xl font-thin hover:animate-slide-left hover:font-normal hover:italic;
+    @apply mx-5 mb-4 w-full text-left font-primary text-6xl font-thin hover:animate-slide-left hover:font-normal hover:italic;
   }
   .container-col {
     @apply flex w-80 flex-grow flex-col items-center justify-center px-6 py-4 sm:p-8;
@@ -29,8 +29,9 @@ body {
 }
 
 button,
-a {
+a,
+.nav-link {
   cursor:
-    url("/assets/cursor.png") 8 8,
+    url("/assets/click.png") 8 8,
     auto;
 }

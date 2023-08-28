@@ -11,7 +11,7 @@
     /* Add any custom styles if needed */
   </style>
   
-  <main class=" min-h-screen p-4">
+  <main class=" min-h-fullª p-4">
     <section class="rounded-lg shadow-lg p-6">
       <h1 class="text-3xl font-bold mb-4">My Projects</h1>
     </section>
