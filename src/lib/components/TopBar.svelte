@@ -16,26 +16,15 @@
 </script>
 
 <div class="flex justify-between items-center px-4 pr-0 pt-1 h-12">
-  <span class="text-2xl font-logo animate-fade-in"> 
-    <a href="/">
-      Madani
-    </a>  
+  <span class="text-2xl font-logo animate-fade-in">
+    <a href="/"> Madani </a>
   </span>
-  <div class="top-right-toolbar">
-    <div class="toolbar-item">
+  <div class="relative flex h-full w-1/3 max-w-[200px] self-end justify-end">
+    <div class="relative flex h-full px-2 justify-center">
       <ToggleThemeButton />
     </div>
-    <div class="toolbar-item w-14 justify-end items-end">
+    <!-- <div class="toolbar-item w-14 justify-end items-end">
       <LangSelector />
-    </div>
+    </div> -->
   </div>
 </div>
-
-<style>
-  .top-right-toolbar {
-    @apply relative flex h-full w-1/3 max-w-[200px] self-end;
-  }
-  .toolbar-item {
-    @apply relative flex h-full flex-grow items-center justify-center;
-  }
-</style>

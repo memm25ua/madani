@@ -1,20 +1,46 @@
 <script lang="ts">
-  import { fade } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
   import "../app.css";
   import TopBar from "$lib/components/TopBar.svelte";
+  import { onMount } from "svelte";
+  import { quintOut } from "svelte/easing";
+
   export let data;
 
-  const fadeConfig = {
-    duration: 500,
+  const transitionConfig = {
+    duration: 600,
+    opacity: 0.5,
+    easing: quintOut,
   };
 
   let x = 0;
   let y = 0;
+  let showCircle = false;
+  let touchable = false;
+  let moving = false;
 
   function handleMouseMove(event: MouseEvent) {
+    if (moving) return;
+
+    moving = true;
     x = event.clientX;
     y = event.clientY;
+    if (!touchable) {
+      showCircle = true;
+    }
+
+    setTimeout(() => {
+      moving = false;
+    }, 50);
   }
+
+  onMount(() => {
+    function handleTouchStart() {
+      touchable = true;
+      window.removeEventListener("touchstart", handleTouchStart);
+    }
+    window.addEventListener("touchstart", handleTouchStart);
+  });
 </script>
 
 <main
@@ -24,20 +50,29 @@
   <TopBar />
   {#key data}
     <div
-      in:fade={{ ...fadeConfig, delay: 500 }}
-      out:fade={{ ...fadeConfig }}
-      class="flex-grow"
+      in:fly={{ ...transitionConfig, delay: 500, y: 1500 }}
+      out:fly={{ ...transitionConfig, y: -1500 }}
+      class="flex-grow flex items-center justify-center"
     >
-      <slot />
+      <div class="w-full">
+        <slot />
+      </div>
     </div>
   {/key}
-  <div role="status">
-    <div class="circle" style="left: {x - 18}px; top: {y - 18}px;"></div>
-  </div>
+  {#if showCircle}
+    <div role="status">
+      <div
+        class="circle pointer-events-none absolute h-6 w-6 animate-[fade_0.2s_ease-in] rounded-full bg-white mix-blend-exclusion"
+        style="left: {x - 12}px; top: {y - 12}px;"
+      ></div>
+    </div>
+  {/if}
 </main>
 
 <style>
   .circle {
-    @apply absolute h-9 w-9 animate-[pulse_2s_ease-in_infinite] rounded-full bg-white mix-blend-difference pointer-events-none;
+    transition:
+      top 0.2s ease-out,
+      left 0.2s ease-out; /* Add this line */
   }
 </style>
