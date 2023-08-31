@@ -3,14 +3,24 @@
   import "../app.css";
   import TopBar from "$lib/components/TopBar.svelte";
   import { onMount } from "svelte";
-  import { quintOut } from "svelte/easing";
+  import { cubicIn, cubicOut } from "svelte/easing";
+  import theme from "$lib/stores/themeStore";
 
   export let data;
 
-  const transitionConfig = {
-    duration: 600,
+  const transitionInConfig = {
+    delay: 700,
+    duration: 800,
     opacity: 0.5,
-    easing: quintOut,
+    y: 1000,
+    easing: cubicOut,
+  };
+
+  const transitionOutConfig = {
+    duration: 800,
+    opacity: 0.5,
+    y: -1000,
+    easing: cubicIn,
   };
 
   let x = 0;
@@ -18,6 +28,12 @@
   let showCircle = false;
   let touchable = false;
   let moving = false;
+
+  onMount(() => {
+    theme.subscribe((value) => {
+      document.body.className = value === "dark" ? "dark" : "light";
+    });
+  });
 
   function handleMouseMove(event: MouseEvent) {
     if (moving) return;
@@ -45,14 +61,14 @@
 
 <main
   on:mousemove={handleMouseMove}
-  class="bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen flex flex-col font-primary"
+  class="transition-colors duration-[2000ms] bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen flex flex-col font-primary"
 >
   <TopBar />
   {#key data}
     <div
-      in:fly={{ ...transitionConfig, delay: 500, y: 1500 }}
-      out:fly={{ ...transitionConfig, y: -1500 }}
-      class="flex-grow flex items-center justify-center"
+      in:fly={transitionInConfig}
+      out:fly={transitionOutConfig}
+      class="h-full flex items-center justify-center"
     >
       <div class="w-full">
         <slot />

@@ -1,18 +1,9 @@
 <!-- Topbar -->
-<script lang="ts">
-  import theme from "../stores/themeStore";
+<script lang="ts"> 
   import LangSelector from "./LangSelector.svelte";
   import ToggleThemeButton from "./ToggleThemeButton.svelte";
-  import { onMount } from "svelte";
 
-  let currentTheme;
-
-  onMount(() => {
-    theme.subscribe((value) => {
-      currentTheme = value;
-      document.body.className = currentTheme === "dark" ? "dark" : "light";
-    });
-  });
+  
 </script>
 
 <div class="flex justify-between items-center px-4 pr-0 pt-1 h-12">

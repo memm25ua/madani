@@ -19,8 +19,9 @@
 }
 
 .light {
-  @apply bg-pampas-100;
+  @apply bg-pampas-200;
 }
+
 
 body {
   cursor:

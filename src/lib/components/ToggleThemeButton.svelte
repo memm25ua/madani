@@ -1,89 +1,40 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { ThemeEnum } from "../stores/themeStore";
+  import { ThemeEnum as Theme } from "../stores/themeStore";
   import theme from "../stores/themeStore";
 
-  const enum Direction {
-    FORWARD = 1,
-    BACKWARD = -1,
-  }
-
-  const enum Size {
-    SMALL = 26,
-    BIG = 40,
-  }
-
-  let dir: number = 0;
-  let w: number = 0;
   let lottie: any;
+  let lottieInited = false;
 
   onMount(() => {
-    initVariables($theme);
-      initLottie();
+    theme.subscribe(() => {
+      if (!lottieInited) {
+        initLottie();
+        lottieInited = true;
+      }
+      playLottie();
+    });
   });
 
-  function initVariables(theme: string) {
-    if (theme === ThemeEnum.DARK) {
-      dir = Direction.FORWARD;
-      w = Size.SMALL;
-    } else {
-      dir = Direction.BACKWARD;
-      w = Size.BIG;
-    }
-  }
-
   const initLottie = () => {
+    const dir = $theme === Theme.DARK ? 1 : -1;
     lottie = document.getElementById("lottie-theme");
     lottie?.setSpeed(0.35);
     lottie?.setDirection(dir);
-    if (dir === Direction.BACKWARD) {
+    if (dir === -1) {
       const lastFrame = lottie?.getLottie().totalFrames;
       lottie?.seek(lastFrame);
     }
-  }
-
-  const toggleTheme = () => {
-    theme.update((value) => (value === "dark" ? "light" : "dark"));
-    playAnimation(dir);
-    if (dir === Direction.FORWARD) {
-      dir = Direction.BACKWARD;
-      w = Size.BIG;
-    } else {
-      dir = Direction.FORWARD;
-      w = Size.SMALL;
-    }
   };
 
-  function playAnimation(direction: Direction) {
-    changeWidthFilter(direction);
-    lottie?.setDirection(direction);
-    lottie?.play();
-  }
+  const toggleTheme = () => {
+    theme.update((value) => (value === Theme.DARK ? Theme.LIGHT : Theme.DARK));
+    //playLottie();
+  };
 
-  function changeWidthFilter(direction: Direction) {
-    if (direction === Direction.FORWARD) {
-      lottie?.animate(
-        [
-          { width: Size.SMALL + "px", height: Size.SMALL + "px"},
-          { width: Size.BIG + "px", height: Size.BIG + "px"},
-        ],
-        {
-          duration: 1000,
-          fill: "forwards",
-        },
-      );
-    } else {
-      lottie?.animate(
-        [
-          { width: Size.BIG + "px", height: Size.BIG + "px"},
-          { width: Size.SMALL + "px", height: Size.SMALL + "px"},
-        ],
-        {
-          duration: 1000,
-          fill: "forwards",
-        },
-      );
-    }
+  function playLottie() {
+    lottie?.setDirection($theme === Theme.DARK ? -1 : 1);
+    lottie?.play();
   }
 </script>
 
@@ -96,11 +47,26 @@
       src="https://lottie.host/b81108f5-0cf7-4152-951e-1aef5bafd9f9/Nrn4ELrdcy.json"
       background="Transparent"
       speed=".5"
-      class="dark:invert"
-      style:width="{w}px"
-      style:height="{w}px"
-      direction={dir}
+      class="dark:invert mb-2 {$theme === Theme.DARK
+        ? 'small-lottie'
+        : 'big-lottie'}"
+      direction={$theme === Theme.DARK ? -1 : 1}
       mode="normal"
     ></lottie-player>
   </button>
 </div>
+
+<style>
+  .big-lottie {
+    width: 40px;
+    height: 40px;
+    margin-right: 0px;
+    transition: all 1s ease-in-out;
+  }
+  .small-lottie {
+    width: 26px;
+    height: 26px;
+    margin-right: 8px;
+    transition: all 1s ease-in-out;
+  }
+</style>
