@@ -64,7 +64,7 @@
   on:mousemove={handleMouseMove}
   class="transition-colors duration-[2000ms] bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen flex flex-col font-primary"
 >
-  <TopBar />
+  <TopBar {data} />
   <HeroImg {data} />
   {#key data}
     <div

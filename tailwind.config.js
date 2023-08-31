@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{html,js,svelte,ts}"],
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -35,6 +35,19 @@ export default {
           900: "#53403b",
           950: "#2c211e",
         },
+        perano: {
+          50: "#f1f7fd",
+          100: "#dfedfa",
+          200: "#c5dff8",
+          300: "#9ccaf2",
+          400: "#70afea",
+          500: "#4e90e3",
+          600: "#3975d7",
+          700: "#3060c5",
+          800: "#2d4fa0",
+          900: "#29447f",
+          950: "#1d2b4e",
+        },
       },
       animation: {
         "slide-left": "slide-x 0.5s ease-in-out forwards",
@@ -56,11 +69,10 @@ export default {
           "0%": { transform: "translateY(-170px)" },
           "100%": { transform: "translateY(0)" },
         },
-        "fade": {
+        fade: {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
-        }
-
+        },
       },
     },
   },
