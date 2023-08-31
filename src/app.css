@@ -7,7 +7,7 @@
 
 @layer components {
   .nav-link {
-    @apply mx-5 mb-4 w-full text-left font-primary text-6xl font-thin hover:animate-slide-left hover:font-normal hover:italic;
+    @apply mx-5 mb-4 w-full text-left font-primary text-7xl font-thin hover:animate-slide-left hover:font-normal hover:italic hover:underline decoration-[#9CCAF2];
   }
   .container-col {
     @apply flex w-80 flex-grow flex-col items-center justify-center px-6 py-4 sm:p-8;
@@ -19,8 +19,9 @@
 }
 
 .light {
-  @apply bg-pampas-100;
+  @apply bg-pampas-200;
 }
+
 
 body {
   cursor:

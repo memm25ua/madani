@@ -4,12 +4,12 @@
 
 <div class="container-col">
   <div class="nav-link">
-    <a href="/about"> About </a>
+    <a href="/about"> ABOUT </a>
   </div>
   <div class="nav-link">
-    <a href="/projects"> Projects </a>
+    <a href="/projects"> PROJECTS </a>
   </div>
   <div class="nav-link">
-    <a href="/contact"> Contact </a>
+    <a href="/contact"> CONTACT </a>
   </div>
 </div>
