@@ -2,6 +2,7 @@
   import { fade, fly } from "svelte/transition";
   import "../app.css";
   import TopBar from "$lib/components/TopBar.svelte";
+  import HeroImg from "$lib/components/HeroImg.svelte";
   import { onMount } from "svelte";
   import { cubicIn, cubicOut } from "svelte/easing";
   import theme from "$lib/stores/themeStore";
@@ -64,6 +65,7 @@
   class="transition-colors duration-[2000ms] bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen flex flex-col font-primary"
 >
   <TopBar />
+  <HeroImg {data} />
   {#key data}
     <div
       in:fly={transitionInConfig}
