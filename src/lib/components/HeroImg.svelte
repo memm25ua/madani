@@ -51,9 +51,9 @@
     });
   </script>
   
-  <div class="container-col pt-0">
+  <div class="container-col pt-0 w-full">
     {#key data}
-      <div class="flex justify-center w-full sm:w-4/5 h-auto animate-fade-in">
+      <div class="flex justify-center w-11/12 sm:w-full h-auto animate-fade-in">
         <img
           in:fade={{ ...transitionConfig, delay: 800 }}
           out:fade={transitionConfig}
