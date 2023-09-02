@@ -19,7 +19,6 @@
   const initLottie = () => {
     const dir = $theme === Theme.DARK ? 1 : -1;
     lottie = document.getElementById("lottie-theme");
-    lottie?.setSpeed(0.35);
     lottie?.setDirection(dir);
     if (dir === -1) {
       const lastFrame = lottie?.getLottie().totalFrames;
