@@ -1,71 +1,64 @@
 <script lang="ts">
-    import { fade, fly } from "svelte/transition";
-    import { cubicIn, cubicOut } from "svelte/easing";
-    import { onMount } from "svelte";
-    import theme from "$lib/stores/themeStore";
-  
-    export let data: any;
-  
-    let transitionConfig = {
-      duration: 800,
-      easing: cubicOut,
-    };
-  
-    let imageSrc = ""; // Default image
-    let imageClass = "w-11/12 sm:w-full h-auto"; // Default class
-  
-    $: if (data.url === "/about") {
-      imageSrc = "assets/heroAbout.png";
-      imageClass = "w-full h-auto";
-      transitionConfig = {
-        duration: 800,
-        easing: cubicIn,
-      };
-    } else if (data.url === "/projects") {
-      imageSrc = "assets/heroProjects.png";
-      imageClass = "w-full h-auto";
-      transitionConfig = {
-        duration: 800,
-        easing: cubicIn,
-      };
-    } else if (data.url === "/contact") {
-      imageSrc = "assets/heroContact.png";
-      imageClass = "w-full h-auto";
-      transitionConfig = {
-        duration: 800,
-        easing: cubicIn,
-      };
-    } else if (data.url === "/") {
-      imageSrc = "assets/hero.png";
-      imageClass = "w-full h-auto";
-      transitionConfig = {
-        duration: 800,
-        easing: cubicIn,
-      };
-    }
-    
-    onMount(() => {
-      theme.subscribe((value) => {
-        document.body.className = value === "dark" ? "dark" : "light";
-      });
+  import { blur, fade, fly, scale } from "svelte/transition";
+  import {
+    bounceInOut,
+    cubicIn,
+    cubicInOut,
+    cubicOut,
+    elasticInOut,
+    expoOut,
+  } from "svelte/easing";
+  import { onMount } from "svelte";
+  import theme from "$lib/stores/themeStore";
+
+  export let data: any;
+
+  let transitionConfig = {
+    duration: 500,
+  };
+
+  let transitionInConfig = {
+    easing: cubicInOut,
+    ...transitionConfig,
+  };
+
+  let transitionOutConfig = {
+    easing: cubicIn,
+    ...transitionConfig,
+  };
+
+  let imageSrc = ""; // Default image
+  let imageClass = "";
+
+  $: if (data.url === "/about") {
+    imageSrc = "assets/heroAbout.png";
+  } else if (data.url === "/projects") {
+    imageSrc = "assets/heroProjects.png";
+  } else if (data.url === "/contact") {
+    imageSrc = "assets/heroContact.png";
+  } else if (data.url === "/") {
+    imageSrc = "assets/hero.png";
+  }
+
+  onMount(() => {
+    theme.subscribe((value) => {
+      document.body.className = value === "dark" ? "dark" : "light";
     });
-  </script>
-  
-  <div class="container-col pt-0 w-full">
-    {#key data}
-      <div class="flex justify-center w-11/12 sm:w-full h-auto animate-fade-in">
-        <img
-          in:fade={{ ...transitionConfig, delay: 800 }}
-          out:fade={transitionConfig}
-          class={imageClass}
-          src={imageSrc}
-          alt="Hero"
-        />
-      </div>
-    {/key}
+  });
+</script>
+
+{#key data}
+  <div class="flex justify-center w-full h-full absolute" in:scale={{ duration: 500, easing: cubicInOut }} out:scale={{ duration: 500, easing: cubicIn }}>
+    <img
+      in:blur={transitionInConfig}
+      out:blur={transitionOutConfig}
+      class="object-contain max-w-full max-h-full {imageClass}"
+      src={imageSrc}
+      alt="Hero"
+    />
   </div>
-  
-  <style>
-    /* Add your styles here */
-  </style>
-  
+{/key}
+
+<style>
+  /* Add your styles here */
+</style>

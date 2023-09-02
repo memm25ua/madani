@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fade, fly } from "svelte/transition";
+  import { blur, fade, fly, slide } from "svelte/transition";
   import "../app.css";
   import TopBar from "$lib/components/TopBar.svelte";
   import HeroImg from "$lib/components/HeroImg.svelte";
@@ -9,18 +9,8 @@
 
   export let data;
 
-  const transitionInConfig = {
-    delay: 700,
-    duration: 800,
-    opacity: 0.5,
-    y: 1000,
-    easing: cubicOut,
-  };
-
-  const transitionOutConfig = {
-    duration: 800,
-    opacity: 0.5,
-    y: -1000,
+  const transitionConfig = {
+    duration: 600,
     easing: cubicIn,
   };
 
@@ -62,21 +52,30 @@
 
 <main
   on:mousemove={handleMouseMove}
-  class="transition-colors duration-[2000ms] bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen flex flex-col font-primary"
+  class="transition-colors overflow-hidden relative duration-500 bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen flex flex-col font-primary lg:grid lg:grid-cols-3 lg:grid-rows-[auto,1fr]"
 >
-  <TopBar {data} />
-  <HeroImg {data} />
+  <!-- Top Thin Bar -->
+  <div class="lg:col-span-3">
+    <TopBar {data} />
+  </div>
+
+  <!-- Left Screen Part with Hero Image -->
+  <div class="container-col w-full lg:h-full relative lg:col-span-1 h-60 ">
+    <HeroImg {data} />
+  </div>
+
+  <!-- Right Part Where Content is Displayed -->
   {#key data}
     <div
-      in:fly={transitionInConfig}
-      out:fly={transitionOutConfig}
-      class="h-full flex items-center justify-center"
+      in:blur={transitionConfig}
+      class="h-full flex items-center justify-center lg:col-span-2"
     >
       <div class="w-full">
         <slot />
       </div>
     </div>
   {/key}
+
   {#if showCircle}
     <div role="status">
       <div

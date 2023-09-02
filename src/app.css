@@ -7,10 +7,10 @@
 
 @layer components {
   .nav-link {
-    @apply mx-5 mb-4 w-full text-left font-primary text-7xl font-thin hover:animate-slide-left hover:font-normal hover:italic hover:underline decoration-perano-300;
+    @apply mx-5 mb-4 w-full text-left font-primary text-7xl xl:text-8xl 2xl:text-9xl font-thin hover:animate-slide-left hover:font-normal hover:italic hover:underline decoration-perano-300;
   }
   .container-col {
-    @apply flex w-80 flex-grow flex-col items-center justify-center px-6 py-4 sm:p-8;
+    @apply flex w-80 flex-grow flex-col items-center justify-center px-6 py-4 sm:p-8  ;
   }
 }
 
