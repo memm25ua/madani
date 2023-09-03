@@ -1,5 +1,6 @@
 <!-- Topbar -->
 <script lang="ts">
+  import Typewriter from "svelte-typewriter";
   import ToggleThemeButton from "./ToggleThemeButton.svelte";
 
   export let data: { url: string };
@@ -7,7 +8,7 @@
   let page = "";
 
   $: {
-    page = ": {" + data.url.replace("/", "") + "}";
+    page = ": { " + data.url.replace("/", "") + " }";
   }
 </script>
 
@@ -16,11 +17,13 @@
     <span class="text-2xl font-logo animate-fade-in">
       <a href="/"> Madani </a>
     </span>
-    <span
-      class="text-sm font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
-    >
-      {page}
-    </span>
+    <Typewriter interval={130}>
+      <span
+        class="text-sm font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
+      >
+        {page}
+      </span>
+    </Typewriter>
   </div>
 
   <div class="relative flex h-full w-1/3 max-w-[200px] self-end justify-end">
@@ -32,3 +35,11 @@
     </div> -->
   </div>
 </div>
+
+<style>
+
+:root {
+    --cursor-color: white; /* Sets the cursor color to red */
+    --cursor-width: 2px; /* Sets the cursor width to 2 pixels */
+  }
+</style>

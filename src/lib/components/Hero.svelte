@@ -38,12 +38,10 @@
 
 <div class="container-col font-thin">
   <div class="title flex w-full">
-    <h1 class="text-2xl mb-1">
-      {title}
-      <Typewriter mode="scramble" scrambleDuration={1000}>
-        <span data-static>I'm</span>
-        <span>{name}</span>
-      </Typewriter>
+    <h1 class="text-2xl sm:text-3xl mb-1">
+      {title} <br>
+      <span data-static>I'm</span>
+      <span>{name}</span>
     </h1>
   </div>
 
