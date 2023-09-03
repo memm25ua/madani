@@ -18,7 +18,7 @@
   };
 
   let transitionInConfig = {
-    easing: cubicInOut,
+    easing: cubicIn,
     ...transitionConfig,
   };
 
@@ -48,10 +48,9 @@
 </script>
 
 {#key data}
-  <div class="flex justify-center w-full h-full absolute" in:scale={{ duration: 500, easing: cubicInOut }} out:scale={{ duration: 500, easing: cubicIn }}>
+  <div class="flex justify-center w-full h-full absolute" in:scale={{ duration: 300, easing: cubicInOut }} >
     <img
       in:blur={transitionInConfig}
-      out:blur={transitionOutConfig}
       class="object-contain max-w-full max-h-full {imageClass}"
       src={imageSrc}
       alt="Hero"
