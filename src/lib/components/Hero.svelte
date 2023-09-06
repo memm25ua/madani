@@ -8,6 +8,7 @@
 
 <script lang="ts">
   import Typewriter, { scramble } from "svelte-typewriter";
+    import HeroImg from "./HeroImg.svelte";
   export let title: string = "Hi there!! 👋 ";
   let name: string = "Madani El Mrabet Martínez,";
   export let subtitle: string = "Software ";
@@ -37,7 +38,8 @@
 </script>
 
 <div class="container-col font-thin">
-  <div class="title flex w-full">
+  <HeroImg imgSrc="assets/hero.png" />
+  <div class="title flex w-full pt-6">
     <h1 class="text-2xl sm:text-3xl mb-1">
       {title} <br>
       <span data-static>I'm</span>

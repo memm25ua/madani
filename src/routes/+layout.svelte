@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
   import { cubicIn, cubicOut } from "svelte/easing";
   import theme from "$lib/stores/themeStore";
+  import { onNavigate } from "$app/navigation";
 
   export let data;
 
@@ -23,6 +24,20 @@
   onMount(() => {
     theme.subscribe((value) => {
       document.body.className = value === "dark" ? "dark" : "light";
+    });
+  });
+
+  onNavigate((navigation) => {
+    // @ts-ignore
+    if (!document.startViewTransition) return;
+
+    console.log(navigation);
+    return new Promise((resolve) => {
+      // @ts-ignore
+      document.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
     });
   });
 
@@ -55,26 +70,13 @@
   class="transition-colors overflow-hidden relative duration-500 bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen flex flex-col font-primary lg:grid lg:grid-cols-3 lg:grid-rows-[auto,1fr]"
 >
   <!-- Top Thin Bar -->
-  <div class="lg:col-span-3">
+  <div class="lg:col-span-3" style="view-transition-name: header;">
     <TopBar {data} />
   </div>
 
-  <!-- Left Screen Part with Hero Image -->
-  <div class="container-col w-full lg:h-full relative lg:col-span-1 h-60 ">
-    <HeroImg {data} />
+  <div class="h-full flex items-center justify-center lg:col-span-2">
+    <slot />
   </div>
-
-  <!-- Right Part Where Content is Displayed -->
-  {#key data}
-    <div
-      in:blur={transitionConfig}
-      class="h-full flex items-center justify-center lg:col-span-2"
-    >
-      <div class="w-full">
-        <slot />
-      </div>
-    </div>
-  {/key}
 
   {#if showCircle}
     <div role="status">
@@ -91,5 +93,32 @@
     transition:
       top 0.2s ease-out,
       left 0.2s ease-out; /* Add this line */
+  }
+  @keyframes custom-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes custom-fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  :root::view-transition-old(root) {
+    animation:
+      300ms custom-fade-out both
+  }
+
+  :root::view-transition-new(root) {
+    animation:
+      300ms custom-fade-in 90ms both
   }
 </style>

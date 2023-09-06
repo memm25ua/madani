@@ -1,62 +1,26 @@
 <script lang="ts">
-  import { blur, fade, fly, scale } from "svelte/transition";
-  import {
-    bounceInOut,
-    cubicIn,
-    cubicInOut,
-    cubicOut,
-    elasticInOut,
-    expoOut,
-  } from "svelte/easing";
-  import { onMount } from "svelte";
-  import theme from "$lib/stores/themeStore";
+  export let imgSrc: string = "";
+  export let title: string = "";
+  export let textOnRight: boolean = true;
 
-  export let data: any;
-
-  let transitionConfig = {
-    duration: 500,
-  };
-
-  let transitionInConfig = {
-    easing: cubicIn,
-    ...transitionConfig,
-  };
-
-  let transitionOutConfig = {
-    easing: cubicIn,
-    ...transitionConfig,
-  };
-
-  let imageSrc = ""; // Default image
-  let imageClass = "";
-
-  $: if (data.url === "/about") {
-    imageSrc = "assets/heroAbout.png";
-  } else if (data.url === "/projects") {
-    imageSrc = "assets/heroProjects.png";
-  } else if (data.url === "/contact") {
-    imageSrc = "assets/heroContact.png";
-  } else if (data.url === "/") {
-    imageSrc = "assets/hero.png";
-  }
-
-  onMount(() => {
-    theme.subscribe((value) => {
-      document.body.className = value === "dark" ? "dark" : "light";
-    });
-  });
+  let containerClass = textOnRight ? "flex-row-reverse" : "flex-row";
 </script>
 
-{#key data}
-  <div class="flex justify-center w-full h-full absolute" in:scale={{ duration: 300, easing: cubicInOut }} >
+<div class={`py-4 rounded-lg ${containerClass} flex items-center gap-4`}>
+  {#if title}
+    <div class="flex-shrink-0 whitespace-nowrap">
+      <h1 class="text-4xl sm:text-5xl mb-1 truncate">{title}</h1>
+    </div>
+  {/if}
+  <div class={`${title ? "flex-grow" : "flex-1 w-full"}`}>
     <img
-      in:blur={transitionInConfig}
-      class="object-contain max-w-full max-h-full {imageClass}"
-      src={imageSrc}
+      class="object-contain max-w-full max-h-full rounded-full bg-pampas-300"
+      src={imgSrc}
       alt="Hero"
+      style="view-transition-name: heroImg;"
     />
   </div>
-{/key}
+</div>
 
 <style>
   /* Add your styles here */

@@ -1,14 +1,10 @@
 <script>
-  // Your JavaScript logic for form handling can go here
+  import HeroImg from "$lib/components/HeroImg.svelte";
 </script>
 
-<style>
-  /* Add any custom styles if needed */
-</style>
-
 <main class="min-h-full p-4">
-  <section class="p-6">
-    <h1 class="text-3xl font-bold mb-4">Contact Me</h1>
+  <section class="px-4">
+    <HeroImg imgSrc="assets/heroContact.png" title="Contact Me" textOnRight={false} />
   </section>
 
   <section class="p-6 mt-6">
