@@ -1,4 +1,6 @@
 <script>
+    import HeroImg from "$lib/components/HeroImg.svelte";
+
   let projects = [
     {
       name: 'Crmble Trello Powerup',
@@ -27,6 +29,8 @@
 
 <main class="min-h-full p-4">
   <section class="rounded-lg shadow-lg p-6">
+
+    <HeroImg imgSrc="assets/heroProjects.png" />
     <h1 class="text-3xl font-bold mb-4">My Projects</h1>
   </section>
 
