@@ -31,7 +31,6 @@
     // @ts-ignore
     if (!document.startViewTransition) return;
 
-    console.log(navigation);
     return new Promise((resolve) => {
       // @ts-ignore
       document.startViewTransition(async () => {

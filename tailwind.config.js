@@ -60,6 +60,7 @@ export default {
         "slide-up-xl": "slide-y-xl 0.5s ease-in-out reverse forwards",
         "fade-in": "fade 2.2s ease-in-out forwards",
         "fill-line": "fillw 0.7s ease-in-out forwards",
+        "d-in": "diagonal 0.7s ease-in-out forwards",
       },
       keyframes: {
         "slide-x": {
@@ -83,6 +84,10 @@ export default {
           "50%": { width: "100%", left: "0%" },
           "100%": { width: "0%", left: "100%" },
         },
+        diagonal: {
+          "0%": { height: "0px", width: "0px" },
+          "100%": { height: "170px", width: "150px" },
+        }
       },
     },
   },
