@@ -8,10 +8,9 @@
 
 <script lang="ts">
   import Typewriter, { scramble } from "svelte-typewriter";
-    import HeroImg from "./HeroImg.svelte";
-  export let title: string = "Hi there!! 👋 ";
+  let title: string = "Hi there!! 👋 ";
   let name: string = "Madani El Mrabet Martínez,";
-  export let subtitle: string = "Software ";
+  let subtitle: string = "Software ";
   let showEmoji: boolean = false;
   let emojiIndex: number = 0;
   let words: string[] = [
@@ -37,9 +36,8 @@
   }
 </script>
 
-<div class="container-col font-thin">
-  <HeroImg imgSrc="assets/hero.png" />
-  <div class="title flex w-full pt-6">
+<section class="font-thin w-full">
+  <div class="title flex w-full">
     <h1 class="text-2xl sm:text-3xl mb-1">
       {title} <br>
       <span data-static>I'm</span>
@@ -72,7 +70,7 @@
       </span>
     {/if}
   </div>
-</div>
+</section>
 
 <style>
   :root {

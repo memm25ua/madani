@@ -3,7 +3,7 @@
 
   // Your JavaScript logic here
   let skills = [
-    "Angular.js",
+    "Angular.ts",
     "HTML/CSS",
     "Swift/SwiftUI",
     "Git Flow",
@@ -13,10 +13,15 @@
   ];
 </script>
 
-<main class="min-h-full p-4">
-  <section class="p-6">
-    <HeroImg imgSrc="assets/heroAbout.png" title="About Me" />
-    <p class="text-lg mb-4">
+<main
+  class="min-h-full w-full flex flex-wrap font-primary flex-grow items-center justify-center"
+>
+  <section class="container-col p-6">
+    <HeroImg imgSrc="assets/heroAbout.png" title="ABOUT ME" />
+  </section>
+
+  <section class="container-col">
+    <p class="text-lg mb-4 font-light">
       Enthusiastic Software Developer with a passion for learning and applying
       new technologies to drive innovative solutions. I specialize in designing
       and developing user interfaces, particularly in Angular for CRM platforms.
@@ -25,22 +30,13 @@
     </p>
   </section>
 
-  <section class="p-6 mt-6">
-    <h2 class="text-2xl font-bold mb-4">Skills</h2>
+  <section class="container-col items-start">
+    <h2 class="text-2xl font-title mb-4">sKills</h2>
     <ul>
       {#each skills as skill}
-        <li class="text-lg mb-2">{skill}</li>
+        <li class="text-lg mb-2 font-normal">{skill}</li>
       {/each}
     </ul>
-  </section>
-
-  <section class="p-6 mt-6">
-    <h2 class="text-2xl font-bold mb-4">Contact</h2>
-    <p class="text-lg">
-      Email: <a href="mailto:madani.devel@gmail.com" class="text-blue-500"
-        >madani.devel@gmail.com</a
-      >
-    </p>
   </section>
 </main>
 

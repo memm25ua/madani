@@ -67,21 +67,28 @@
 
 <main
   on:mousemove={handleMouseMove}
-  class="transition-colors overflow-hidden relative duration-500 bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen flex flex-col font-primary lg:grid lg:grid-cols-3 lg:grid-rows-[auto,1fr]"
+  class="transition-colors overflow-hidden relative duration-500 bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen font-primary lg:grid lg:grid-cols-1 lg:grid-rows-[auto,1fr]"
 >
   <!-- Top Thin Bar -->
-  <div class="lg:col-span-3" style="view-transition-name: header;">
+  <div
+    class="lg:col-span-1 z-40 relative"
+    style="view-transition-name: header;"
+  >
     <TopBar {data} />
   </div>
 
-  <div class="h-full flex items-center justify-center lg:col-span-2">
-    <slot />
+  <div
+    class="lg:col-span-1 flex flex-col overflow-hidden px-6 items-center justify-center"
+  >
+    <div class="max-w-[1700px] w-full">
+      <slot />
+    </div>
   </div>
 
   {#if showCircle}
     <div role="status">
       <div
-        class="circle pointer-events-none absolute h-6 w-6 animate-[fade_0.2s_ease-in] rounded-full bg-white mix-blend-exclusion"
+        class="circle pointer-events-none absolute z-50 h-6 w-6 animate-[fade_0.2s_ease-in] rounded-full bg-white mix-blend-exclusion"
         style="left: {x - 12}px; top: {y - 12}px;"
       ></div>
     </div>
@@ -113,12 +120,10 @@
   }
 
   :root::view-transition-old(root) {
-    animation:
-      300ms custom-fade-out both
+    animation: 300ms custom-fade-out both;
   }
 
   :root::view-transition-new(root) {
-    animation:
-      300ms custom-fade-in 90ms both
+    animation: 300ms custom-fade-in 90ms both;
   }
 </style>

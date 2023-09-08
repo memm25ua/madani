@@ -6,10 +6,10 @@
   let containerClass = textOnRight ? "flex-row-reverse" : "flex-row";
 </script>
 
-<div class={`py-4 rounded-lg ${containerClass} flex items-center gap-4`}>
+<div class={`rounded-lg ${containerClass} flex items-center gap-4 max-w-xl`}>
   {#if title}
     <div class="flex-shrink-0 whitespace-nowrap">
-      <h1 class="text-4xl sm:text-5xl mb-1 truncate">{title}</h1>
+      <h1 class="text-4xl sm:text-5xl mb-1 font-thin truncate text-underline">{title}</h1>
     </div>
   {/if}
   <div class={`${title ? "flex-grow" : "flex-1 w-full"}`}>
@@ -21,7 +21,3 @@
     />
   </div>
 </div>
-
-<style>
-  /* Add your styles here */
-</style>
