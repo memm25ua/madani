@@ -29,7 +29,7 @@
   {#if open}
     <div
       transition:slide={{ duration: 1000, easing: cubicOut }}
-      class="relative bg-codgray-600 border-gray-200 mt-2 w-[42px] z-10"
+      class="relative bg-codgray-600 border-gray-200 mt-2 w-[42px]"
     >
       {#each languages as lang (lang)}
         <button
@@ -42,10 +42,10 @@
     </div>
   {/if}
   <button
-    class="bg-transparent flex items-center justify-center relative mt-[-18px] z-0"
+    class="bg-transparent flex items-center justify-center relative mt-[-18px]"
     on:click={() => (open = !open)}
   >
-    <span class="absolute z-90">{selectedLanguage}</span>
+    <span class="absolute">{selectedLanguage}</span>
     <span class="material-symbols-sharp !text-7xl text-codgray-600"
       >bookmark</span
     >

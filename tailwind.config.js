@@ -7,6 +7,10 @@ export default {
       fontFamily: {
         logo: ['"Salaryman"', "sans-serif"],
         primary: ['"Tajawal"', "monospace"],
+        title: ['"Major Mono Display"', "monospace"],
+      },
+      screens: {
+        "3xl": "1920px",
       },
       colors: {
         codgray: {
@@ -55,6 +59,7 @@ export default {
         "slide-down-xl": "slide-y-xl 0.5s ease-in-out forwards",
         "slide-up-xl": "slide-y-xl 0.5s ease-in-out reverse forwards",
         "fade-in": "fade 2.2s ease-in-out forwards",
+        "fill-line": "fillw 0.7s ease-in-out forwards",
       },
       keyframes: {
         "slide-x": {
@@ -72,6 +77,11 @@ export default {
         fade: {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
+        },
+        fillw: {
+          "0%": { width: "0%", left: "0%" },
+          "50%": { width: "100%", left: "0%" },
+          "100%": { width: "0%", left: "100%" },
         },
       },
     },

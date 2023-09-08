@@ -1,16 +1,20 @@
 @import url("https://fonts.cdnfonts.com/css/salaryman");
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
   .nav-link {
-    @apply mx-5 mb-4 w-full text-left font-primary text-7xl xl:text-8xl 2xl:text-9xl font-thin hover:animate-slide-left hover:font-normal hover:italic hover:underline decoration-perano-300;
+    @apply mb-4 w-full text-left font-primary text-7xl font-thin decoration-perano-300 hover:animate-slide-left hover:font-normal hover:italic hover:underline xl:text-8xl 2xl:text-9xl 3xl:text-[10rem];
   }
   .container-col {
-    @apply flex w-80 flex-grow flex-col items-center justify-center px-6 py-4 sm:p-8  ;
+    @apply flex w-80 flex-col items-center justify-center py-4 sm:pl-6 md:grow xl:pl-12;
+  }
+  .text-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-1 after:bg-perano-300 after:animate-fill-line after:hover:animate-fill-line;
   }
 }
 
@@ -21,7 +25,6 @@
 .light {
   @apply bg-pampas-200;
 }
-
 
 body {
   cursor:
