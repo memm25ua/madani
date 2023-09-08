@@ -1,6 +1,7 @@
 <script lang="ts">
   import Typewriter from "svelte-typewriter";
   import ToggleThemeButton from "./ToggleThemeButton.svelte";
+  import { slide } from "svelte/transition";
 
   export let data: { url: string };
 
@@ -11,8 +12,15 @@
     page = ": { " + data.url.replace("/", "") + " }";
   }
 
-  function toggleDropdown() {
-    showDropdown = !showDropdown;
+  function openDropdown() {
+    showDropdown = true;
+    // close dropdown when clicked outside
+    document.body.addEventListener("click", closeDropdown);
+  }
+
+  function closeDropdown() {
+    showDropdown = false;
+    document.body.removeEventListener("click", closeDropdown);
   }
 </script>
 
@@ -23,47 +31,73 @@
     </span>
     <div class="relative pt-2">
       {#if !showDropdown}
-        <button class="focus:outline-none" on:click={toggleDropdown}>
-          <Typewriter interval={50}>
-            <span
-              class="text-lg xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300  pl-1"
-            >
-              {page}
-            </span>
-          </Typewriter>
+        <button
+          class="focus:outline-none"
+          on:click|stopPropagation={openDropdown}
+        >
+          <!-- <Typewriter interval={20}> -->
+          <span
+            class="text-lg xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
+            style="view-transition-name: page-name;"
+          >
+            {page}
+          </span>
+          <!-- </Typewriter> -->
         </button>
       {/if}
       {#if showDropdown}
-      <!-- Dropdown -->
-        <nav
-          class="absolute shadow-none dark:bg-codgray-90 bg-pampas-200 dark:bg-codgray-950 transition-colors -top-3 left-1 rounded-md w-max text-2xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
+        <!-- Dropdown -->
+        <div
+          in:slide={{ duration: 400, delay: 0 }}
+          out:slide={{ duration: 400, delay: 0 }}
+          class="absolute dark:bg-codgray-90 bg-pampas-200 shadow-inner dark:bg-codgray-950 transition-colors top-0 left-1 rounded-md h-fit w-max text-2xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
         >
-          <ul>
-            <li class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700">{": {"} <span class="text-[#628D4F] font-normal text-xl">&nbsp;// Nav</span></li>
-            <li class="3xl:pt-2  rounded-md hover:bg-perano-300 dark:hover:bg-perano-700">
-              <a
-                class="w-full h-full"
-                href="/about"
-                on:click={toggleDropdown}>&nbsp;&nbsp;&nbsp;&nbsp; about,</a
+          <nav class="w-full h-full">
+            <ul>
+              <li
+                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 pt-1"
               >
-            </li>
-            <li class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700">
-              <a
-                class="w-full h-full"
-                href="/projects"
-                on:click={toggleDropdown}>&nbsp;&nbsp;&nbsp;&nbsp; projects,</a
+                {": {"}
+                <span class="text-[#628D4F] font-normal text-xl"
+                  >&nbsp;// Nav</span
+                >
+              </li>
+              <li
+                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700"
               >
-            </li>
-            <li class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700">
-              <a
-                class="w-full h-full"
-                href="/contact"
-                on:click={toggleDropdown}>&nbsp;&nbsp;&nbsp;&nbsp; contact,</a
+                <a
+                  class="w-full h-full"
+                  href="/about"
+                  style="view-transition-name: page-name;"
+                  >&nbsp;&nbsp;&nbsp;&nbsp; about,</a
+                >
+              </li>
+              <li
+                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 pr-4"
               >
-            </li>
-            <li class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700">&nbsp;&nbsp;{"}"}</li>
-          </ul>
-        </nav>
+                <a
+                  class="w-full h-full"
+                  style="view-transition-name: page-name;"
+                  href="/projects">&nbsp;&nbsp;&nbsp;&nbsp; projects,</a
+                >
+              </li>
+              <li
+                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700"
+              >
+                <a
+                  class="w-full h-full"
+                  style="view-transition-name: page-name;"
+                  href="/contact">&nbsp;&nbsp;&nbsp;&nbsp; contact,</a
+                >
+              </li>
+              <li
+                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700"
+              >
+                &nbsp;&nbsp;{"}"}
+              </li>
+            </ul>
+          </nav>
+        </div>
       {/if}
     </div>
   </div>
