@@ -3,7 +3,7 @@
   enum BG {
     Perano = "bg-perano-200 dark:bg-perano-800",
     Green = "bg-green-300 dark:bg-green-800",
-    Yellow = "bg-yellow-300 dark:bg-yellow-800",
+    Gray = "bg-codgray-300 dark:bg-codgray-800",
     Red = "bg-red-300 dark:bg-red-800",
     Purple = "bg-purple-300 dark:bg-purple-800",
   }
@@ -11,28 +11,9 @@
   let skills = [
     {
       name: "Angular.ts/HTML/CSS",
-      level: 95,
+      level: 90,
       category: "Front-end",
       color: BG.Perano,
-    },
-    {
-      name: "Swift/SwiftUI",
-      level: 75,
-      category: "Mobile",
-      color: BG.Yellow,
-    },
-    { name: "Git Flow", level: 75, category: "DevOps", color: BG.Red },
-    {
-      name: "AWS",
-      level: 60,
-      category: "DevOps",
-      color: BG.Red,
-    },
-    {
-      name: "Node.js/Express",
-      level: 60,
-      category: "Back-end",
-      color: BG.Purple
     },
     {
       name: "Java/SpringBoot",
@@ -41,10 +22,22 @@
       color: BG.Purple,
     },
     {
-      name: "Python/Tensorflow",
-      level: 50,
-      category: "MLearning",
-      color: BG.Yellow,
+      name: "Swift/SwiftUI",
+      level: 70,
+      category: "Front-end (mobile)",
+      color: BG.Perano,
+    },
+    {
+      name: "AWS",
+      level: 65,
+      category: "DevOps",
+      color: BG.Red,
+    },
+    {
+      name: "Python",
+      level: 60,
+      category: "Other",
+      color: BG.Gray,
     },
   ];
   let tOnRight: boolean = Math.random() < 0.5;
@@ -84,7 +77,6 @@
                 &nbsp;{skill.category}&nbsp;
               </span>
             </span>
-            <span class="font-thin text-sm flex items-end">{skill.level}%</span>
           </div>
           <progress class="w-full rounded-lg" value={skill.level} max="100"></progress>
         </li>

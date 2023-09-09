@@ -50,9 +50,9 @@
         <div
           in:slide={{ duration: 400, delay: 0 }}
           out:slide={{ duration: 400, delay: 0 }}
-          class="absolute dark:bg-codgray-90 bg-pampas-200 shadow-inner dark:bg-codgray-950 transition-colors top-0 left-1 rounded-md h-fit w-max text-2xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
+          class="absolute transition-colors -top-2 left-1 h-fit w-max text-2xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
         >
-          <nav class="w-full h-full">
+          <nav class="w-full h-full bg-pampas-200 shadow-inner dark:bg-codgray-950 rounded-md ">
             <ul>
               <li
                 class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 pt-1"
