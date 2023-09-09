@@ -10,7 +10,7 @@
   let showDropdown = false;
   let browser = "";
   let isSafari = false;
-  let safariClass = "bg-pampas-200 rounded-sm dark:bg-codgray-950 animate-[fade_1s_ease-in-out_forwards] hover:bg-perano-200 dark:hover:bg-perano-700 mt-1";
+  let safariClass = "bg-papas-200 rounded-sm dark:bg-codgray-950 animate-[fade_1s_ease-in-out_forwards] hover:bg-perano-200 dark:hover:bg-perano-700";
 
   // This function will be run when the component is initialized
   onMount(() => {
@@ -70,13 +70,12 @@
         <!-- Dropdown -->
         <div
           in:slide={{ duration: isSafari ? 0 : 400, delay: 0 }}
-          out:slide={{ duration: isSafari ? 0 : 400, delay: 0 }}
-          class="absolute transition-colors -top-2 left-1 h-fit w-max text-2xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
+          class="absolute transition-colors -top-4 left-1 h-fit w-max text-2xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
         >
-          <nav class="w-full h-full bg-pampas-200 shadow-inner dark:bg-codgray-950 rounded-md">
-            <ul>
+          <nav class="w-full h-full">
+            <ul class="bg-pampas-200 dark:bg-codgray-950 rounded-lg ">
               <li
-                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 pt-1 {isSafari ? safariClass : ''}"
+                class=" rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 pt-1"
               >
                 {": {"}
                 <span class="text-[#628D4F] font-normal text-xl"
@@ -84,7 +83,7 @@
                 >
               </li>
               <li
-                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 {isSafari ? safariClass : ''}"
+                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700"
               >
                 <a
                   class="w-full h-full"
@@ -94,7 +93,7 @@
                 >
               </li>
               <li
-                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 pr-4 {isSafari ? safariClass : ''}"
+                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 pr-4"
               >
                 <a
                   class="w-full h-full"
@@ -103,7 +102,7 @@
                 >
               </li>
               <li
-                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 {isSafari ? safariClass : ''}"
+                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700"
               >
                 <a
                   class="w-full h-full"
@@ -112,7 +111,7 @@
                 >
               </li>
               <li
-                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 {isSafari ? safariClass : ''}"
+                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 "
               >
                 &nbsp;&nbsp;{"}"}
               </li>
