@@ -55,14 +55,26 @@
     }, 20);
   }
 
+  // animate circle on click
+  function handleClick() {
+    if (moving) return;
+    showCircle = false;
+    setTimeout(() => {
+      showCircle = true;
+    }, 10);
+  }
+
   onMount(() => {
 
     function handleTouchStart() {
       touchable = true;
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("click", handleClick);
     }
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("click", handleClick);
     window.addEventListener("touchstart", handleTouchStart);
   });
 </script>
@@ -89,7 +101,7 @@
   {#if showCircle}
     <div role="status">
       <div
-        class="circle pointer-events-none absolute z-50 h-5 w-5 rounded-full bg-transparent border-2 dark:border-pampas-100 border-white"
+        class="circle pointer-events-none absolute animate-scaleup z-50 h-5 w-5 rounded-full bg-transparent border-2 dark:border-pampas-100 border-white"
         style="left: {x - 10}px; top: {y - 10}px;"
       ></div>
     </div>
@@ -99,8 +111,8 @@
 <style>
   .circle {
     transition:
-      top 0.2s ease-out,
-      left 0.2s ease-out; /* Add this line */
+      top 0.1s ease-out,
+      left 0.1s ease-out; /* Add this line */
   }
   @keyframes custom-fade-in {
     from {

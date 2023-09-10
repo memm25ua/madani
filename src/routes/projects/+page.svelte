@@ -53,7 +53,7 @@
     <div class="flex w-full h-full flex-wrap flex-row justify-center">
       {#each projects as project}
         <div
-          class="relative w-96 h-64 2xl:h-96 {project.grow ? 'grow' : ''} rounded-2xl lg:ml-5 bg-pampas-100 mb-6 dark:bg-codgray-900"
+          class="relative w-96 h-64 2xl:h-96 hover:scale-[1.03] hover:grayscale-0 grayscale transition-all {project.grow ? '2xl:grow' : ''} rounded-2xl lg:ml-5 bg-pampas-100 mb-6 dark:bg-codgray-900"
         >
           {#if project.flipped}
             <button
