@@ -55,25 +55,15 @@ export default {
       },
       animation: {
         "slide-left": "slide-x 0.5s ease-in-out forwards",
-        "slide-down": "slide-y 0.5s ease-in-out forwards",
-        "slide-down-xl": "slide-y-xl 0.5s ease-in-out forwards",
-        "slide-up-xl": "slide-y-xl 0.5s ease-in-out reverse forwards",
         "fade-in": "fade 2.2s ease-in-out forwards",
         "fill-line": "fillw 0.7s ease-in-out forwards",
         "d-in": "diagonal 0.7s ease-in-out forwards",
+        "scaleup": "scale 0.4s ease-in-out forwards",
       },
       keyframes: {
         "slide-x": {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(10px)" },
-        },
-        "slide-y": {
-          "0%": { transform: "translateY(-10px)" },
-          "100%": { transform: "translateY(0)" },
-        },
-        "slide-y-xl": {
-          "0%": { transform: "translateY(-170px)" },
-          "100%": { transform: "translateY(0)" },
         },
         fade: {
           "0%": { opacity: 0 },
@@ -87,6 +77,11 @@ export default {
         diagonal: {
           "0%": { height: "0px", width: "0px" },
           "100%": { height: "170px", width: "150px" },
+        },
+        scale: {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(2)" },
+          "100%": { transform: "scale(1)" },
         }
       },
     },

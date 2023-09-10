@@ -52,20 +52,34 @@
 
     setTimeout(() => {
       moving = false;
-    }, 50);
+    }, 20);
+  }
+
+  // animate circle on click
+  function handleClick() {
+    if (moving) return;
+    showCircle = false;
+    setTimeout(() => {
+      showCircle = true;
+    }, 10);
   }
 
   onMount(() => {
+
     function handleTouchStart() {
       touchable = true;
       window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("click", handleClick);
     }
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("click", handleClick);
     window.addEventListener("touchstart", handleTouchStart);
   });
 </script>
 
 <main
-  on:mousemove={handleMouseMove}
   class="transition-colors overflow-hidden relative duration-500 bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen font-primary lg:grid lg:grid-cols-1 lg:grid-rows-[auto,1fr]"
 >
   <!-- Top Thin Bar -->
@@ -87,8 +101,8 @@
   {#if showCircle}
     <div role="status">
       <div
-        class="circle pointer-events-none absolute z-50 h-6 w-6 animate-[fade_0.2s_ease-in] rounded-full bg-white mix-blend-exclusion"
-        style="left: {x - 12}px; top: {y - 12}px;"
+        class="circle pointer-events-none absolute animate-scaleup z-50 h-5 w-5 rounded-full bg-transparent border-2 dark:border-pampas-100 border-white"
+        style="left: {x - 10}px; top: {y - 10}px;"
       ></div>
     </div>
   {/if}
@@ -97,8 +111,8 @@
 <style>
   .circle {
     transition:
-      top 0.2s ease-out,
-      left 0.2s ease-out; /* Add this line */
+      top 0.1s ease-out,
+      left 0.1s ease-out; /* Add this line */
   }
   @keyframes custom-fade-in {
     from {
