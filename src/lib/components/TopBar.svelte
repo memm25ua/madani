@@ -67,8 +67,8 @@
             class="text-lg xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
             style="view-transition-name: page-name;"
           >
-            {page === '/' ? 'home' : page}<span class="text-[#628D4F] font-normal text-xl"
-              >&nbsp;&nbsp;&nbsp;// Navigation</span
+            {page}<span class="text-[#628D4F] font-normal text-xl"
+              >&nbsp;&nbsp;&nbsp;// Menu</span
             >
           </span>
           <!-- </Typewriter> -->
