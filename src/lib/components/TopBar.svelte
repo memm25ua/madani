@@ -68,7 +68,7 @@
             style="view-transition-name: page-name;"
           >
             {page}<span class="text-[#628D4F] font-normal text-md md:text-xl"
-              >&nbsp;&nbsp;&nbsp;// Menu</span
+              >&nbsp;//Menu</span
             >
           </span>
           <!-- </Typewriter> -->
