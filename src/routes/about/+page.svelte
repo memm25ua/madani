@@ -66,7 +66,7 @@
   </section>
 
   <section class="container-col">
-    <h2 class="self-start text-2xl font-title mb-4">Skills</h2>
+    <h2 class="self-start text-2xl font-title mb-4">sKills</h2>
     <ul class="w-full px-3 pt-1">
       {#each skills as skill}
         <li class="text-lg mb-1 font-normal">
