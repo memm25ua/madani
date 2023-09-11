@@ -2,7 +2,7 @@
   import Typewriter from "svelte-typewriter";
   import ToggleThemeButton from "./ToggleThemeButton.svelte";
   import { slide } from "svelte/transition";
-    import { onMount } from "svelte";
+  import { onMount } from "svelte";
 
   export let data: { url: string };
 
@@ -10,7 +10,8 @@
   let showDropdown = false;
   let browser = "";
   let isSafari = false;
-  let safariClass = "bg-papas-200 rounded-sm dark:bg-codgray-950 animate-[fade_1s_ease-in-out_forwards] hover:bg-perano-200 dark:hover:bg-perano-700";
+  let safariClass =
+    "bg-papas-200 rounded-sm dark:bg-codgray-950 animate-[fade_1s_ease-in-out_forwards] hover:bg-perano-200 dark:hover:bg-codgray-900";
 
   // This function will be run when the component is initialized
   onMount(() => {
@@ -18,11 +19,14 @@
     if (userAgent.indexOf("Chrome") > -1) {
       browser = "Google Chrome";
     } else if (userAgent.indexOf("Safari") > -1) {
-      isSafari = true;  
+      isSafari = true;
       browser = "Apple Safari";
     } else if (userAgent.indexOf("Firefox") > -1) {
       browser = "Mozilla Firefox";
-    } else if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident") > -1) {
+    } else if (
+      userAgent.indexOf("MSIE") > -1 ||
+      userAgent.indexOf("Trident") > -1
+    ) {
       browser = "Microsoft Internet Explorer";
     } else {
       browser = "Unknown browser";
@@ -30,7 +34,9 @@
   });
 
   $: {
-    page = ": { " + data.url.replace("/", "") + " }";
+    data.url === "/"
+      ? (page = ": { home }")
+      : (page = ": { " + data.url.replace("/", "") + " }");
   }
 
   function openDropdown() {
@@ -61,7 +67,9 @@
             class="text-lg xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
             style="view-transition-name: page-name;"
           >
-            {page}
+            {page === '/' ? 'home' : page}<span class="text-[#628D4F] font-normal text-xl"
+              >&nbsp;&nbsp;&nbsp;// Navigation</span
+            >
           </span>
           <!-- </Typewriter> -->
         </button>
@@ -70,48 +78,80 @@
         <!-- Dropdown -->
         <div
           in:slide={{ duration: isSafari ? 0 : 400, delay: 0 }}
-          class="absolute transition-colors -top-4 left-1 h-fit w-max text-2xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
+          class="absolute transition-colors -top-4 left-1 h-fit w-max text-2xl font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
         >
           <nav class="w-full h-full">
-            <ul class="bg-pampas-200 dark:bg-codgray-950 rounded-lg ">
+            <ul class="bg-pampas-200 dark:bg-codgray-950 rounded-lg">
               <li
-                class=" rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 pt-1"
+                class=" rounded-md pt-1"
               >
                 {": {"}
-                <span class="text-[#628D4F] font-normal text-xl"
-                  >&nbsp;// Nav</span
-                >
               </li>
               <li
-                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700"
+                class="3xl:pt-2 rounded-md hover:bg-pampas-100 dark:hover:bg-codgray-900"
+              >
+                <a
+                  class="w-full h-full flex items-center"
+                  style="view-transition-name: page-name;"
+                  href="/"
+                >
+                  <div class="flex">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="material-symbols-sharp text-perano-900 dark:text-perano-500 "> home </span>
+                    <span class="pt-0.5"> : home,</span>
+                  </div>
+                </a>
+              </li>
+              <li
+                class="3xl:pt-2 rounded-md hover:bg-pampas-100 dark:hover:bg-codgray-900"
               >
                 <a
                   class="w-full h-full"
                   href="/about"
                   style="view-transition-name: page-name;"
-                  >&nbsp;&nbsp;&nbsp;&nbsp; about,</a
                 >
+                  <div class="flex">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="material-symbols-sharp text-perano-900 dark:text-perano-500" > info </span>
+                    <span class="pt-0.5"> : about,</span>
+                  </div>
+                </a>
               </li>
               <li
-                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 pr-4"
+                class="3xl:pt-2 rounded-md hover:bg-pampas-100 dark:hover:bg-codgray-900 pr-4"
               >
                 <a
                   class="w-full h-full"
                   style="view-transition-name: page-name;"
-                  href="/projects">&nbsp;&nbsp;&nbsp;&nbsp; projects,</a
+                  href="/projects"
                 >
+                  <div class="flex">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <span
+                      class="material-symbols-sharp text-perano-900 dark:text-perano-500 "
+                    >
+                      lightbulb
+                    </span>
+                    <span class="pt-0.5"> : projects,</span>
+                  </div>
+                </a>
               </li>
               <li
-                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700"
+                class="3xl:pt-2 rounded-md hover:bg-pampas-100 dark:hover:bg-codgray-900"
               >
                 <a
                   class="w-full h-full"
                   style="view-transition-name: page-name;"
-                  href="/contact">&nbsp;&nbsp;&nbsp;&nbsp; contact,</a
+                  href="/contact"
                 >
+                  <div class="flex">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="material-symbols-sharp text-perano-900 dark:text-perano-500 "> call </span>
+                    <span class="pt-0.5"> : contact,</span>
+                  </div>
+                </a>
               </li>
               <li
-                class="3xl:pt-2 rounded-md hover:bg-perano-300 dark:hover:bg-perano-700 "
+                class="3xl:pt-2 rounded-m"
               >
                 &nbsp;&nbsp;{"}"}
               </li>
