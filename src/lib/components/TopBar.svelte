@@ -3,6 +3,7 @@
   import ToggleThemeButton from "./ToggleThemeButton.svelte";
   import { slide } from "svelte/transition";
   import { onMount } from "svelte";
+    import LangSelector from "./LangSelector.svelte";
 
   export let data: { url: string };
 
@@ -53,10 +54,10 @@
 
 <div class="flex justify-between items-center px-4 pr-0 pt-1 h-12">
   <div class="flex items-center relative md:pt-2">
-    <span class="text-2xl xl:text-[2vw] pt-2 font-logo animate-fade-in">
+    <span class="text-2xl xl:text-[2vw] font-logo animate-fade-in">
       <a href="/"> Madani </a>
     </span>
-    <div class="relative pt-2">
+    <div class="relative w-max">
       {#if !showDropdown}
         <button
           class="focus:outline-none"
@@ -64,10 +65,10 @@
         >
           <!-- <Typewriter interval={20}> -->
           <span
-            class="text-lg xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
+            class="text-lg md:text-xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
             style="view-transition-name: page-name;"
           >
-            {page}<span class="text-[#628D4F] font-normal text-md md:text-xl"
+            {page}<span class="text-[#628D4F] font-normal text-sm md:text-md"
               >&nbsp;//Menu</span
             >
           </span>
@@ -163,8 +164,11 @@
   </div>
 
   <div class="relative flex h-full w-1/3 max-w-[200px] self-end justify-end">
-    <div class="relative flex h-full px-2 justify-center">
+    <div class="relative flex h-full justify-center">
       <ToggleThemeButton />
+    </div>
+    <div class="relative flex h-full w-12 pr-2 justify-center">
+      <LangSelector />
     </div>
   </div>
 </div>
