@@ -10,7 +10,7 @@
   <div class="container-col">
     <HeroImg imgSrc="assets/hero.png" />
   </div>
-  <div class="container-col grow-0 2xl:grow">
+  <div class="container-col pl-0 grow-0 2xl:grow">
     <Hero />
   </div>
   <div class="container-col pl-0">
