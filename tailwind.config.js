@@ -59,6 +59,7 @@ export default {
         "fill-line": "fillw 0.7s ease-in-out forwards",
         "d-in": "diagonal 0.7s ease-in-out forwards",
         "scaleup": "scale 0.4s ease-in-out forwards",
+        "slide-down": "slide-y 0.5s ease-in-out forwards",
       },
       keyframes: {
         "slide-x": {
@@ -82,7 +83,11 @@ export default {
           "0%": { transform: "scale(1)" },
           "50%": { transform: "scale(2)" },
           "100%": { transform: "scale(1)" },
-        }
+        },
+        "slide-y": {
+          "0%": { transform: "translateY(-32px)" },
+          "100%": { transform: "translateY(0px)" },
+        },
       },
     },
   },
