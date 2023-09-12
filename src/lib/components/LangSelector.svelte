@@ -6,7 +6,7 @@
 
 <script lang="ts">
   import { langs, DefaultLang } from "../model/i18n";
-  import lang from "$lib/stores/langStore";
+  import { locale } from "svelte-i18n";
 
   import type { ILang } from "../model/i18n";
   import { onMount } from "svelte";
@@ -17,15 +17,19 @@
   let open = false;
 
   onMount(() => {
-    languages = langs;
-    lang.subscribe((value) => {
+    const savedLang = localStorage.getItem("selectedLang");
+    if (savedLang) {
+      $locale = savedLang;
+    }
+    locale.subscribe((value) => {
       selectedLanguage =
         languages.find((lang) => lang.code === value) || DefaultLang;
     });
   });
 
   function selectLanguage(selected: ILang) {
-    lang.update((l) => l=selected.code);
+    $locale = selected.code;
+    localStorage.setItem("selectedLang", selected.code);
     selectedLanguage = selected;
     open = false;
   }
@@ -52,7 +56,7 @@
   <button
     class="bg-transparent flex items-center justify-center relative z-10 {open
       ? '-mt-4 animate-slide-down'
-      : 'animate-slide-up'}"
+      : ''}"
     on:click={() => (open = !open)}
   >
     <img

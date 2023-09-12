@@ -18,11 +18,12 @@
 
   const initLottie = () => {
     const dir = $theme === Theme.DARK ? 1 : -1;
-    lottie = document.getElementById("lottie-theme");
+    lottie = document.querySelector("lottie-player");
     lottie?.setDirection(dir);
     if (dir === -1) {
-      const lastFrame = lottie?.getLottie().totalFrames;
-      lottie?.seek(lastFrame);
+      const lastFrame = lottie?.getLottie()?.totalFrames;
+      console.log(lottie);
+      lottie?.seek(lastFrame || 0);
     }
   };
 

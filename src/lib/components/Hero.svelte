@@ -8,8 +8,9 @@
 
 <script lang="ts">
   import Typewriter, { scramble } from "svelte-typewriter";
-  let title: string = "Hi there!! 👋 ";
-  let name: string = "Madani El Mrabet Martínez,";
+  import { t } from "svelte-i18n";
+  let title: string = $t("hero.title");
+  let name: string = $t("hero.name");
   let subtitle: string = "Software ";
   let showEmoji: boolean = false;
   let emojiIndex: number = 0;
@@ -39,8 +40,7 @@
 <section class="font-thin w-full">
   <div class="title flex w-full">
     <h1 class="text-2xl sm:text-3xl mb-1">
-      {title} <br>
-      <span data-static>I'm</span>
+      {title} <br />
       <span>{name}</span>
     </h1>
   </div>

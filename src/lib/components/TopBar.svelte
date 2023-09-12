@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Typewriter from "svelte-typewriter";
+  import { t } from "svelte-i18n";
   import ToggleThemeButton from "./ToggleThemeButton.svelte";
   import { slide } from "svelte/transition";
   import { onMount } from "svelte";
-    import LangSelector from "./LangSelector.svelte";
+  import LangSelector from "./LangSelector.svelte";
 
   export let data: { url: string };
 
@@ -36,8 +36,8 @@
 
   $: {
     data.url === "/"
-      ? (page = ": { home }")
-      : (page = ": { " + data.url.replace("/", "") + " }");
+      ? (page = ": { " + $t('topbar.'+'home') +  " }")
+      : (page = ": { " + $t('topbar.'+data.url.replace("/", "")) + " }");
   }
 
   function openDropdown() {
@@ -68,8 +68,8 @@
             class="text-lg md:text-xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
             style="view-transition-name: page-name;"
           >
-            {page}<span class="text-[#628D4F] font-normal text-sm md:text-md"
-              >&nbsp;//Menu</span
+            {$t(page)}<span class="text-[#628D4F] font-normal text-sm md:text-md xl:text-[1vw]"
+              >&nbsp;//{$t('topbar.menu.menu')}</span
             >
           </span>
           <!-- </Typewriter> -->
@@ -83,9 +83,7 @@
         >
           <nav class="w-full h-full">
             <ul class="bg-pampas-200 dark:bg-codgray-950 rounded-lg">
-              <li
-                class=" rounded-md pt-1"
-              >
+              <li class=" rounded-md pt-1">
                 {": {"}
               </li>
               <li
@@ -98,8 +96,12 @@
                 >
                   <div class="flex">
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="material-symbols-sharp text-perano-900 dark:text-perano-500 "> home </span>
-                    <span class="pt-0.5"> : home,</span>
+                    <span
+                      class="material-symbols-sharp text-perano-900 dark:text-perano-500"
+                    >
+                      home
+                    </span>
+                    <span class="pt-0.5"> : {$t('topbar.home')},</span>
                   </div>
                 </a>
               </li>
@@ -113,8 +115,12 @@
                 >
                   <div class="flex">
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="material-symbols-sharp text-perano-900 dark:text-perano-500" > info </span>
-                    <span class="pt-0.5"> : about,</span>
+                    <span
+                      class="material-symbols-sharp text-perano-900 dark:text-perano-500"
+                    >
+                      info
+                    </span>
+                    <span class="pt-0.5"> : {$t('topbar.about')},</span>
                   </div>
                 </a>
               </li>
@@ -128,11 +134,11 @@
                 >
                   <div class="flex">
                     &nbsp;&nbsp;&nbsp;&nbsp; <span
-                      class="material-symbols-sharp text-perano-900 dark:text-perano-500 "
+                      class="material-symbols-sharp text-perano-900 dark:text-perano-500"
                     >
                       lightbulb
                     </span>
-                    <span class="pt-0.5"> : projects,</span>
+                    <span class="pt-0.5"> : {$t('topbar.projects')},</span>
                   </div>
                 </a>
               </li>
@@ -146,14 +152,16 @@
                 >
                   <div class="flex">
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="material-symbols-sharp text-perano-900 dark:text-perano-500 "> call </span>
-                    <span class="pt-0.5"> : contact,</span>
+                    <span
+                      class="material-symbols-sharp text-perano-900 dark:text-perano-500"
+                    >
+                      call
+                    </span>
+                    <span class="pt-0.5"> : {$t('topbar.contact')},</span>
                   </div>
                 </a>
               </li>
-              <li
-                class="3xl:pt-2 rounded-m"
-              >
+              <li class="3xl:pt-2 rounded-m">
                 &nbsp;&nbsp;{"}"}
               </li>
             </ul>
@@ -163,7 +171,7 @@
     </div>
   </div>
 
-  <div class="relative flex h-full w-1/3 max-w-[200px] self-end justify-end">
+  <div class="relative flex h-full w-1/3 max-w-[200px] self-end justify-end gap-2">
     <div class="relative flex h-full justify-center">
       <ToggleThemeButton />
     </div>

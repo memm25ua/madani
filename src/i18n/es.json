@@ -1,0 +1,28 @@
+{
+  "topbar": {
+    "home": "inicio",
+    "about": "sobre mí",
+    "projects": "proyectos",
+    "contact": "contacto",
+    "menu": {
+      "menu": "Menú"
+    }
+  },
+  "hero": {
+    "title": "Hey hola!! 👋 ",
+    "name": "Soy Madani El Mrabet,"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "description": "Ingeniero Informático con base en Alicante, España, con 1 año de experiencia práctica en desarrollo Angular. Experto en trabajo en equipo colaborativo y comprometido con la entrega de soluciones de software de alta calidad.",
+    "resume": "ResUMen",
+    "skills": {
+      "title": "HAbiliDAdes",
+      "front": "Frontend",
+      "back": "Backend",
+      "other": "Other",
+      "devops": "DevOps",
+      "mobile": "Mobile"
+    }
+  }
+}
