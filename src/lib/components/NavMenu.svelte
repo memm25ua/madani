@@ -1,14 +1,20 @@
 <!--
     This is the navigation menu component. It is used to display the navigation menu. It is used in the App.svelte component.
 -->
-<div class="md:pt-12 w-full sm:w-auto">
+<script>
+  import { t } from "svelte-i18n";
+
+</script>
+
+
+<div class="md:pt-12 w-full sm:w-auto uppercase">
   <div class="nav-link">
-    <a href="/about"> ABOUT </a>
+    <a href="/about"> {$t('topbar.about')} </a>
   </div>
   <div class="nav-link">
-    <a href="/projects"> PROJECTS </a>
+    <a href="/projects"> {$t('topbar.projects')} </a>
   </div>
   <div class="nav-link">
-    <a href="/contact"> CONTACT </a>
+    <a href="/contact"> {$t('topbar.contact')} </a>
   </div>
 </div>

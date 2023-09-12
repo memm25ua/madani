@@ -1,0 +1,28 @@
+{
+  "topbar": {
+    "home": "home",
+    "about": "about",
+    "projects": "projects",
+    "contact": "contact",
+    "menu": {
+      "menu": "Menu"
+    }
+  },
+  "hero": {
+    "title": "Hi there!! 👋 ",
+    "name": "Madani El Mrabet,"
+  },
+  "about": {
+    "title": "About me",
+    "description": "Computer Engineer based in Alicante, Spain, with 1 year of hands-on experience in Angular development. Skilled at collaborative teamwork and committed to delivering high-quality software solutions.",
+    "resume": "suMMarY",
+    "skills": {
+      "title": "sKills",
+      "front": "Frontend",
+      "back": "Backend",
+      "other": "Other",
+      "devops": "DevOps",
+      "mobile": "Mobile"
+    }
+  }
+}

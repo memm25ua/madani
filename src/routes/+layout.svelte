@@ -1,19 +1,12 @@
 <script lang="ts">
-  import { blur, fade, fly, slide } from "svelte/transition";
+  import { isLoading } from "svelte-i18n";
   import "../app.css";
   import TopBar from "$lib/components/TopBar.svelte";
-  import HeroImg from "$lib/components/HeroImg.svelte";
   import { onMount } from "svelte";
-  import { cubicIn, cubicOut } from "svelte/easing";
   import theme from "$lib/stores/themeStore";
   import { onNavigate } from "$app/navigation";
 
   export let data;
-
-  const transitionConfig = {
-    duration: 600,
-    easing: cubicIn,
-  };
 
   let x = 0;
   let y = 0;
@@ -65,7 +58,6 @@
   }
 
   onMount(() => {
-
     function handleTouchStart() {
       touchable = true;
       window.removeEventListener("touchstart", handleTouchStart);
@@ -73,40 +65,44 @@
       window.removeEventListener("click", handleClick);
     }
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("click", handleClick);
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("click", handleClick);
     window.addEventListener("touchstart", handleTouchStart);
   });
 </script>
 
-<main
-  class="transition-colors overflow-hidden relative duration-500 bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-200 text-codgray-800 min-h-screen w-screen font-primary lg:grid lg:grid-cols-1 lg:grid-rows-[auto,1fr]"
->
-  <!-- Top Thin Bar -->
-  <div
-    class="lg:col-span-1 z-40 relative"
-    style="view-transition-name: header;"
+{#if $isLoading}
+  Please wait...
+{:else}
+  <main
+    class="transition-colors overflow-hidden relative duration-500 bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-100 text-codgray-800 min-h-screen w-screen font-primary lg:grid lg:grid-cols-1 lg:grid-rows-[auto,1fr]"
   >
-    <TopBar {data} />
-  </div>
-
-  <div
-    class="lg:col-span-1 flex flex-col overflow-hidden px-6 items-center justify-center"
-  >
-    <div class="max-w-[1700px] w-full">
-      <slot />
+    <!-- Top Thin Bar -->
+    <div
+      class="lg:col-span-1 z-40 relative"
+      style="view-transition-name: header;"
+    >
+      <TopBar {data} />
     </div>
-  </div>
 
-  {#if showCircle}
-    <div role="status">
-      <div
-        class="circle pointer-events-none absolute animate-scaleup z-50 h-5 w-5 rounded-full bg-transparent border-2 dark:border-pampas-100 border-white"
-        style="left: {x - 10}px; top: {y - 10}px;"
-      ></div>
+    <div
+      class="lg:col-span-1 flex flex-col overflow-hidden px-6 items-center justify-center"
+    >
+      <div class="max-w-[1700px] w-full">
+        <slot />
+      </div>
     </div>
-  {/if}
-</main>
+
+    {#if showCircle}
+      <div role="status">
+        <div
+          class="circle pointer-events-none absolute animate-scaleup z-50 h-5 w-5 rounded-full bg-transparent border-2 dark:border-pampas-100 border-white"
+          style="left: {x - 10}px; top: {y - 10}px;"
+        ></div>
+      </div>
+    {/if}
+  </main>
+{/if}
 
 <style>
   .circle {

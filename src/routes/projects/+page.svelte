@@ -9,9 +9,10 @@
     {
       id: 1,
       name: "Crmble Trello Powerup",
+      shortname: "Crmble",
       description:
         "Front-End Angular Developer at App Square S.L. Specialized in designing and developing user interfaces for a CRM platform.",
-      link: "#",
+      link: "https://crmble.com/",
       techStack: "Angular.js, HTML, CSS",
       img: "assets/crmble.png",
       flipped: false,
@@ -20,6 +21,7 @@
     {
       id: 2,
       name: "Bindfy",
+      shortname: "Bindfy",
       description:
         "Initiated a SaaS project, based on an iOS and web application for easy management of raffles for businesses.",
       link: "https://partners.bindfyapp.com/",
@@ -31,14 +33,15 @@
     {
       id: 3,
       name: "ApparelLab",
+      shortname: "ApparelLab",
       description:
         "Personal ecommerce project in production. Developed a full-stack application (DevOps included) for a clothing brand.",
-      link: "apparellab.es",
+      link: "https://apparellab.es/",
       techStack: "Next.js, Node.js, PostgreSQL, AWS",
       img: "assets/apparel.png",
       flipped: false,
       grow: false,
-    }
+    },
   ];
 </script>
 
@@ -53,16 +56,32 @@
     <div class="flex w-full h-full flex-wrap flex-row justify-center">
       {#each projects as project}
         <div
-          class="relative w-96 h-64 2xl:h-96 hover:scale-[1.03] hover:grayscale-0 grayscale transition-all {project.grow ? '2xl:grow' : ''} rounded-2xl lg:ml-5 bg-pampas-100 mb-6 dark:bg-codgray-900"
+          on:mouseenter={() => {
+            project.grow = true;
+          }}
+          on:mouseleave={() => {
+            project.grow = false;
+          }}
+          role="status"
+          class="relative w-96 h-64 2xl:h-96 hover:scale-[1.03] hover:grayscale-0 {project.flipped
+            ? 'grayscale-0'
+            : 'grayscale'} transition-all {project.grow || project.flipped
+            ? 'grow'
+            : ''} rounded-2xl lg:ml-5 bg-pampas-100 mb-6 dark:bg-codgray-900"
         >
           {#if project.flipped}
-            <button
-              on:click={() => {
-                project.flipped = false;
-              }}
-              class="h-full w-full"
+            <div
+              class="h-full w-full p-5 text-center flex flex-col justify-center items-center"
               in:blur={{ duration: animDuration, easing: circOut }}
             >
+              <button
+                class="absolute top-5 right-5 text-xl xl:text-3xl"
+                on:click={() => {
+                  project.flipped = false;
+                }}
+              >
+                X
+              </button>
               <h2 class="text-2xl font-bold mb-2">{project.name}</h2>
               <p class="text-lg mb-2">
                 {project.description}
@@ -71,12 +90,23 @@
                 <strong>Tech Stack:</strong>
                 {project.techStack}
               </p>
-              <a href={project.link} class="text-blue-500">Learn More</a>
-            </button>
+              <a
+                href={project.link}
+                on:click={(e) => {
+                  e.preventDefault();
+                }}
+                class="text-white w-1/2 rounded-lg pt-2 px-2 text-xl xl:text-3xl bg-gradient-to-br from-orange-500 via-pink-500 to-blue-500 hover:from-orange-600 transition-colors hover:via-pink-600 hover:to-blue-600"
+              >
+                {project.shortname}
+              </a>
+            </div>
           {:else}
             <button
               on:click={() => {
                 project.flipped = true;
+                setTimeout(() => {
+                  project.flipped = false;
+                }, 8000);
               }}
               class="h-full w-full"
               in:blur={{ duration: animDuration, easing: circOut }}
