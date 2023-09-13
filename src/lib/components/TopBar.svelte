@@ -172,10 +172,10 @@
   </div>
 
   <div class="relative flex h-full w-1/3 max-w-[200px] self-end justify-end gap-2">
-    <div class="relative flex h-full justify-center">
+    <div class="relative flex h-full pr-2 justify-center z-20">
       <ToggleThemeButton />
     </div>
-    <div class="relative flex h-full w-12 pr-2 justify-center">
+    <div class="relative flex h-full w-12 pr-4 justify-center z-10">
       <LangSelector />
     </div>
   </div>
