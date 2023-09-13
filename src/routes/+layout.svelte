@@ -65,8 +65,8 @@
       window.removeEventListener("click", handleClick);
     }
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("click", handleClick);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("click", handleClick);
     window.addEventListener("touchstart", handleTouchStart);
   });
 </script>
