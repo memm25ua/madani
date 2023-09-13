@@ -49,7 +49,7 @@
   class="min-h-full w-full flex flex-wrap font-primary flex-grow items-center justify-center"
 >
   <section class="container-col">
-    <HeroImg imgSrc="assets/heroProjects.png" title="PROJECTS" />
+    <HeroImg imgSrc="assets/heroProjects.webp" title="PROJECTS" />
   </section>
 
   <section class="container-col w-1/2">

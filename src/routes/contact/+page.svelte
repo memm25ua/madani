@@ -7,7 +7,7 @@
 >
   <section class="container-col">
     <HeroImg
-      imgSrc="assets/heroContact.png"
+      imgSrc="assets/heroContact.webp"
       title="Contact Me"
       textOnRight={false}
     />
