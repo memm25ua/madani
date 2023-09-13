@@ -8,9 +8,9 @@
   class="min-h-full w-full flex flex-wrap font-primary flex-grow items-center justify-center"
 >
   <div class="container-col">
-    <HeroImg imgSrc="assets/hero.png" />
+    <HeroImg imgSrc="assets/hero.webp" />
   </div>
-  <div class="container-col grow-0 2xl:grow">
+  <div class="container-col pl-3">
     <Hero />
   </div>
   <div class="container-col pl-0">

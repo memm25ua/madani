@@ -49,7 +49,7 @@
 >
   <section class="container-col">
     <HeroImg
-      imgSrc="assets/heroAbout.png"
+      imgSrc="assets/heroAbout.webp"
       title={$t("about.title")}
       textOnRight={tOnRight}
     />

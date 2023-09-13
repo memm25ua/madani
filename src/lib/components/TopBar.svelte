@@ -54,7 +54,7 @@
 
 <div class="flex justify-between items-center px-4 pr-0 pt-1 h-12">
   <div class="flex items-center relative md:pt-2">
-    <span class="text-2xl xl:text-[2vw] font-logo animate-fade-in">
+    <span class="text-2xl xl:text-[2vw] font-logo animate-fade-in" style="view-transition-name: logo;">
       <a href="/"> Madani </a>
     </span>
     <div class="relative w-max">
@@ -118,7 +118,7 @@
                     <span
                       class="material-symbols-sharp text-perano-900 dark:text-perano-500"
                     >
-                      info
+                      fingerprint
                     </span>
                     <span class="pt-0.5"> : {$t('topbar.about')},</span>
                   </div>
@@ -136,7 +136,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp; <span
                       class="material-symbols-sharp text-perano-900 dark:text-perano-500"
                     >
-                      lightbulb
+                      emoji_objects
                     </span>
                     <span class="pt-0.5"> : {$t('topbar.projects')},</span>
                   </div>

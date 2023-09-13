@@ -3,70 +3,40 @@
   import { ThemeEnum as Theme } from "../stores/themeStore";
   import theme from "../stores/themeStore";
 
-  let lottie: any;
-  let lottieInited = false;
+  let isChecked = false;
 
   onMount(() => {
-    theme.subscribe(() => {
-      if (!lottieInited) {
-        initLottie();
-        lottieInited = true;
-      }
-      playLottie();
+    theme.subscribe((t) => {
+      isChecked = t === Theme.LIGHT;
     });
   });
 
-  const initLottie = () => {
-    const dir = $theme === Theme.DARK ? 1 : -1;
-    lottie = document.querySelector("lottie-player");
-    lottie?.setDirection(dir);
-    if (dir === -1) {
-      const lastFrame = lottie?.getLottie()?.totalFrames;
-      console.log(lottie);
-      lottie?.seek(lastFrame || 0);
-    }
-  };
-
   const toggleTheme = () => {
     theme.update((value) => (value === Theme.DARK ? Theme.LIGHT : Theme.DARK));
-    //playLottie();
   };
-
-  function playLottie() {
-    lottie?.setDirection($theme === Theme.DARK ? -1 : 1);
-    lottie?.play();
-  }
 </script>
 
 <div class="h-12 flex items-center flex-grow">
-  <button
-    on:click={toggleTheme}
-    class="color-white text-white w-full h-full flex items-center justify-center animate-fade-in"
-    ><lottie-player
-      id="lottie-theme"
-      src="https://lottie.host/b81108f5-0cf7-4152-951e-1aef5bafd9f9/Nrn4ELrdcy.json"
-      background="Transparent"
-      speed=".5"
-      class="dark:invert mb-2 {$theme === Theme.DARK
-        ? 'small-lottie'
-        : 'big-lottie'}"
-      direction={$theme === Theme.DARK ? -1 : 1}
-      mode="normal"
-    ></lottie-player>
-  </button>
+  <div class="container" style="view-transition-name: themeToggle;">
+    <input type="checkbox" id="theme-toggle" bind:checked={isChecked} on:change={toggleTheme} />
+    <label
+      class="inline-block cursor-pointer h-6 w-6 rounded-full transition-all duration-500 "
+      for="theme-toggle"
+    ></label>
+  </div>
 </div>
 
 <style>
-  .big-lottie {
-    width: 40px;
-    height: 40px;
-    margin-right: 0px;
-    transition: all 1s ease-in-out;
+  #theme-toggle {
+    visibility: hidden;
   }
-  .small-lottie {
-    width: 26px;
-    height: 26px;
-    margin-right: 8px;
-    transition: all 1s ease-in-out;
+
+  #theme-toggle:not(:checked) + label {
+    background-color: rgb(225, 191, 0);
+  }
+
+  #theme-toggle:checked + label {
+    background-color: transparent;
+    box-shadow: inset -4px -3px 1px 1px #393636;
   }
 </style>
