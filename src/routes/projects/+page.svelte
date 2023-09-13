@@ -92,9 +92,6 @@
               </p>
               <a
                 href={project.link}
-                on:click={(e) => {
-                  e.preventDefault();
-                }}
                 class="text-white w-1/2 rounded-lg pt-2 px-2 text-xl xl:text-3xl bg-gradient-to-br from-orange-500 via-pink-500 to-blue-500 hover:from-orange-600 transition-colors hover:via-pink-600 hover:to-blue-600"
               >
                 {project.shortname}
