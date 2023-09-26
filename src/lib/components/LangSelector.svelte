@@ -48,7 +48,7 @@
 
 <div
   class="flex flex-col items-center text-codgray-300 font-light -mt-3.5"
-  style="view-transition-name: langSelector;"
+  style="view-transition-name: langSelectorWrapper;"
 >
   <div
     class="bg-codgray-600 border-gray-200 mt-2 w-[42px] z-20 animate h-full {open
