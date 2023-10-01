@@ -37,6 +37,6 @@
 
   #theme-toggle:checked + label {
     background-color: transparent;
-    box-shadow: inset -4px -3px 1px 1px #393636;
+    box-shadow: inset -4px -3px 0px 0px #393636;
   }
 </style>

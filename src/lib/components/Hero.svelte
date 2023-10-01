@@ -61,7 +61,7 @@
       on:done={handleDone}
     >
       {#each words as word}
-        <span class="text-2xl mb-8 font-black">{word}</span>
+        <span class="text-2xl mb-8 font-semibold">{word}</span>
       {/each}
     </Typewriter>
     {#if showEmoji}

@@ -5,8 +5,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        logo: ['"Salaryman"', "sans-serif"],
-        primary: ['"Tajawal"', "monospace"],
+        logo: ['"League Spartan"', "sans-serif"],
+        primary: ['"League Spartan"', "monospace"],
+        secondary: ['"Young Serif"', "monospace"],
         title: ['"Major Mono Display"', "monospace"],
       },
       screens: {

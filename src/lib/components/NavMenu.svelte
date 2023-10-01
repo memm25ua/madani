@@ -7,11 +7,11 @@
 </script>
 
 
-<div class="md:pt-12 w-full sm:w-auto uppercase">
+<div class="md:pt-12 w-full sm:w-auto capitalize">
   <div class="nav-link">
     <a href="/about"> {$t('topbar.about')} </a>
   </div>
-  <div class="nav-link">
+  <div class="nav-link leading-[1.1]">
     <a href="/projects"> {$t('topbar.projects')} </a>
   </div>
   <div class="nav-link">
