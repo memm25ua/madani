@@ -11,7 +11,7 @@
   <div class="nav-link">
     <a href="/about"> {$t('topbar.about')} </a>
   </div>
-  <div class="nav-link leading-[1.1]">
+  <div class="nav-link pb-2 md:pb-4">
     <a href="/projects"> {$t('topbar.projects')} </a>
   </div>
   <div class="nav-link">

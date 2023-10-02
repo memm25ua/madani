@@ -7,7 +7,7 @@ export default {
       fontFamily: {
         logo: ['"League Spartan"', "sans-serif"],
         primary: ['"League Spartan"', "monospace"],
-        secondary: ['"Young Serif"', "monospace"],
+        secondary: ['"Ultra"', "monospace"],
         title: ['"Major Mono Display"', "monospace"],
       },
       screens: {
