@@ -21,6 +21,7 @@
   });
 
   onNavigate((navigation) => {
+    console.log("onNavigate");
     // @ts-ignore
     if (!document.startViewTransition) return;
 
@@ -96,7 +97,7 @@
     {#if showCircle}
       <div role="status">
         <div
-          class="circle pointer-events-none absolute animate-scaleup z-50 h-5 w-5 rounded-full bg-transparent border-2 dark:border-pampas-100 border-white"
+          class="circle pointer-events-none absolute animate-scaleup z-50 h-5 w-5 rounded-full bg-transparent border dark:border-pampas-100 border-white"
           style="left: {x - 10}px; top: {y - 10}px;"
         ></div>
       </div>

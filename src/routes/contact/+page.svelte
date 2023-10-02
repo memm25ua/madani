@@ -1,5 +1,36 @@
-<script>
+<script lang="ts">
+  import axios from "axios"; // Ensure you have axios installed
   import HeroImg from "$lib/components/HeroImg.svelte";
+  let name = "";
+  let email = "";
+  let message = "";
+  let errors: { [key: string]: string } = {};
+
+  const handleSubmit = async (event: Event) => {
+    event.preventDefault();
+    errors = {}; // Reset errors
+
+    // Validation logic
+    if (!name) errors.name = "Name is required";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email))
+      errors.email = "Valid email is required";
+    if (!message) errors.message = "Message is required";
+
+    if (Object.keys(errors).length === 0) {
+      try {
+        await axios.post("https://esyq98abo4.execute-api.us-east-1.amazonaws.com/send-email", {
+          name,
+          email,
+          message,
+        });
+        // Handle success (e.g., show success message)
+      } catch (error) {
+        console.error(error);
+        // Handle error (e.g., show error message)
+      }
+    }
+  };
 </script>
 
 <main
@@ -14,6 +45,7 @@
   </section>
   <section class="container-col">
     <form
+      on:submit={handleSubmit}
       class="w-full max-w-lg bg-pampas-100 dark:bg-codgray-900 p-4 rounded-xl shadow-md flex flex-col transition-colors"
     >
       <div class="mb-4">
@@ -28,7 +60,11 @@
           name="name"
           class="bg-transparent w-full pt-2 border-b dark:border-b-pampas-200 border-b-codgray-700 dark:border-pampas-200"
           placeholder="Your Name"
+          bind:value={name}
         />
+        {#if errors.name}
+          <div class="text-red-600 text-sm">{errors.name}</div>
+        {/if}
       </div>
 
       <div class="mb-4">
@@ -43,7 +79,11 @@
           name="email"
           class="bg-transparent w-full pt-2 border-b dark:border-b-pampas-200 border-b-codgray-700 dark:border-pampas-200"
           placeholder="Your Email"
+          bind:value={email}
         />
+        {#if errors.email}
+          <div class="text-red-600 text-sm">{errors.email}</div>
+        {/if}
       </div>
 
       <div class="mb-4">
@@ -58,12 +98,16 @@
           class="bg-transparent w-full pt-2 border-b dark:border-b-pampas-200 border-b-codgray-700 dark:border-pampas"
           rows="4"
           placeholder="Your Message"
+          bind:value={message}
         ></textarea>
+        {#if errors.message}
+          <div class="text-red-600 text-sm">{errors.message}</div>
+        {/if}
       </div>
 
       <button
         type="submit"
-        class=" relative border-perano-700 dark:border-perano-300 border-2 self-center w-20 hover:w-16 transition-all rounded-lg hover:bg-perano-700 text-perano-700 dark:hover:bg-perano-300 dark:text-perano-300 before:absolute before:bottom-2 before:h-0.5 hover:before:bottom-3 hover:text-pampas-100 hover:before:bg-pampas-100 before:transition-all  dark:before:bg-perano-300 before:bg-perano-700 before:w-8 p-2 hover:bg-perano-dark"
+        class=" relative border-perano-700 dark:border-perano-300 border-2 self-center w-20 hover:w-16 transition-all rounded-lg hover:bg-perano-700 text-perano-700 dark:hover:bg-perano-300 dark:text-perano-300 before:absolute before:bottom-2 before:h-0.5 hover:before:bottom-3 hover:text-pampas-100 hover:before:bg-pampas-100 before:transition-all dark:before:bg-perano-300 before:bg-perano-700 before:w-8 p-2 hover:bg-perano-dark"
       >
         Send
       </button>

@@ -36,15 +36,14 @@
 
   function closeDropdown() {
     open = false;
-    document.body.removeEventListener("click", closeDropdown);
   }
 
   function openDropdown() {
     open = true;
-    document.body.addEventListener("click", closeDropdown);
   }
-
 </script>
+
+<svelte:window on:click={closeDropdown} />
 
 <div
   class="flex flex-col items-center text-codgray-300 font-light -mt-3.5"
@@ -72,7 +71,6 @@
       ? '-mt-4 animate-slide-down'
       : ''}"
     on:click|stopPropagation={openDropdown}
-    style="view-transition-name: langSelector;"
   >
     <img
       class="absolute hover:grayscale transition-all object-cover h-6 w-6 rounded-full border-pampas-200 border mb-2"
@@ -85,12 +83,13 @@
     >
   </button>
 </div>
+
 <style>
   .material-symbols-sharp {
     font-variation-settings:
-    'FILL' 1,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24
+      "FILL" 1,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
   }
-  </style>
+</style>

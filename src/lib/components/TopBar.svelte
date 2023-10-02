@@ -54,8 +54,8 @@
 
 <div class="flex justify-between items-center px-4 pr-0 pt-1 h-12">
   <div class="flex items-center relative md:pt-2">
-    <span class="text-2xl xl:text-[2vw] font-logo animate-fade-in" style="view-transition-name: logo;">
-      <a href="/"> Madani </a>
+    <span class="text-3xl xl:text-[2vw] font-logo animate-fade-in font-bold tracking-tighter pr-2" style="view-transition-name: logo;">
+      <a href="/"> madani. </a>
     </span>
     <div class="relative w-max">
       {#if !showDropdown}
@@ -65,7 +65,7 @@
         >
           <!-- <Typewriter interval={20}> -->
           <span
-            class="text-lg md:text-xl xl:text-[1.5vw] font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
+            class="text-lg md:text-xl xl:text-[1.5vw] font-primary font-semibold text-perano-700 dark:text-perano-300 pl-1"
             style="view-transition-name: page-name;"
           >
             {$t(page)}<span class="text-[#628D4F] font-normal text-sm md:text-md xl:text-[1vw]"
@@ -79,7 +79,7 @@
         <!-- Dropdown -->
         <div
           in:slide={{ duration: isSafari ? 0 : 400, delay: 0 }}
-          class="absolute transition-colors -top-4 left-1 h-fit w-max text-2xl font-primary font-bold text-perano-700 dark:text-perano-300 pl-1"
+          class="absolute transition-colors -top-4 left-1 h-fit w-max text-2xl font-primary font-semibold text-perano-700 dark:text-perano-300 pl-1"
         >
           <nav class="w-full h-full">
             <ul class="bg-pampas-200 dark:bg-codgray-950 rounded-lg">
@@ -91,7 +91,6 @@
               >
                 <a
                   class="w-full h-full flex items-center"
-                  style="view-transition-name: page-name;"
                   href="/"
                 >
                   <div class="flex">
@@ -111,7 +110,6 @@
                 <a
                   class="w-full h-full"
                   href="/about"
-                  style="view-transition-name: page-name;"
                 >
                   <div class="flex">
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -129,7 +127,6 @@
               >
                 <a
                   class="w-full h-full"
-                  style="view-transition-name: page-name;"
                   href="/projects"
                 >
                   <div class="flex">
@@ -147,7 +144,6 @@
               >
                 <a
                   class="w-full h-full"
-                  style="view-transition-name: page-name;"
                   href="/contact"
                 >
                   <div class="flex">
