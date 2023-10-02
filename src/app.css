@@ -8,13 +8,13 @@
 
 @layer components {
   .nav-link {
-    @apply mb-4 w-full text-left font-secondary text-6xl text-transparent bg-clip-text bg-gradient-to-t from-perano-700 hover:from-30% via-codgray-900 to-codgray-900 dark:from-perano-300 dark:via-white dark:to-white decoration-perano-700 dark:decoration-perano-300 hover:animate-slide-left hover:font-normal hover:underline 2xl:text-8xl 3xl:text-9xl;
+    @apply mb-4 w-full text-left font-secondary text-6xl  decoration-perano-300 hover:animate-slide-left hover:font-normal hover:underline 2xl:text-8xl 3xl:text-9xl;
   }
   .container-col {
     @apply flex w-80 grow flex-col items-center justify-center pt-5 sm:pl-6 md:grow xl:pl-12;
   }
   .text-underline {
-    @apply relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-0 after:animate-fill-line after:bg-perano-700 dark:after:bg-perano-300;
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-0 after:animate-fill-line after:bg-perano-300;
   }
 }
 

@@ -24,5 +24,24 @@
       "devops": "DevOps",
       "mobile": "Mobile"
     }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "description": "Estos son algunos de mis proyectos personales y de trabajo.",
+    "all": "Ver todos",
+    "web": "Web",
+    "mobile": "Mobile",
+    "desktop": "Desktop",
+    "other": "Otros",
+    "view": "Ver",
+    "close": "Cerrar",
+    "modal": {
+      "title": "Detalles del proyecto",
+      "technologies": "Tecnologías",
+      "description": "Descripción",
+      "links": "Enlaces",
+      "github": "Github",
+      "website": "Sitio web"
+    }
   }
 }

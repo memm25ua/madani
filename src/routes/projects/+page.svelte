@@ -2,6 +2,7 @@
   import HeroImg from "$lib/components/HeroImg.svelte";
   import { circOut, cubicIn, cubicOut, elasticOut } from "svelte/easing";
   import { blur, scale, slide } from "svelte/transition";
+  import { t } from "svelte-i18n";
 
   const animDuration = 400;
 
@@ -71,7 +72,7 @@
   class="min-h-full w-full flex flex-wrap font-primary flex-grow items-center justify-center"
 >
   <section class="container-col">
-    <HeroImg imgSrc="assets/heroProjects.webp" title="Projects" />
+    <HeroImg imgSrc="assets/heroProjects.webp" title="{$t("projects.title")}" />
   </section>
 
   <section class="container-col w-1/2">
@@ -123,7 +124,7 @@
       <button class="absolute top-0 right-0 p-4 w-full h-full  bg-black  bg-opacity-50 z-0" on:click={closeModal}>
       </button>
       <div
-        class="bg-pampas-200 dark:bg-codgray-950 text-codgray-950 dark:text-pampas-200 rounded-lg shadow-lg p-10 w-96 cursor-text z-10"
+        class="flex flex-col items-center bg-pampas-200 dark:bg-codgray-950 text-codgray-950 dark:text-pampas-200 rounded-lg shadow-lg p-10 w-96 cursor-text z-10"
         in:blur={{ duration: animDuration, easing: circOut }}
       >
         <h2 class="text-2xl font-bold mb-2">{selectedProject.name}</h2>
@@ -137,7 +138,7 @@
         <a
           href={selectedProject.link}
           on:click={(e) => {}}
-          class="text-white w-1/2 rounded-lg pt-2 px-2 text-xl xl:text-3xl bg-gradient-to-br from-orange-500 via-pink-500 to-blue-500 hover:from-orange-600 transition-colors hover:via-pink-600 hover:to-blue-600"
+          class="text-center text-white rounded-lg pt-2 px-4 text-xl xl:text-3xl bg-gradient-to-br from-orange-500 via-pink-500 to-blue-500 hover:from-orange-600 transition-colors hover:via-pink-600 hover:to-blue-600"
         >
           {selectedProject.shortname}
         </a>
