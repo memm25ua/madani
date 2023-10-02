@@ -25,9 +25,12 @@
           message,
         });
         // Handle success (e.g., show success message)
+        alert("Message sent successfully!");
+
       } catch (error) {
         console.error(error);
         // Handle error (e.g., show error message)
+        alert("An error occurred while sending the message.");
       }
     }
   };
