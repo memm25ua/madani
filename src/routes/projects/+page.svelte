@@ -95,6 +95,7 @@
           <button
             on:click={() => {
               /* project.flipped = true;
+
                 setTimeout(() => {
                   project.flipped = false;
                 }, 8000); */
