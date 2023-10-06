@@ -52,12 +52,12 @@
   }
 </script>
 
-<div class="flex justify-between items-center px-4 pr-0 pt-1 h-12">
+<div class=" flex justify-between items-center px-4 pr-0 pt-1 h-12">
   <div class="flex items-center relative md:pt-2">
     <span class="text-3xl xl:text-[2vw] font-logo animate-fade-in font-bold tracking-tighter pr-2" style="view-transition-name: logo;">
       <a href="/"> madani. </a>
     </span>
-    <div class="relative w-max">
+    <div class="relative w-max hover:bg-pampas-100 dark:hover:bg-codgray-900 rounded-lg">
       {#if !showDropdown}
         <button
           class="focus:outline-none"
@@ -167,11 +167,11 @@
     </div>
   </div>
 
-  <div class="relative flex h-full w-1/3 max-w-[200px] self-end justify-end gap-2">
-    <div class="relative flex h-full pr-2 justify-center z-20">
+  <div class=" relative flex h-full w-1/3 max-w-[200px] self-end justify-end gap-2 pr-3">
+    <div class="relative flex h-full justify-center z-20">
       <ToggleThemeButton />
     </div>
-    <div class="relative flex h-full w-12 pr-4 justify-center z-10">
+    <div class="relative flex h-full w-12 justify-center z-10">
       <LangSelector />
     </div>
   </div>

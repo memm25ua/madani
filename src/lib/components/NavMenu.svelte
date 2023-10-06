@@ -7,7 +7,7 @@
 </script>
 
 
-<div class="md:pt-12 w-full sm:w-auto capitalize">
+<div class="md:pt-12 xl:pr-20 w-full sm:w-auto capitalize">
   <div class="nav-link">
     <a href="/about"> {$t('topbar.about')} </a>
   </div>

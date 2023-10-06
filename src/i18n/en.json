@@ -15,9 +15,9 @@
   "about": {
     "title": "About me",
     "description": "Computer Engineer based in Alicante, Spain, with 1 year of hands-on experience in Angular development. Skilled at collaborative teamwork and committed to delivering high-quality software solutions.",
-    "resume": "suMMarY",
+    "resume": "Summary",
     "skills": {
-      "title": "sKills",
+      "title": "Skills",
       "front": "Frontend",
       "back": "Backend",
       "other": "Other",
@@ -26,7 +26,7 @@
     }
   },
   "projects": {
-    "title": "Proyectos",
+    "title": "Projects",
     "description": "Estos son algunos de mis proyectos personales y de trabajo.",
     "all": "Ver todos",
     "web": "Web",
@@ -43,5 +43,8 @@
       "github": "Github",
       "website": "Sitio web"
     }
+  },
+  "social": {
+    "title": "My Links"
   }
 }

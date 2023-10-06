@@ -11,6 +11,7 @@ export default {
         title: ['"Major Mono Display"', "monospace"],
       },
       screens: {
+        "xs": "380px",
         "3xl": "1920px",
       },
       colors: {

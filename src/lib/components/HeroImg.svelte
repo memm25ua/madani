@@ -9,12 +9,12 @@
 <div class={`rounded-2xl ${containerClass} flex items-center bg-pampas-100 transition-colors dark:bg-codgray-900 shadow-sm p-4 gap-4 max-w-xl`}>
   {#if title}
     <div class="flex-shrink-0 whitespace-nowrap">
-      <h1 class="text-4xl sm:text-5xl mb-1 font-secondary truncate text-underline sm:leading-snug leading-snug">{title}</h1>
+      <h1 class="text-3xl sm:text-5xl mb-1 font-secondary truncate text-underline sm:leading-snug leading-snug">{title}</h1>
     </div>
   {/if}
   <div class={`${title ? "flex-grow" : "flex-1 w-full"}`}>
     <img
-      class="object-contain max-w-full max-h-full rounded-full bg-pampas-200 transition-colors shadow-inner dark:bg-codgray-950"
+      class="object-contain w-96 rounded-full bg-pampas-200 transition-colors shadow-inner dark:bg-codgray-950"
       src={imgSrc}
       alt="Hero"
       style="view-transition-name: heroImg;"
