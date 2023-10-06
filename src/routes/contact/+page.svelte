@@ -1,6 +1,7 @@
 <script lang="ts">
   import axios from "axios"; // Ensure you have axios installed
   import HeroImg from "$lib/components/HeroImg.svelte";
+  import SocialIcons from "$lib/components/SocialIcons.svelte";
   let name = "";
   let email = "";
   let message = "";
@@ -19,14 +20,16 @@
 
     if (Object.keys(errors).length === 0) {
       try {
-        await axios.post("https://esyq98abo4.execute-api.us-east-1.amazonaws.com/send-email", {
-          name,
-          email,
-          message,
-        });
+        await axios.post(
+          "https://esyq98abo4.execute-api.us-east-1.amazonaws.com/send-email",
+          {
+            name,
+            email,
+            message,
+          },
+        );
         // Handle success (e.g., show success message)
         alert("Message sent successfully!");
-
       } catch (error) {
         console.error(error);
         // Handle error (e.g., show error message)
@@ -47,11 +50,7 @@
     />
   </section>
   <section class="container-col">
-    <HeroImg
-      imgSrc="assets/heroContact.webp"
-      title="Contact Me"
-      textOnRight={false}
-    />
+    <SocialIcons />
   </section>
   <section class="container-col">
     <form
