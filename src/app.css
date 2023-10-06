@@ -8,7 +8,7 @@
 
 @layer components {
   .nav-link {
-    @apply mb-4 w-full text-left font-secondary text-6xl  decoration-perano-300 hover:animate-slide-left hover:font-normal hover:underline 2xl:text-8xl 3xl:text-9xl;
+    @apply mb-4 w-full text-left font-secondary text-5xl xs:text-6xl decoration-perano-300 hover:animate-slide-left hover:font-normal hover:underline 2xl:text-8xl 3xl:text-9xl;
   }
   .container-col {
     @apply flex w-80 grow flex-col items-center justify-center pt-5 sm:pl-6 md:grow xl:pl-12;

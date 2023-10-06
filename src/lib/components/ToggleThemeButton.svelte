@@ -16,8 +16,8 @@
   };
 </script>
 
-<div class="h-12 flex items-center flex-grow">
-  <div class="container" style="view-transition-name: themeToggle;">
+<div class="flex flex-col items-center">
+  <div class="flex items-center h-full justify-center relative z-10" style="view-transition-name: themeToggle;">
     <input type="checkbox" id="theme-toggle" bind:checked={isChecked} on:change={toggleTheme} />
     <label
       class="inline-block cursor-pointer h-6 w-6 rounded-full transition-all duration-500 "

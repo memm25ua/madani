@@ -47,6 +47,13 @@
     />
   </section>
   <section class="container-col">
+    <HeroImg
+      imgSrc="assets/heroContact.webp"
+      title="Contact Me"
+      textOnRight={false}
+    />
+  </section>
+  <section class="container-col">
     <form
       on:submit={handleSubmit}
       class="w-full max-w-lg bg-pampas-100 dark:bg-codgray-900 p-4 rounded-xl shadow-md flex flex-col transition-colors"
