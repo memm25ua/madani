@@ -15,9 +15,9 @@
   "about": {
     "title": "Sobre mí",
     "description": "Ingeniero Informático con base en Alicante, España, con 1 año de experiencia práctica en desarrollo Angular. Experto en trabajo en equipo colaborativo y comprometido con la entrega de soluciones de software de alta calidad.",
-    "resume": "ResUMen",
+    "resume": "Resumen",
     "skills": {
-      "title": "HAbiliDAdes",
+      "title": "Habilidades",
       "front": "Frontend",
       "back": "Backend",
       "other": "Other",
@@ -43,5 +43,8 @@
       "github": "Github",
       "website": "Sitio web"
     }
+  },
+  "social": {
+    "title": "My Links"
   }
 }

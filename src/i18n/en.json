@@ -26,7 +26,7 @@
     }
   },
   "projects": {
-    "title": "Proyectos",
+    "title": "Projects",
     "description": "Estos son algunos de mis proyectos personales y de trabajo.",
     "all": "Ver todos",
     "web": "Web",
@@ -43,5 +43,8 @@
       "github": "Github",
       "website": "Sitio web"
     }
+  },
+  "social": {
+    "title": "My Links"
   }
 }
