@@ -57,7 +57,7 @@
     <span class="text-3xl xl:text-[2vw] font-logo animate-fade-in font-bold tracking-tighter pr-2" style="view-transition-name: logo;">
       <a href="/"> madani. </a>
     </span>
-    <div class="relative w-max">
+    <div class="relative w-max hover:bg-pampas-100 dark:hover:bg-codgray-900 rounded-lg">
       {#if !showDropdown}
         <button
           class="focus:outline-none"

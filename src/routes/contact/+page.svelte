@@ -49,7 +49,7 @@
       textOnRight={false}
     />
   </section>
-  <section class="container-col">
+  <section class="container-col xl:grow-0">
     <SocialIcons />
   </section>
   <section class="container-col">
@@ -67,10 +67,11 @@
           type="text"
           id="name"
           name="name"
-          class="bg-transparent w-full pt-2 border-b dark:border-b-pampas-200 border-b-codgray-700 dark:border-pampas-200"
+          class="bg-transparent h-8 mb-1 w-full pt-2 border-b border-b-codgray-700 dark:border-b-pampas-200 focus:outline-none dark:focus:outline-none focus:border-b-perano-700 dark:focus:border-b-perano-700 focus:border-2 dark:focus:border-2 dark:focus:border-l-0 dark:focus:border-r-0 dark:focus:border-t-0"
           placeholder="Your Name"
           bind:value={name}
         />
+
         {#if errors.name}
           <div class="text-red-600 text-sm">{errors.name}</div>
         {/if}
@@ -86,7 +87,7 @@
           type="email"
           id="email"
           name="email"
-          class="bg-transparent w-full pt-2 border-b dark:border-b-pampas-200 border-b-codgray-700 dark:border-pampas-200"
+          class="bg-transparent h-8 mb-1 w-full pt-2 border-b border-b-codgray-700 dark:border-b-pampas-200 focus:outline-none dark:focus:outline-none focus:border-b-perano-700 dark:focus:border-b-perano-700 focus:border-2 dark:focus:border-2 dark:focus:border-l-0 dark:focus:border-r-0 dark:focus:border-t-0"
           placeholder="Your Email"
           bind:value={email}
         />
@@ -104,7 +105,7 @@
         <textarea
           id="message"
           name="message"
-          class="bg-transparent w-full pt-2 border-b dark:border-b-pampas-200 border-b-codgray-700 dark:border-pampas"
+          class="bg-transparent mb-1 w-full pt-2 border-b border-b-codgray-700 dark:border-b-pampas-200 focus:outline-none dark:focus:outline-none focus:border-b-perano-700 dark:focus:border-b-perano-700 focus:border-2 dark:focus:border-2 dark:focus:border-l-0 dark:focus:border-r-0 dark:focus:border-t-0"
           rows="4"
           placeholder="Your Message"
           bind:value={message}

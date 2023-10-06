@@ -56,7 +56,7 @@
   </section>
 
   <section class="container-col">
-    <h2 class="self-start text-2xl xl:text-4xl font-title mb-4 text-underline">
+    <h2 class="self-start text-2xl xl:text-4xl font-secondary md:mb-4 text-underline">
       {$t("about.resume")}
     </h2>
     <p class="text-lg xl:text-xl 2xl:text-2xl pt-2 pl-2 font-light m-0">
@@ -65,10 +65,10 @@
   </section>
 
   <section class="container-col">
-    <h2 class="self-start text-2xl xl:text-4xl font-title mb-4 text-underline">
+    <h2 class="self-start text-2xl xl:text-4xl font-secondary mb-4 text-underline">
       {$t("about.skills.title")}
     </h2>
-    <ul class="w-full px-3 pt-1">
+    <ul class="w-full px-2 xl:px-5 ">
       {#each skills as skill}
         <li class="text-lg 2xl:text-xl mb-1 font-normal">
           <div class="flex justify-between">
