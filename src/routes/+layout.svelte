@@ -34,7 +34,7 @@
     });
   });
 
-  function handleMouseMove(event: MouseEvent) {
+  /* function handleMouseMove(event: MouseEvent) {
     if (moving) return;
 
     moving = true;
@@ -69,7 +69,7 @@
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("click", handleClick);
     window.addEventListener("touchstart", handleTouchStart);
-  });
+  }); */
 </script>
 
 {#if $isLoading}
@@ -94,17 +94,17 @@
       </div>
     </div>
 
-    {#if showCircle}
+    <!-- {#if showCircle}
       <div role="status">
         <div
           class="circle pointer-events-none absolute animate-scaleup z-50 h-5 w-5 rounded-full bg-transparent border dark:border-pampas-100 border-white"
           style="left: {x - 10}px; top: {y - 10}px;"
         ></div>
       </div>
-    {/if}
+    {/if} -->
   </main>
 {/if}
-
+<!-- 
 <style>
   .circle {
     transition:
@@ -113,3 +113,4 @@
   }
   
 </style>
+ -->
