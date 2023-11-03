@@ -46,5 +46,16 @@
   },
   "social": {
     "title": "My Links"
+  },
+  "contact": {
+    "title": "Contact me",
+
+    "name": "Name",
+    "yourName": "Your name",
+    "email": "Email",
+    "yourEmail": "Your email",
+    "message": "Message",
+    "yourMessage": "Your message",
+    "send": "Send"
   }
 }

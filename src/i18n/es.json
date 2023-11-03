@@ -45,6 +45,16 @@
     }
   },
   "social": {
-    "title": "My Links"
+    "title": "Mis links"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "name": "Nombre",
+    "yourName": "Tu nombre",
+    "email": "Email",
+    "yourEmail": "Tu email",
+    "message": "Mensaje",
+    "yourMessage": "Tu mensaje",
+    "send": "Enviar"
   }
 }

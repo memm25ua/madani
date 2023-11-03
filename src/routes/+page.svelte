@@ -5,7 +5,7 @@
 </script>
 
 <div
-  class="min-h-full w-full flex flex-wrap font-primary flex-grow items-center justify-center"
+  class=" min-h-full w-full flex flex-wrap font-primary flex-grow items-center justify-center"
 >
   <div class="container-col">
     <HeroImg imgSrc="assets/hero.webp" />

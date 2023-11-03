@@ -2,6 +2,8 @@
   import axios from "axios"; // Ensure you have axios installed
   import HeroImg from "$lib/components/HeroImg.svelte";
   import SocialIcons from "$lib/components/SocialIcons.svelte";
+  import { t } from "svelte-i18n";
+
   let name = "";
   let email = "";
   let message = "";
@@ -45,7 +47,7 @@
   <section class="container-col">
     <HeroImg
       imgSrc="assets/heroContact.webp"
-      title="Contact Me"
+      title={$t("contact.title")}
       textOnRight={false}
     />
   </section>
@@ -61,14 +63,14 @@
         <label
           for="name"
           class="block text-2xl font-light text-codgray-700 dark:text-pampas-200"
-          >Name:</label
+          >{$t("contact.name")}:</label
         >
         <input
           type="text"
           id="name"
           name="name"
           class="bg-transparent h-8 mb-1 w-full pt-2 border-b border-b-codgray-700 dark:border-b-pampas-200 focus:outline-none dark:focus:outline-none focus:border-b-perano-700 dark:focus:border-b-perano-700 focus:border-2 dark:focus:border-2 dark:focus:border-l-0 dark:focus:border-r-0 dark:focus:border-t-0"
-          placeholder="Your Name"
+          placeholder={$t("contact.yourName")}
           bind:value={name}
         />
 
@@ -81,14 +83,14 @@
         <label
           for="email"
           class="block text-2xl font-light text-codgray-700 dark:text-pampas-200"
-          >Email:</label
+          >{$t("contact.email")}:</label
         >
         <input
           type="email"
           id="email"
           name="email"
           class="bg-transparent h-8 mb-1 w-full pt-2 border-b border-b-codgray-700 dark:border-b-pampas-200 focus:outline-none dark:focus:outline-none focus:border-b-perano-700 dark:focus:border-b-perano-700 focus:border-2 dark:focus:border-2 dark:focus:border-l-0 dark:focus:border-r-0 dark:focus:border-t-0"
-          placeholder="Your Email"
+          placeholder={$t("contact.yourEmail")}
           bind:value={email}
         />
         {#if errors.email}
@@ -100,14 +102,14 @@
         <label
           for="message"
           class="block text-2xl font-light text-codgray-700 dark:text-pampas-200"
-          >Message:</label
+          >{$t("contact.message")}:</label
         >
         <textarea
           id="message"
           name="message"
           class="bg-transparent mb-1 w-full pt-2 border-b border-b-codgray-700 dark:border-b-pampas-200 focus:outline-none dark:focus:outline-none focus:border-b-perano-700 dark:focus:border-b-perano-700 focus:border-2 dark:focus:border-2 dark:focus:border-l-0 dark:focus:border-r-0 dark:focus:border-t-0"
           rows="4"
-          placeholder="Your Message"
+          placeholder={$t("contact.yourMessage")}
           bind:value={message}
         ></textarea>
         {#if errors.message}
@@ -117,9 +119,9 @@
 
       <button
         type="submit"
-        class=" relative border-perano-700 dark:border-perano-300 border-2 self-center w-20 hover:w-16 transition-all rounded-lg hover:bg-perano-700 text-perano-700 dark:hover:bg-perano-300 dark:text-perano-300 before:absolute before:bottom-2 before:h-0.5 hover:before:bottom-3 hover:text-pampas-100 hover:before:bg-pampas-100 before:transition-all dark:before:bg-perano-300 before:bg-perano-700 before:w-8 p-2 hover:bg-perano-dark"
+        class="flex items-center justify-center relative border-perano-700 dark:border-perano-300 border-2 self-center w-20 hover:w-16 transition-all rounded-lg hover:bg-perano-700 text-perano-700 dark:hover:bg-perano-300 dark:text-perano-300 before:absolute before:bottom-2 before:h-0.5 hover:before:bottom-3 hover:text-pampas-100 hover:before:bg-pampas-100 before:transition-all dark:before:bg-perano-300 before:bg-perano-700 before:w-8 before:text-center p-2 hover:bg-perano-dark"
       >
-        Send
+        {$t("contact.send")}
       </button>
     </form>
   </section>
