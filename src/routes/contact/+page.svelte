@@ -10,6 +10,7 @@
   let errors: { [key: string]: string } = {};
 
   const handleSubmit = async (event: Event) => {
+    window.fbq("track", "Contact"); // Facebook Pixel
     event.preventDefault();
     errors = {}; // Reset errors
 
