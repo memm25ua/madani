@@ -8,7 +8,7 @@
   let email = "";
   let message = "";
   let errors: { [key: string]: string } = {};
-  let loading = true;
+  let loading = false;
   let showSuccess = false;
   let showError = false;
 
@@ -99,7 +99,7 @@
           </p>
         </div>
       {/if}
-      <div class="{showSuccess || showError ? 'blur-md' : ''}flex flex-col">
+      <div class="{showSuccess || showError ? 'blur-md' : ''} flex flex-col">
         <div class="mb-4">
           <label
             for="name"
