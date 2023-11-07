@@ -49,12 +49,16 @@
   },
   "contact": {
     "title": "Contáctame",
+
     "name": "Nombre",
     "yourName": "Tu nombre",
     "email": "Email",
     "yourEmail": "Tu email",
     "message": "Mensaje",
     "yourMessage": "Tu mensaje",
-    "send": "Enviar"
+    "send": "Enviar",
+
+    "success": "Message sent successfully!\nI'll get back to you as soon as possible.\nThank you!",
+    "error": "An error occurred while sending the message.\nPlease try again later."
   }
 }

@@ -56,6 +56,9 @@
     "yourEmail": "Your email",
     "message": "Message",
     "yourMessage": "Your message",
-    "send": "Send"
+    "send": "Send",
+
+    "success": "Message sent successfully. I'll get back to you as soon as possible. Thank you!",
+    "error": "An error occurred while sending the message. Please try again later."
   }
 }

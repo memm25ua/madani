@@ -21,7 +21,6 @@
   });
 
   onNavigate((navigation) => {
-    console.log("onNavigate");
     // @ts-ignore
     if (!document.startViewTransition) return;
 
@@ -76,7 +75,7 @@
   Please wait...
 {:else}
   <main
-    class="transition-colors overflow-hidden relative duration-500 bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-100 text-codgray-800 min-h-screen w-screen font-primary lg:grid lg:grid-cols-1 lg:grid-rows-[auto,1fr]"
+    class="transition-colors overflow-hidden relative duration-500 bg-noise bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-100 text-codgray-800 min-h-screen w-screen font-primary lg:grid lg:grid-cols-1 lg:grid-rows-[auto,1fr]"
   >
     <!-- Top Thin Bar -->
     <div
