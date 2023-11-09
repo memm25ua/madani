@@ -22,7 +22,8 @@
       "back": "Backend",
       "other": "Other",
       "devops": "DevOps",
-      "mobile": "Mobile"
+      "mobile": "Mobile",
+      "cloud": "Cloud"
     }
   },
   "projects": {
@@ -46,5 +47,19 @@
   },
   "social": {
     "title": "My Links"
+  },
+  "contact": {
+    "title": "Contact me",
+
+    "name": "Name",
+    "yourName": "Your name",
+    "email": "Email",
+    "yourEmail": "Your email",
+    "message": "Message",
+    "yourMessage": "Your message",
+    "send": "Send",
+
+    "success": "Message sent successfully. I'll get back to you as soon as possible. Thank you!",
+    "error": "An error occurred while sending the message. Please try again later."
   }
 }

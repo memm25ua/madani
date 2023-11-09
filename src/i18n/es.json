@@ -14,7 +14,7 @@
   },
   "about": {
     "title": "Sobre mí",
-    "description": "Ingeniero Informático con base en Alicante, España, con 1 año de experiencia práctica en desarrollo Angular. Experto en trabajo en equipo colaborativo y comprometido con la entrega de soluciones de software de alta calidad.",
+    "description": "Ingeniero Informático con base en Alicante, con 3 años de experiencia práctica en desarrollo front-end Angular, back-end con Java, framework SpringBoot y arquitectura microservicios.\nExperto en trabajo en equipo colaborativo y comprometido con la entrega de soluciones de software de alta calidad.",
     "resume": "Resumen",
     "skills": {
       "title": "Habilidades",
@@ -22,7 +22,8 @@
       "back": "Backend",
       "other": "Other",
       "devops": "DevOps",
-      "mobile": "Mobile"
+      "mobile": "Mobile",
+      "cloud": "Cloud"
     }
   },
   "projects": {
@@ -45,6 +46,20 @@
     }
   },
   "social": {
-    "title": "My Links"
+    "title": "Mis links"
+  },
+  "contact": {
+    "title": "Contáctame",
+
+    "name": "Nombre",
+    "yourName": "Tu nombre",
+    "email": "Email",
+    "yourEmail": "Tu email",
+    "message": "Mensaje",
+    "yourMessage": "Tu mensaje",
+    "send": "Enviar",
+
+    "success": "Message sent successfully!\nI'll get back to you as soon as possible.\nThank you!",
+    "error": "An error occurred while sending the message.\nPlease try again later."
   }
 }
