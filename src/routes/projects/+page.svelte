@@ -37,7 +37,7 @@
       shortname: "Bindfy",
       description:
         "Initiated a SaaS project, based on an iOS and web application for easy management of raffles for businesses.",
-      link: "https://partners.bindfyapp.com/",
+      link: "https://partners.bindfyapp.com/landing",
       techStack: "Angular.ts, SwiftUI, Firebase",
       img: "assets/bindfy.png",
       flipped: false,
@@ -80,44 +80,40 @@
   }
 </script>
 
-<main
-  class="min-h-full w-full flex flex-wrap font-primary flex-grow items-center justify-center"
->
-  <section class="container-col">
+<main class="main-section gap-6">
+  <section class="w-full flex items-center justify-center mt-3 sm:mt-0">
     <HeroImg imgSrc="assets/heroProjects.webp" title={$t("projects.title")} />
   </section>
 
-  <section class="container-col w-1/2">
-    <div class="flex w-full h-full flex-wrap flex-row justify-center">
-      {#each projects as project}
-        <div
-          role="status"
-          class="hover:grow grayscale relative w-96 h-64 2xl:h-96 hover:scale-[1.03] hover:grayscale-0 transition-all duration-300
+  <section class="flex w-full flex-wrap">
+    {#each projects as project}
+      <div
+        role="status"
+        class=" w-full sm:w-2/5 hover:grow grayscale relative h-64 2xl:h-96 hover:scale-[1.03] hover:grayscale-0 transition-all duration-300
           {project.grow
-            ? 'grow'
-            : ''} rounded-2xl lg:ml-5 bg-pampas-100 mb-6 dark:bg-codgray-900"
-        >
-          <button
-            on:click={() => {
-              /* project.flipped = true;
+          ? 'grow'
+          : ''} rounded-2xl lg:ml-5 bg-pampas-100 mb-6 dark:bg-codgray-900"
+      >
+        <button
+          on:click={() => {
+            /* project.flipped = true;
 
                 setTimeout(() => {
                   project.flipped = false;
                 }, 8000); */
-              openModal(project);
-            }}
-            class="h-full w-full"
-            in:blur={{ duration: animDuration, easing: circOut }}
-          >
-            <img
-              src={project.img}
-              alt="PPP"
-              class="h-full w-full object-cover rounded-2xl"
-            />
-          </button>
-        </div>
-      {/each}
-    </div>
+            openModal(project);
+          }}
+          class="h-full w-full"
+          in:blur={{ duration: animDuration, easing: circOut }}
+        >
+          <img
+            src={project.img}
+            alt="PPP"
+            class="h-full w-full object-cover rounded-2xl"
+          />
+        </button>
+      </div>
+    {/each}
   </section>
 
   {#if selectedProject && selectedProject.id !== 9}
@@ -157,7 +153,7 @@
     </div>
   {/if}
 
- <!--  {#if selectedProject && selectedProject.id === 4}
+  <!--  {#if selectedProject && selectedProject.id === 4}
     <div
       class="fixed top-0 left-0 w-full h-full flex items-center justify-center"
     >

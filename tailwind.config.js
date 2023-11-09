@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "noise": "url('/assets/noise-dark.png')",
+        "noise": "url('/assets/noise.png')",
+        "noise-dark": "url('/assets/noise-dark.png')",
       },
       fontFamily: {
         logo: ['"League Spartan"', "sans-serif"],

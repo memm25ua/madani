@@ -22,7 +22,8 @@
       "back": "Backend",
       "other": "Other",
       "devops": "DevOps",
-      "mobile": "Mobile"
+      "mobile": "Mobile",
+      "cloud": "Cloud"
     }
   },
   "projects": {
