@@ -14,13 +14,13 @@
     @apply rounded-3xl transition-colors duration-500 ease-in-out hover:bg-perano-400 hover:text-pampas-100;
   }
   .container-col {
-    @apply flex w-80 grow flex-col items-center justify-center sm:pt-5 sm:pl-6 xl:pl-12;
+    @apply flex w-80 grow flex-col items-center justify-center sm:pl-6 sm:pt-5 xl:pl-12;
   }
   .text-underline {
     @apply relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-0 after:animate-fill-line after:bg-perano-300;
   }
   .main-section {
-    @apply flex min-h-full w-full flex-grow flex-col items-center justify-start font-primary md:pt-20;
+    @apply flex min-h-full w-full flex-col items-center justify-start px-5 font-primary md:pt-10;
   }
 }
 
