@@ -29,6 +29,22 @@
   "projects": {
     "title": "Proyectos",
     "description": "Estos son algunos de mis proyectos personales y de trabajo.",
+    "crmble": {
+      "title": "Crmble Trello Powerup",
+      "description": "Desarrollador Full-Stack Angular/Java(Spring Boot) en App Square S.L. Especializado en diseñar y desarrollar interfaces de usuario para una plataforma CRM."
+    },
+    "bindfy": {
+      "title": "Bindfy",
+      "description": "Inició un proyecto SaaS, basado en una aplicación iOS y web para la fácil gestión de sorteos para empresas."
+    },
+    "apparel": {
+      "title": "ApparelLab",
+      "description": "Proyecto de comercio electrónico en producción. Desarrolló una aplicación full-stack (incluido DevOps) para una marca de ropa."
+    },
+    "self": {
+      "title": "Este portafolio 😮‍💨",
+      "description": "Portafolio personal, desarrollado con SvelteKit y TailwindCSS."
+    },
     "all": "Ver todos",
     "web": "Web",
     "mobile": "Mobile",

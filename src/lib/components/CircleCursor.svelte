@@ -4,35 +4,44 @@
 
   let x = 0;
   let y = 0;
-  let show = false;
+  let cY = 0;
   let moving = false;
+  let scrolled = false;
+  let show = false;
   let touchable = false;
 
   $: circleStyles = `left: ${x - 20}px; top: ${y - 20}px;`;
   $: circleClass = $circleState.hover ? "hovered-circle" : "";
 
-  function handleMouseMove(event: MouseEvent) {
+  function handleMouseMove({ clientX, clientY }: MouseEvent) {
+    show = true;
+    if (scrolled) {
+      scrolled = false;
+      circleState.update((state) => ({ ...state, hover: false }));
+    }
+
     if (moving) return;
     moving = true;
     setTimeout(() => {
-      x = event.clientX;
-      y = event.clientY;
-      if (!touchable) {
-        show = true;
-      }
+      cY = clientY;
+      x = clientX + window.scrollX;
+      y = cY + window.scrollY;
       moving = false;
     }, 20);
   }
-
   function handleTouchStart() {
     touchable = true;
     window.removeEventListener("mousemove", handleMouseMove);
   }
 
+  function handleScroll() {
+    y = cY + window.scrollY;
+  }
+
   onMount(() => {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("touchstart", handleTouchStart);
-
+    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("touchstart", handleTouchStart);
@@ -40,7 +49,7 @@
   });
 </script>
 
-{#if show}
+{#if !touchable && show}
   <div class="circle {circleClass}" style={circleStyles}></div>
 {/if}
 
@@ -69,5 +78,4 @@
   .hovering-text {
     background-color: transparent;
   }
-
 </style>

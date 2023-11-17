@@ -21,7 +21,7 @@
     "Architect",
     "Lover",
   ];
-  const emojis = ["👨🏽‍💻", "🚀", "🎨", "🏗️", "❤️"];
+  const emojis = ["👨🏽‍💻", "🚀", "🎨", "🏗️", "💙"];
 
   function handleDone() {
     setTimeout(() => {
@@ -37,7 +37,7 @@
   }
 </script>
 
-<section class="font-thin w-full">
+<section class="font-thin w-96 md:w-72 pl-4">
   <div class="title flex w-full">
     <h1 class="text-2xl sm:text-3xl mb-1">
       {title} <br />

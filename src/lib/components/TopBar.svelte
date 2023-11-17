@@ -57,116 +57,123 @@
   }
 </script>
 
-<div class=" flex justify-between items-center px-4 pr-0 pt-2 h-12">
-  <div class="flex items-center relative md:pt-4">
-    <span
-      class="text-3xl xl:text-[2.5vw] font-logo animate-fade-in font-bold tracking-tighter pr-2"
-      style="view-transition-name: logo;"
-    >
-      <a href="/"> madani. </a>
-    </span>
-    <div class="relative w-max rounded-lg md:ml-2 h-12 flex items-center justify-center">
-      {#if !showDropdown}
-        <button
-          class="focus:outline-none"
-          in:blur={{ duration: 400, delay: 100 }}
-          on:mouseenter|stopPropagation|preventDefault={openDropdown}
-        >
-          <!-- <Typewriter interval={20}> -->
-          <span
-            class="text-lg md:text-xl xl:text-[1.5vw] font-primary font-thin pl-1 flex items-center"
-            style="view-transition-name: page-name;"
+<header
+  class="lg:col-span-1 z-40 relative"
+  style="view-transition-name: header;"
+>
+  <div class=" flex justify-between items-center px-4 pr-0 pt-2 h-12">
+    <div class="flex items-center relative md:pt-4">
+      <span
+        class="text-3xl xl:text-[2.5vw] font-logo animate-fade-in font-bold tracking-tighter pr-2"
+        style="view-transition-name: logo;"
+      >
+        <a href="/"> madani. </a>
+      </span>
+      <div
+        class="relative w-max rounded-lg md:ml-2 h-12 flex items-center justify-center"
+      >
+        {#if !showDropdown}
+          <button
+            class="focus:outline-none"
+            in:blur={{ duration: 400, delay: 100 }}
+            on:mouseenter|stopPropagation|preventDefault={openDropdown}
           >
+            <!-- <Typewriter interval={20}> -->
             <span
-              class="material-symbols-sharp text-inherit text-lg md:text-xl xl:text-[1.5vw]"
+              class="text-lg md:text-xl xl:text-[1.5vw] font-primary font-thin pl-1 flex items-center"
+              style="view-transition-name: page-name;"
             >
-              {icon}
+              <span
+                class="material-symbols-sharp text-inherit text-lg md:text-xl xl:text-[1.5vw]"
+              >
+                {icon}
+              </span>
+              {$t(page)}
             </span>
-            {$t(page)}
-          </span>
-          <!-- </Typewriter> -->
-        </button>
-      {:else}
-        <!-- Dropdown -->
-        <div
-          in:slide={{ duration: isSafari ? 0 : 400, delay: 0 }}
-          out:slide={{ duration: isSafari ? 0 : 400, delay: 0 }}
-          on:mouseleave|stopPropagation|preventDefault={closeDropdown}
-          role="button"
-          tabindex="0"
-          class="absolute transition-colors top-0 left-1 h-fit w-max text-2xl font-primary font-semibold text-perano-700 dark:text-perano-300 pl-1"
-        >
-          <nav class="w-full h-full">
-            <ul class="bg-pampas-200 dark:bg-codgray-950 rounded-lg">
-              <li class=" rounded-md pt-1">
-                {": {"}
-              </li>
-              <li class="3xl:pt-2 rounded-md circle-link">
-                <a class="w-full h-full flex items-center" href="/">
-                  <div class="flex">
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="material-symbols-sharp text-inherit">
-                      home
-                    </span>
-                    <span class="pt-0.5"> : {$t("topbar.home")},</span>
-                  </div>
-                </a>
-              </li>
-              <li class="3xl:pt-2 rounded-md circle-link">
-                <a class="w-full h-full" href="/about">
-                  <div class="flex">
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="material-symbols-sharp text-inherit">
-                      fingerprint
-                    </span>
-                    <span class="pt-0.5"> : {$t("topbar.about")},</span>
-                  </div>
-                </a>
-              </li>
-              <li class="3xl:pt-2 rounded-md circle-link pr-4">
-                <a class="w-full h-full" href="/projects">
-                  <div class="flex">
-                    &nbsp;&nbsp;&nbsp;&nbsp; <span
-                      class="material-symbols-sharp text-inherit"
-                    >
-                      emoji_objects
-                    </span>
-                    <span class="pt-0.5"> : {$t("topbar.projects")},</span>
-                  </div>
-                </a>
-              </li>
-              <li class="3xl:pt-2 rounded-md circle-link">
-                <a class="w-full h-full" href="/contact">
-                  <div class="flex">
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="material-symbols-sharp text-inherit">
-                      call
-                    </span>
-                    <span class="pt-0.5"> : {$t("topbar.contact")},</span>
-                  </div>
-                </a>
-              </li>
-              <li class="3xl:pt-2 rounded-m">
-                &nbsp;&nbsp;{"}"}
-              </li>
-            </ul>
-          </nav>
-        </div>
-      {/if}
+            <!-- </Typewriter> -->
+          </button>
+        {:else}
+          <!-- Dropdown -->
+          <div
+            in:slide={{ duration: isSafari ? 0 : 400, delay: 0 }}
+            out:slide={{ duration: isSafari ? 0 : 400, delay: 0 }}
+            on:mouseleave|stopPropagation|preventDefault={closeDropdown}
+            role="button"
+            tabindex="0"
+            class="absolute transition-colors top-0 left-1 h-fit w-max text-2xl font-primary font-semibold text-perano-700 dark:text-perano-300 pl-1"
+          >
+            <nav class="w-full h-full">
+              <ul class="bg-pampas-200 dark:bg-codgray-950 rounded-lg">
+                <li class=" rounded-md pt-1">
+                  {": {"}
+                </li>
+                <li class="3xl:pt-2 rounded-md circle-link">
+                  <a class="w-full h-full flex items-center" href="/">
+                    <div class="flex">
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <span class="material-symbols-sharp text-inherit">
+                        home
+                      </span>
+                      <span class="pt-0.5"> : {$t("topbar.home")},</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="3xl:pt-2 rounded-md circle-link">
+                  <a class="w-full h-full" href="/about">
+                    <div class="flex">
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <span class="material-symbols-sharp text-inherit">
+                        fingerprint
+                      </span>
+                      <span class="pt-0.5"> : {$t("topbar.about")},</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="3xl:pt-2 rounded-md circle-link pr-4">
+                  <a class="w-full h-full" href="/projects">
+                    <div class="flex">
+                      &nbsp;&nbsp;&nbsp;&nbsp; <span
+                        class="material-symbols-sharp text-inherit"
+                      >
+                        emoji_objects
+                      </span>
+                      <span class="pt-0.5"> : {$t("topbar.projects")},</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="3xl:pt-2 rounded-md circle-link">
+                  <a class="w-full h-full" href="/contact">
+                    <div class="flex">
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <span class="material-symbols-sharp text-inherit">
+                        call
+                      </span>
+                      <span class="pt-0.5"> : {$t("topbar.contact")},</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="3xl:pt-2 rounded-m">
+                  &nbsp;&nbsp;{"}"}
+                </li>
+              </ul>
+            </nav>
+          </div>
+        {/if}
+      </div>
     </div>
-  </div>
 
-  <div
-    class=" relative flex h-full w-1/3 max-w-[200px] self-end justify-end gap-2 pr-3"
-  >
-    <div class="relative flex h-full justify-center z-20">
-      <ToggleThemeButton />
-    </div>
-    <div class="relative flex h-full w-12 justify-center z-10">
-      <LangSelector />
+    <div
+      class=" relative flex h-full w-1/3 max-w-[200px] self-end justify-end gap-2 pr-3"
+    >
+      <div class="relative flex h-full justify-center z-20">
+        <ToggleThemeButton />
+      </div>
+      <div class="relative flex h-full w-12 justify-center z-10">
+        <LangSelector />
+      </div>
     </div>
   </div>
-</div>
+</header>
 
 <style>
   :root {

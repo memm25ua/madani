@@ -2,6 +2,7 @@
   import { isLoading } from "svelte-i18n";
   import "../app.css";
   import TopBar from "$lib/components/TopBar.svelte";
+  import Footer from "$lib/components/Footer.svelte";
   import { onMount } from "svelte";
   import theme from "$lib/stores/themeStore";
   import { onNavigate } from "$app/navigation";
@@ -32,23 +33,17 @@
 {#if $isLoading}
   Please wait...
 {:else}
+  <!-- Top Thin Bar -->
+
+  <TopBar {data} />
+
   <main
-    class=" select-none transition-colors overflow-hidden relative duration-500 bg-pampas-200 dark:bg-codgray-950 dark:text-pampas-100 text-codgray-800 h-screen w-screen font-primary"
+    class="flex w-full grow flex-col items-center justify-start px-2 font-primary md:px-5 md:pt-10"
   >
-    <!-- Top Thin Bar -->
-    <header
-      class="lg:col-span-1 z-40 relative"
-      style="view-transition-name: header;"
-    >
-      <TopBar {data} />
-    </header>
-
-    <main class="main-section">
-      <div class="w-full h-full max-w-screen-3xl grow">
-        <slot />
-      </div>
-    </main>
-
-    <CircleCursor />
+    <slot />
   </main>
+
+  <Footer />
+
+  <CircleCursor />
 {/if}

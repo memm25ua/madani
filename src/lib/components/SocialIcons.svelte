@@ -44,7 +44,7 @@
   {$t("social.title")}
 </h1> -->
 <div
-  class="flex items-center xl:space-y-2 space-x-2 xl:w-1/2 bg-pampas-100 dark:bg-codgray-900 w-full rounded-xl p-3 transition-all duration-500"
+  class="flex items-center xl:space-y-2 space-x-2 bg-pampas-100 dark:bg-codgray-900 w-full rounded-xl p-3 transition-all duration-500"
 >
   {#each socialLinks as link}
     <button
