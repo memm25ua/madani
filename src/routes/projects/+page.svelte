@@ -9,7 +9,7 @@
   <HeroImg imgSrc="assets/heroProjects.webp" title={$t("projects.title")} />
 </section>
 
-<section class="flex max-w-5xl flex-wrap w-full px-4 mb-20">
+<section class="flex max-w-7xl flex-wrap w-full px-4 mb-20">
   {#each projects as project}
     <Project {project} />
   {/each}

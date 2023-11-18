@@ -77,5 +77,10 @@
 
     "success": "Message sent successfully!\nI'll get back to you as soon as possible.\nThank you!",
     "error": "An error occurred while sending the message.\nPlease try again later."
+  },
+  "footer": {
+    "title": "Hecho con 🤍 por Madani El Mrabet Martinez",
+    "copyright":
+      "2023 © All rights reserved."
   }
 }
