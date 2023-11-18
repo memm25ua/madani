@@ -13,7 +13,7 @@
   {#if title}
     <div class="flex-shrink-0 whitespace-nowrap">
       <h1
-        class="text-3xl md:text-7xl mb-1 font-secondary truncate text-underline sm:leading-snug leading-snug"
+        class="text-3xl !leading-[1.3] md:text-7xl mb-1 font-secondary truncate text-underline"
       >
         {title}
       </h1>

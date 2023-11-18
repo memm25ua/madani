@@ -57,8 +57,8 @@
   .circle {
     animation: fade 0.5s ease-in-out;
     transition:
-      top 0.2s ease-out,
-      left 0.2s ease-out,
+      top 0.1s ease-out,
+      left 0.1s ease-out,
       transform 0.8s ease-in-out,
       opacity 0.8s ease-out;
     pointer-events: none;
