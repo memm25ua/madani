@@ -1,0 +1,14 @@
+services:
+  madani-portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4321:80"
+    restart: unless-stopped
+    networks:
+      - madani-portfolio
+
+networks:
+  madani-portfolio:
+    driver: bridge
