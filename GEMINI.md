@@ -43,3 +43,20 @@ To get started with this project, follow these steps:
 -   Implement GSAP animations to enhance the user experience.
 -   Create a visually appealing and responsive design for the portfolio.
 -   Deploy the final version to a hosting service like Netlify or Vercel.
+
+### Docker Setup
+
+This project includes a `Dockerfile` and `docker-compose.yml` for running the application in a containerized environment.
+
+**Building and Running with Docker:**
+
+1.  **Build and Run:**
+    ```bash
+    docker-compose up
+    ```
+2.  **Build and Run in Detached Mode:**
+    ```bash
+    docker-compose up -d
+    ```
+
+The application will be available at `http://localhost:4321`.
