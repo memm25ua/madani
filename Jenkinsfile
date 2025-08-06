@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'mac-mini-casa'  // This specifies the node label you'll set up in Jenkins
+            label 'msi-ubuntu' 
         }
     }
 
