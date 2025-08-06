@@ -12,9 +12,10 @@ function isEven(idx: number) {
 }
 ---
 
-<div class="w-screen h-screen overflow-x-hidden">
+
+<div id="gallery" class="relative w-screen h-screen overscroll-none">
   {projects.map((project: any, idx: number) => (
-    <div class="flex flex-col md:flex-row w-full h-screen" style="min-height: 100vh;">
+    <div id={`project-${idx}`} class={"project w-screen h-screen flex flex-col md:flex-row" } style="min-height: 100vh;" data-project-id={idx}>
       {isEven(idx) ? (
         <>
           {/* Miniatura izquierda */}
@@ -71,13 +72,24 @@ function isEven(idx: number) {
 </div>
 
 <script>
+
   import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
   gsap.registerPlugin(ScrollTrigger);
 
-  ScrollTrigger.create({
-    trigger: '.gallery',
-    start: 'top top',
+  let projects = gsap.utils.toArray('.project');
+  console.log(projects)
+
+  gsap.to(projects, {
+    yPercent: -100 * (projects.length - 1),
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#gallery",
+      pin: true,
+      scrub: 1,
+      snap: 1 / (projects.length - 1),
+      end:"+=3500",
+    }
   });
 </script>
