@@ -8,7 +8,7 @@ pipeline {
                 sh 'docker build -t madani-portfolio .'
             }
         }
-        stage('Deploy') {
+        stage('Deployy') {
             steps {
                 echo 'Deploying the container...'
                 sh 'docker-compose up -d'
