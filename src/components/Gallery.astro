@@ -69,3 +69,15 @@ function isEven(idx: number) {
     </div>
   ))}
 </div>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  ScrollTrigger.create({
+    trigger: '.gallery',
+    start: 'top top',
+  });
+</script>

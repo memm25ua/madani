@@ -18,7 +18,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying the container...'
-                sh 'docker-compose up -d'
+                sh 'docker compose up -d'
             }
         }
         stage('Cleanup') {
@@ -27,7 +27,7 @@ pipeline {
             }
             steps {
                 echo 'Stopping and removing the container...'
-                sh 'docker-compose down'
+                sh 'docker compose down'
             }
         }
     }
