@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent "msi-ubuntu"
 
     stages {
         stage('Build') {

@@ -1,0 +1,69 @@
+---
+import astroLogo from '../assets/astro.svg';
+import background from '../assets/background.svg';
+
+const { projects } = Astro.props;
+
+// Alterna el layout: si par, miniatura izq e imagen der; si impar, al revés
+function isEven(idx) {
+  return idx % 2 === 0;
+}
+---
+
+<div class="w-screen h-screen overflow-x-hidden">
+  {projects.map((project, idx) => (
+    <div class="flex flex-col md:flex-row w-full h-screen" style="min-height: 100vh;">
+      {isEven(idx) ? (
+        <>
+          {/* Miniatura izquierda */}
+          <div class="flex flex-col justify-end items-start w-full md:w-1/2 h-1/2 md:h-full bg-white p-8">
+            <div class="mb-8">
+              <div class="w-32 h-32 bg-black flex items-center justify-center mb-4">
+                {project.thumbnail ? (
+                  <img src={project.thumbnail} alt={project.name} class="object-contain w-full h-full" />
+                ) : (
+                  <img src={astroLogo.src} alt="mock" class="object-contain w-full h-full" />
+                )}
+              </div>
+              <div class="text-2xl font-bold">{project.name}</div>
+              <div class="text-lg text-gray-500">{String(idx+1).padStart(2, '0')}</div>
+            </div>
+          </div>
+          {/* Imagen derecha */}
+          <div class="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center bg-gray-100">
+            {project.image ? (
+              <img src={project.image} alt={project.name} class="object-cover w-full h-full" style="max-height:100vh;" />
+            ) : (
+              <img src={background.src} alt="mock" class="object-cover w-full h-full" style="max-height:100vh;" />
+            )}
+          </div>
+        </>
+      ) : (
+        <>
+          {/* Imagen izquierda */}
+          <div class="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center bg-gray-100">
+            {project.image ? (
+              <img src={project.image} alt={project.name} class="object-cover w-full h-full" style="max-height:100vh;" />
+            ) : (
+              <img src={background.src} alt="mock" class="object-cover w-full h-full" style="max-height:100vh;" />
+            )}
+          </div>
+          {/* Miniatura derecha */}
+          <div class="flex flex-col justify-end items-end w-full md:w-1/2 h-1/2 md:h-full bg-white p-8">
+            <div class="mb-8 text-right">
+              <div class="w-32 h-32 bg-black flex items-center justify-center mb-4 ml-auto">
+                {project.thumbnail ? (
+                  <img src={project.thumbnail} alt={project.name} class="object-contain w-full h-full" />
+                ) : (
+                  <img src={astroLogo.src} alt="mock" class="object-contain w-full h-full" />
+                )}
+              </div>
+              <div class="text-2xl font-bold">{project.name}</div>
+              <div class="text-lg text-gray-500">{String(idx+1).padStart(2, '0')}</div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  ))}
+</div>
