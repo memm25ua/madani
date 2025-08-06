@@ -1,17 +1,19 @@
 ---
 import astroLogo from '../assets/astro.svg';
 import background from '../assets/background.svg';
+import "../styles/global.css";
+
 
 const { projects } = Astro.props;
 
 // Alterna el layout: si par, miniatura izq e imagen der; si impar, al revés
-function isEven(idx) {
+function isEven(idx: number) {
   return idx % 2 === 0;
 }
 ---
 
 <div class="w-screen h-screen overflow-x-hidden">
-  {projects.map((project, idx) => (
+  {projects.map((project: any, idx: number) => (
     <div class="flex flex-col md:flex-row w-full h-screen" style="min-height: 100vh;">
       {isEven(idx) ? (
         <>
