@@ -21,14 +21,5 @@ pipeline {
                 sh 'docker compose up -d'
             }
         }
-        stage('Cleanup') {
-            when {
-                branch 'main'
-            }
-            steps {
-                echo 'Stopping and removing the container...'
-                sh 'docker compose down'
-            }
-        }
     }
 }
