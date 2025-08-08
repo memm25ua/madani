@@ -1,95 +1,198 @@
 ---
-import astroLogo from '../assets/astro.svg';
-import background from '../assets/background.svg';
 import "../styles/global.css";
-
-
-const { projects } = Astro.props;
-
-// Alterna el layout: si par, miniatura izq e imagen der; si impar, al revés
-function isEven(idx: number) {
-  return idx % 2 === 0;
-}
 ---
 
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .gallery {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+  }
+  .screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    will-change: transform;
+    pointer-events: none;
+    visibility: hidden;
+  }
+  .visible {
+    visibility: visible;
+  }
+  .red {
+    background: #e53935;
+  }
+  .blue {
+    background: #1e88e5;
+  }
+  .green {
+    background: #43a047;
+  }
+  .orange {
+    background: #ffa000;
+  }
+</style>
 
-<div id="gallery" class="relative w-screen h-screen overscroll-none">
-  {projects.map((project: any, idx: number) => (
-    <div id={`project-${idx}`} class={"project w-screen h-screen flex flex-col md:flex-row" } style="min-height: 100vh;" data-project-id={idx}>
-      {isEven(idx) ? (
-        <>
-          {/* Miniatura izquierda */}
-          <div class="flex flex-col justify-end items-start w-full md:w-1/2 h-1/2 md:h-full bg-white p-8">
-            <div class="mb-8">
-              <div class="w-32 h-32 bg-black flex items-center justify-center mb-4">
-                {project.thumbnail ? (
-                  <img src={project.thumbnail} alt={project.name} class="object-contain w-full h-full" />
-                ) : (
-                  <img src={astroLogo.src} alt="mock" class="object-contain w-full h-full" />
-                )}
-              </div>
-              <div class="text-2xl font-bold">{project.name}</div>
-              <div class="text-lg text-gray-500">{String(idx+1).padStart(2, '0')}</div>
-            </div>
-          </div>
-          {/* Imagen derecha */}
-          <div class="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center bg-gray-100">
-            {project.image ? (
-              <img src={project.image} alt={project.name} class="object-cover w-full h-full" style="max-height:100vh;" />
-            ) : (
-              <img src={background.src} alt="mock" class="object-cover w-full h-full" style="max-height:100vh;" />
-            )}
-          </div>
-        </>
-      ) : (
-        <>
-          {/* Imagen izquierda */}
-          <div class="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center bg-gray-100">
-            {project.image ? (
-              <img src={project.image} alt={project.name} class="object-cover w-full h-full" style="max-height:100vh;" />
-            ) : (
-              <img src={background.src} alt="mock" class="object-cover w-full h-full" style="max-height:100vh;" />
-            )}
-          </div>
-          {/* Miniatura derecha */}
-          <div class="flex flex-col justify-end items-end w-full md:w-1/2 h-1/2 md:h-full bg-white p-8">
-            <div class="mb-8 text-right">
-              <div class="w-32 h-32 bg-black flex items-center justify-center mb-4 ml-auto">
-                {project.thumbnail ? (
-                  <img src={project.thumbnail} alt={project.name} class="object-contain w-full h-full" />
-                ) : (
-                  <img src={astroLogo.src} alt="mock" class="object-contain w-full h-full" />
-                )}
-              </div>
-              <div class="text-2xl font-bold">{project.name}</div>
-              <div class="text-lg text-gray-500">{String(idx+1).padStart(2, '0')}</div>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
-  ))}
+<div class="gallery">
+  <div class="screen red visible" id="screen-0">Rojo</div>
+  <div class="screen blue" id="screen-1">Azul</div>
+  <div class="screen green" id="screen-2">Verde</div>
+  <div class="screen orange" id="screen-3">Naranja</div>
 </div>
 
 <script>
+  import { gsap } from "gsap";
+  import { Observer } from "gsap/Observer";
 
-  import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  // const screens = [
+  //   document.getElementById('screen-0'),
+  //   document.getElementById('screen-1'),
+  // ];
+  // const n = screens.length;
 
-  gsap.registerPlugin(ScrollTrigger);
+  // const tl = gsap.timeline({
+  //   ease: "power2.out",
+  //   scrollTrigger: {
+  //     scrub: 1,
+  //   },
+  // });
 
-  let projects = gsap.utils.toArray('.project');
-  console.log(projects)
+  gsap.registerPlugin(Observer);
 
-  gsap.to(projects, {
-    yPercent: -100 * (projects.length - 1),
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#gallery",
-      pin: true,
-      scrub: 1,
-      snap: 1 / (projects.length - 1),
-      end:"+=3500",
+  const sections = gsap.utils.toArray(".screen") as HTMLElement[];
+  const wrapIndex = gsap.utils.wrap(0, sections.length);
+
+  // Posición virtual continua controlada por el "scroll" falso.
+  let virtualPosition = 0; // 0 = sección 0; 1 = entre 0 y 1; etc.
+  const scrollSensitivity = 0.001; // ajusta sensibilidad según dispositivo
+  const invertScroll = -1; // invierte si quieres dirección natural del trackpad
+  const keyStep = 1; // paso por tecla: salta de sección en sección
+  const smoothDuration = 1; // suavizado del scrubbing
+  const snapDelayMs = 1000; // espera antes de hacer snap
+  let snapTimeout: any = null;
+  const positionProxy = { value: 0 };
+
+  // Estado inicial: sección 0 visible en 0%, la siguiente en 100%
+  sections.forEach((el, i) => {
+    gsap.set(el, { yPercent: i === 0 ? 0 : 100 });
+    el.classList.toggle("visible", i === 0 || i === 1);
+  });
+
+  function syncFromProxy() {
+    const base = Math.floor(positionProxy.value);
+    const frac = positionProxy.value - base; // [0,1)
+
+    const aIndex = wrapIndex(base);
+    const bIndex = wrapIndex(base + 1);
+
+    sections.forEach((el, i) => {
+      el.classList.toggle("visible", i === aIndex || i === bIndex);
+    });
+
+    const a = sections[aIndex];
+    const b = sections[bIndex];
+
+    // Interpolación entre A (sale hacia -100%) y B (entra desde +100%)
+    gsap.set(a, { yPercent: -100 * frac });
+    gsap.set(b, { yPercent: 100 * (1 - frac) });
+  }
+
+  function finalizeVisibility(targetIndex: number) {
+    const index = wrapIndex(targetIndex);
+    sections.forEach((el, i) => {
+      const active = i === index;
+      el.classList.toggle("visible", active);
+      gsap.set(el, { yPercent: active ? 0 : 100 });
+    });
+  }
+
+  function scheduleSnap() {
+    if (snapTimeout) clearTimeout(snapTimeout);
+    snapTimeout = setTimeout(() => {
+      snapToNearest();
+    }, snapDelayMs);
+  }
+
+  function snapToNearest() {
+    const target = Math.round(positionProxy.value);
+    virtualPosition = target;
+    gsap.to(positionProxy, {
+      value: target,
+      duration: 0.5,
+      ease: "power2.out",
+      overwrite: "auto",
+      onUpdate: syncFromProxy,
+      onComplete: () => finalizeVisibility(target),
+    });
+  }
+
+  function addDelta(dy: number) {
+    virtualPosition += dy * scrollSensitivity * invertScroll;
+    gsap.to(positionProxy, {
+      value: virtualPosition,
+      duration: smoothDuration,
+      ease: "power2.out",
+      overwrite: "auto",
+      onUpdate: syncFromProxy,
+    });
+    scheduleSnap();
+  }
+
+  Observer.create({
+    type: "wheel,touch,pointer",
+    preventDefault: true,
+    onChangeY: (self) => {
+      addDelta(self.deltaY);
+    },
+    tolerance: 10,
+  });
+
+  document.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.code === "ArrowUp" || e.code === "ArrowLeft") {
+      if (snapTimeout) clearTimeout(snapTimeout);
+      const target = Math.round(positionProxy.value) - keyStep;
+      virtualPosition = target;
+      gsap.to(positionProxy, {
+        value: target,
+        duration: 0.4,
+        ease: "power2.out",
+        overwrite: "auto",
+        onUpdate: syncFromProxy,
+        onComplete: () => finalizeVisibility(target),
+      });
+      return;
+    }
+    if (
+      e.code === "ArrowDown" ||
+      e.code === "ArrowRight" ||
+      e.code === "Space" ||
+      e.code === "Enter"
+    ) {
+      if (snapTimeout) clearTimeout(snapTimeout);
+      const target = Math.round(positionProxy.value) + keyStep;
+      virtualPosition = target;
+      gsap.to(positionProxy, {
+        value: target,
+        duration: 0.4,
+        ease: "power2.out",
+        overwrite: "auto",
+        onUpdate: syncFromProxy,
+        onComplete: () => finalizeVisibility(target),
+      });
+      return;
     }
   });
 </script>
