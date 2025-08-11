@@ -50,12 +50,23 @@ const { projects } = Astro.props as { projects: Project[] };
     align-items: center;
     justify-content: center;
     position: relative;
-    transition: width 0.3s, height 0.3s;
+    transition:
+      width 0.3s,
+      height 0.3s;
   }
   .imagePanel {
     background-color: #111;
     background-size: cover;
     background-position: center;
+    overflow: hidden;
+  }
+  .imageInner {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    transform: translateZ(0);
   }
   .thumbPanel {
     background: #fff;
@@ -159,10 +170,9 @@ const { projects } = Astro.props as { projects: Project[] };
           class={`screen ${i === 0 ? "visible" : ""} ${isReverse ? "reverse" : ""}`}
           id={`screen-${i}`}
         >
-          <div
-            class="panel imagePanel"
-            style={`background-image: url('${bg}');`}
-          />
+          <div class="panel imagePanel">
+            <div class="imageInner" style={`background-image: url('${bg}');`} />
+          </div>
           <div class="panel thumbPanel">
             <div class="thumbBox">
               {p.url ? (
@@ -205,6 +215,9 @@ const { projects } = Astro.props as { projects: Project[] };
 
   const sections = gsap.utils.toArray(".screen") as HTMLElement[];
   const wrapIndex = gsap.utils.wrap(0, sections.length);
+  const imageInners = sections.map(
+    (s) => s.querySelector(".imageInner") as HTMLElement
+  );
 
   // Posición virtual continua controlada por el "scroll" falso.
   let virtualPosition = 0; // 0 = sección 0; 1 = entre 0 y 1; etc.
@@ -237,10 +250,18 @@ const { projects } = Astro.props as { projects: Project[] };
 
     const a = sections[aIndex];
     const b = sections[bIndex];
+    const aInner = imageInners[aIndex];
+    const bInner = imageInners[bIndex];
 
     // Interpolación entre A (sale hacia -100%) y B (entra desde +100%)
     gsap.set(a, { yPercent: -100 * frac });
     gsap.set(b, { yPercent: 100 * (1 - frac) });
+
+    // Parallax de imágenes: se mueven más lento que los paneles
+    const parallaxFactor = 0.45; // 0..1 (menor = más lento)
+    if (aInner) gsap.set(aInner, { yPercent: 100 * frac * parallaxFactor });
+    if (bInner)
+      gsap.set(bInner, { yPercent: -100 * (1 - frac) * parallaxFactor });
   }
 
   function finalizeVisibility(targetIndex: number) {
@@ -249,6 +270,8 @@ const { projects } = Astro.props as { projects: Project[] };
       const active = i === index;
       el.classList.toggle("visible", active);
       gsap.set(el, { yPercent: active ? 0 : 100 });
+      const inner = imageInners[i];
+      if (inner) gsap.set(inner, { yPercent: 0 });
     });
   }
 
