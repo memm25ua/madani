@@ -95,6 +95,7 @@ const { projects } = Astro.props as { projects: Project[] };
     font-weight: 600;
     letter-spacing: 0.02em;
     color: #111;
+    opacity: 0;
   }
   .index {
     position: absolute;
@@ -103,6 +104,7 @@ const { projects } = Astro.props as { projects: Project[] };
     transform: translateX(-50%);
     font-size: 22px;
     font-weight: 600;
+    opacity: 0;
   }
   .titleRight {
     position: absolute;
@@ -110,6 +112,11 @@ const { projects } = Astro.props as { projects: Project[] };
     right: 24px;
     font-size: 28px;
     font-weight: 600;
+    opacity: 0;
+  }
+  /* Distortion filter application */
+  .distort {
+    filter: url("#textDistortion");
   }
 
   /* context7: Responsive mobile styles for column layout and hide thumbnail */
@@ -201,6 +208,30 @@ const { projects } = Astro.props as { projects: Project[] };
   }
 </div>
 
+<!-- SVG filter for wave/liquid distortion -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  style="position:absolute;width:0;height:0;overflow:hidden"
+>
+  <filter id="textDistortion" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence
+      id="td-turb"
+      type="fractalNoise"
+      baseFrequency="0.02"
+      numOctaves="2"
+      seed="2"
+      result="noise"></feTurbulence>
+    <feDisplacementMap
+      id="td-disp"
+      in="SourceGraphic"
+      in2="noise"
+      scale="0"
+      xChannelSelector="R"
+      yChannelSelector="G"></feDisplacementMap>
+  </filter>
+  <!-- more filters could be declared here -->
+</svg>
+
 <script>
   import { gsap } from "gsap";
   import { CustomEase } from "gsap/CustomEase";
@@ -219,11 +250,114 @@ const { projects } = Astro.props as { projects: Project[] };
     (s) => s.querySelector(".imageInner") as HTMLElement
   );
 
+  // Distortion filter nodes
+  const turb = document.getElementById(
+    "td-turb"
+  ) as SVGFETurbulenceElement | null;
+  const disp = document.getElementById(
+    "td-disp"
+  ) as SVGFEDisplacementMapElement | null;
+  // Per-section tween registry and visibility state for text
+  const activeDistortTweens = new Map<number, gsap.core.Tween>();
+  const textShown = sections.map(() => false);
+
+  function playTextDistortionShow(activeIndex: number) {
+    if (!turb || !disp) {
+      // Fallback: simple fade in
+      const textEls = sections[activeIndex].querySelectorAll(
+        ".caption, .titleRight, .index"
+      );
+      gsap.to(textEls, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+      textShown[activeIndex] = true;
+      return;
+    }
+    const prev = activeDistortTweens.get(activeIndex);
+    if (prev) prev.kill();
+    // Marcar como mostrado para evitar re-disparos en frames sucesivos
+    textShown[activeIndex] = true;
+    const textEls = sections[activeIndex].querySelectorAll(
+      ".caption, .titleRight, .index"
+    );
+    gsap.killTweensOf(textEls);
+    textEls.forEach((el) => el.classList.add("distort"));
+    const state = { scale: 46, freq: 0.09 } as { scale: number; freq: number };
+    disp.setAttribute("scale", String(state.scale));
+    turb.setAttribute("baseFrequency", String(state.freq));
+    gsap.set(textEls, { opacity: 0, y: 8 });
+    const tl = gsap
+      .timeline({ defaults: { ease: "power2.out" } })
+      .to(
+        state,
+        {
+          scale: 0,
+          freq: 0.02,
+          duration: 0.9,
+          onUpdate: () => {
+            disp.setAttribute("scale", state.scale.toFixed(1));
+            turb.setAttribute("baseFrequency", state.freq.toFixed(4));
+          },
+          onComplete: () => {
+            textEls.forEach((el) => el.classList.remove("distort"));
+            textShown[activeIndex] = true;
+            activeDistortTweens.delete(activeIndex);
+          },
+        },
+        0
+      )
+      .to(textEls, { opacity: 1, y: 0, duration: 0.6, stagger: 0.05 }, 0.05);
+    activeDistortTweens.set(activeIndex, tl as unknown as gsap.core.Tween);
+  }
+
+  function playTextDistortionHide(activeIndex: number) {
+    if (!turb || !disp) {
+      // Fallback: simple fade out
+      const textEls = sections[activeIndex].querySelectorAll(
+        ".caption, .titleRight, .index"
+      );
+      gsap.to(textEls, { opacity: 0, y: 8, duration: 0.3, ease: "power2.in" });
+      textShown[activeIndex] = false;
+      return;
+    }
+    const prev = activeDistortTweens.get(activeIndex);
+    if (prev) prev.kill();
+    // Marcar como oculto para evitar re-disparos en frames sucesivos
+    textShown[activeIndex] = false;
+    const textEls = sections[activeIndex].querySelectorAll(
+      ".caption, .titleRight, .index"
+    );
+    gsap.killTweensOf(textEls);
+    textEls.forEach((el) => el.classList.add("distort"));
+    const state = { scale: 0, freq: 0.02 } as { scale: number; freq: number };
+    disp.setAttribute("scale", String(state.scale));
+    turb.setAttribute("baseFrequency", String(state.freq));
+    gsap.set(textEls, { opacity: 1, y: 0 });
+    const tl = gsap
+      .timeline({ defaults: { ease: "power2.in" } })
+      .to(textEls, { opacity: 0, y: 8, duration: 0.3 }, 0)
+      .to(
+        state,
+        {
+          scale: 46,
+          freq: 0.09,
+          duration: 0.7,
+          onUpdate: () => {
+            disp.setAttribute("scale", state.scale.toFixed(1));
+            turb.setAttribute("baseFrequency", state.freq.toFixed(4));
+          },
+          onComplete: () => {
+            textEls.forEach((el) => el.classList.remove("distort"));
+            textShown[activeIndex] = false;
+            activeDistortTweens.delete(activeIndex);
+          },
+        },
+        0
+      );
+    activeDistortTweens.set(activeIndex, tl as unknown as gsap.core.Tween);
+  }
+
   // Posición virtual continua controlada por el "scroll" falso.
   let virtualPosition = 0; // 0 = sección 0; 1 = entre 0 y 1; etc.
   const scrollSensitivity = 0.0008; // ajusta sensibilidad según dispositivo
-  const invertScroll = -1; // invierte si quieres dirección natural del trackpad
-  const keyStep = 1; // paso por tecla: salta de sección en sección
   const smoothDuration = 1; // suavizado del scrubbing
   const snapDelayMs = 1000; // espera antes de hacer snap
   let snapTimeout: any = null;
@@ -262,6 +396,30 @@ const { projects } = Astro.props as { projects: Project[] };
     if (aInner) gsap.set(aInner, { yPercent: 100 * frac * parallaxFactor });
     if (bInner)
       gsap.set(bInner, { yPercent: -100 * (1 - frac) * parallaxFactor });
+
+    // Evaluación por nivel de scroll: mostrar si el texto está entre 0% (abajo) y 80% (umbral) del viewport.
+    const evaluateSection = (index: number) => {
+      const section = sections[index];
+      if (!section) return;
+      // Medimos un elemento principal del texto (caption o titleRight; si no, index)
+      const mainText = (section.querySelector(".caption, .titleRight") ||
+        section.querySelector(".index")) as HTMLElement | null;
+      if (!mainText) return;
+
+      const rect = mainText.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const percentFromBottom = ((vh - rect.bottom) / vh) * 100; // 0% = fondo, 100% = arriba
+
+      const shouldShow = percentFromBottom >= 0 && percentFromBottom <= 80;
+      if (shouldShow && !textShown[index]) {
+        playTextDistortionShow(index);
+      } else if (!shouldShow && textShown[index]) {
+        playTextDistortionHide(index);
+      }
+    };
+
+    evaluateSection(aIndex);
+    evaluateSection(bIndex);
   }
 
   function finalizeVisibility(targetIndex: number) {
@@ -272,7 +430,12 @@ const { projects } = Astro.props as { projects: Project[] };
       gsap.set(el, { yPercent: active ? 0 : 100 });
       const inner = imageInners[i];
       if (inner) gsap.set(inner, { yPercent: 0 });
+      const texts = el.querySelectorAll(".caption, .titleRight, .index");
+      gsap.set(texts, { opacity: 0, y: active ? 8 : 0 });
+      if (!active) textShown[i] = false;
     });
+    // Re-evaluar por nivel de scroll tras el snap (no depende del snap, sólo recalcula)
+    syncFromProxy();
   }
 
   function scheduleSnap() {
@@ -292,7 +455,7 @@ const { projects } = Astro.props as { projects: Project[] };
     virtualPosition = target;
     gsap.to(positionProxy, {
       value: target,
-      duration: 2.5,
+      duration: 1.6,
       ease: snapEase,
       overwrite: "auto",
       onUpdate: syncFromProxy,
@@ -301,7 +464,7 @@ const { projects } = Astro.props as { projects: Project[] };
   }
 
   function addDelta(dy: number) {
-    virtualPosition += dy * scrollSensitivity * invertScroll;
+    virtualPosition += dy * scrollSensitivity * (isDragging ? -1 : 1);
     gsap.to(positionProxy, {
       value: virtualPosition,
       duration: isDragging ? 0.4 : smoothDuration,
@@ -340,7 +503,7 @@ const { projects } = Astro.props as { projects: Project[] };
   document.addEventListener("keydown", (e: KeyboardEvent) => {
     if (e.code === "ArrowUp" || e.code === "ArrowLeft") {
       if (snapTimeout) clearTimeout(snapTimeout);
-      const target = Math.round(positionProxy.value) - keyStep;
+      const target = Math.round(positionProxy.value) - 1;
       virtualPosition = target;
       gsap.to(positionProxy, {
         value: target,
@@ -359,7 +522,7 @@ const { projects } = Astro.props as { projects: Project[] };
       e.code === "Enter"
     ) {
       if (snapTimeout) clearTimeout(snapTimeout);
-      const target = Math.round(positionProxy.value) + keyStep;
+      const target = Math.round(positionProxy.value) + 1;
       virtualPosition = target;
       gsap.to(positionProxy, {
         value: target,
@@ -371,5 +534,10 @@ const { projects } = Astro.props as { projects: Project[] };
       });
       return;
     }
+  });
+
+  // Run once on load for the initial section
+  requestAnimationFrame(() => {
+    syncFromProxy();
   });
 </script>
