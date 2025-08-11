@@ -1,5 +1,13 @@
 ---
 import "../styles/global.css";
+interface Project {
+  name: string;
+  description: string;
+  image: string | null;
+  thumbnail: string | null;
+  url: string | null;
+}
+const { projects } = Astro.props as { projects: Project[] };
 ---
 
 <style>
@@ -13,76 +21,201 @@ import "../styles/global.css";
     width: 100vw;
     overflow: hidden;
     position: relative;
+    background: #fff;
   }
   .screen {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: white;
+    flex-direction: row;
     will-change: transform;
     pointer-events: none;
     visibility: hidden;
+    color: #111;
+    transition: flex-direction 0.3s;
+  }
+  .screen.reverse {
+    flex-direction: row-reverse;
   }
   .visible {
     visibility: visible;
   }
-  .red {
-    background: #e53935;
+
+  .panel {
+    height: 100%;
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: width 0.3s, height 0.3s;
   }
-  .blue {
-    background: #1e88e5;
+  .imagePanel {
+    background-color: #111;
+    background-size: cover;
+    background-position: center;
   }
-  .green {
-    background: #43a047;
+  .thumbPanel {
+    background: #fff;
   }
-  .orange {
-    background: #ffa000;
+
+  .thumbBox {
+    width: 160px;
+    height: 160px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+  }
+  .thumbBox img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+  }
+  .caption {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #111;
+  }
+  .index {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .titleRight {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  /* context7: Responsive mobile styles for column layout and hide thumbnail */
+  @media (max-width: 768px) {
+    .screen,
+    .screen.reverse {
+      flex-direction: column !important;
+      width: 100vw;
+      height: 100vh;
+    }
+    .panel {
+      width: 100vw;
+      height: 50vh;
+      min-height: 200px;
+      min-width: 0;
+    }
+    .imagePanel {
+      min-height: 40vh;
+      height: 50vh;
+      width: 100vw;
+    }
+    .thumbPanel {
+      min-height: 40vh;
+      height: 50vh;
+      width: 100vw;
+    }
+    .caption,
+    .titleRight {
+      position: static;
+      text-align: center;
+      margin-top: 16px;
+      margin-bottom: 0;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      font-size: 22px;
+    }
+    .index {
+      position: static;
+      transform: none;
+      margin-top: 8px;
+      font-size: 18px;
+    }
+    .thumbBox {
+      display: none !important;
+    }
   }
 </style>
 
 <div class="gallery">
-  <div class="screen red visible" id="screen-0">Rojo</div>
-  <div class="screen blue" id="screen-1">Azul</div>
-  <div class="screen green" id="screen-2">Verde</div>
-  <div class="screen orange" id="screen-3">Naranja</div>
+  {
+    projects?.map((p, i) => {
+      const bg = p.image ?? "";
+      const thumb = p.thumbnail ?? "/favicon.svg";
+      const isReverse = i % 2 === 1;
+      return (
+        <div
+          class={`screen ${i === 0 ? "visible" : ""} ${isReverse ? "reverse" : ""}`}
+          id={`screen-${i}`}
+        >
+          <div
+            class="panel imagePanel"
+            style={`background-image: url('${bg}');`}
+          />
+          <div class="panel thumbPanel">
+            <div class="thumbBox">
+              {p.url ? (
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  style="pointer-events:auto;"
+                >
+                  <img src={thumb} alt={`${p.name} thumbnail`} />
+                </a>
+              ) : (
+                <img src={thumb} alt={`${p.name} thumbnail`} />
+              )}
+            </div>
+            {isReverse ? (
+              <div class="titleRight">{p.name}</div>
+            ) : (
+              <div class="caption">{p.name}</div>
+            )}
+            <div class="index">{String(i + 1).padStart(2, "0")}</div>
+          </div>
+        </div>
+      );
+    })
+  }
 </div>
 
 <script>
   import { gsap } from "gsap";
+  import { CustomEase } from "gsap/CustomEase";
   import { Observer } from "gsap/Observer";
 
-  // const screens = [
-  //   document.getElementById('screen-0'),
-  //   document.getElementById('screen-1'),
-  // ];
-  // const n = screens.length;
-
-  // const tl = gsap.timeline({
-  //   ease: "power2.out",
-  //   scrollTrigger: {
-  //     scrub: 1,
-  //   },
-  // });
-
   gsap.registerPlugin(Observer);
+  gsap.registerPlugin(CustomEase);
+
+  CustomEase.create("superFastSlowEnd", "M0,0 C0.1,1 0.1,1 1,1");
+  // Elige aquí el ease para el snap (puedes cambiar entre superOut1..5)
+  const snapEase = "superFastSlowEnd";
 
   const sections = gsap.utils.toArray(".screen") as HTMLElement[];
   const wrapIndex = gsap.utils.wrap(0, sections.length);
 
   // Posición virtual continua controlada por el "scroll" falso.
   let virtualPosition = 0; // 0 = sección 0; 1 = entre 0 y 1; etc.
-  const scrollSensitivity = 0.001; // ajusta sensibilidad según dispositivo
+  const scrollSensitivity = 0.0008; // ajusta sensibilidad según dispositivo
   const invertScroll = -1; // invierte si quieres dirección natural del trackpad
   const keyStep = 1; // paso por tecla: salta de sección en sección
   const smoothDuration = 1; // suavizado del scrubbing
   const snapDelayMs = 1000; // espera antes de hacer snap
   let snapTimeout: any = null;
+  let isDragging = false;
+  let interactionMode: "drag" | "wheel" | null = null;
   const positionProxy = { value: 0 };
 
   // Estado inicial: sección 0 visible en 0%, la siguiente en 100%
@@ -121,8 +254,13 @@ import "../styles/global.css";
 
   function scheduleSnap() {
     if (snapTimeout) clearTimeout(snapTimeout);
+    // No hacer snap si estamos arrastrando activamente
+    if (interactionMode === "drag" || isDragging) return;
     snapTimeout = setTimeout(() => {
-      snapToNearest();
+      // Si nadie reinició el modo a drag, hacemos snap (caso rueda)
+      if (!(interactionMode === "drag" || isDragging)) {
+        snapToNearest();
+      }
     }, snapDelayMs);
   }
 
@@ -131,8 +269,8 @@ import "../styles/global.css";
     virtualPosition = target;
     gsap.to(positionProxy, {
       value: target,
-      duration: 0.5,
-      ease: "power2.out",
+      duration: 2.5,
+      ease: snapEase,
       overwrite: "auto",
       onUpdate: syncFromProxy,
       onComplete: () => finalizeVisibility(target),
@@ -143,7 +281,7 @@ import "../styles/global.css";
     virtualPosition += dy * scrollSensitivity * invertScroll;
     gsap.to(positionProxy, {
       value: virtualPosition,
-      duration: smoothDuration,
+      duration: isDragging ? 0.4 : smoothDuration,
       ease: "power2.out",
       overwrite: "auto",
       onUpdate: syncFromProxy,
@@ -154,6 +292,22 @@ import "../styles/global.css";
   Observer.create({
     type: "wheel,touch,pointer",
     preventDefault: true,
+    ignore: ".clickable",
+    onPress: () => {
+      interactionMode = "drag";
+      isDragging = true;
+      if (snapTimeout) clearTimeout(snapTimeout);
+    },
+    onRelease: () => {
+      isDragging = false;
+      // Al soltar un drag, hacer snap inmediatamente
+      interactionMode = null;
+      snapToNearest();
+    },
+    onWheel: () => {
+      // Para rueda, dejamos que el timeout dispare el snap
+      interactionMode = "wheel";
+    },
     onChangeY: (self) => {
       addDelta(self.deltaY);
     },
