@@ -246,9 +246,9 @@ const { projects } = Astro.props as { projects: Project[] };
     gsap.registerPlugin(Observer);
     gsap.registerPlugin(CustomEase);
 
-    CustomEase.create("superFastSlowEnd", "M0,0 C0.1,1 0.1,1 1,1");
+    CustomEase.create("superFastSlowEnd", "M0,0 C0.2,1 0.1,1 1,1");
     // Elige aquí el ease para el snap (puedes cambiar entre superOut1..5)
-    const snapEase = "power3.inOut";
+    const snapEase = "superFastSlowEnd";
 
     const sections = gsap.utils.toArray(".screen") as HTMLElement[];
     const wrapIndex = gsap.utils.wrap(0, sections.length);
@@ -258,9 +258,9 @@ const { projects } = Astro.props as { projects: Project[] };
 
     // Posición virtual continua controlada por el "scroll" falso.
     let virtualPosition = 0; // 0 = sección 0; 1 = entre 0 y 1; etc.
-    const scrollSensitivity = 0.0008; // ajusta sensibilidad según dispositivo
-    const smoothDuration = 1.1; // suavizado del scrubbing
-    const snapDelayMs = 1000; // espera antes de hacer snap
+    const scrollSensitivity = 0.001; // ajusta sensibilidad según dispositivo
+    const smoothDuration = 0.8; // suavizado del scrubbing
+    const snapDuration = 2; // duración del snap
     let snapTimeout: any = null;
     let isDragging = false;
     let interactionMode: "drag" | "wheel" | null = null;
@@ -446,7 +446,7 @@ const { projects } = Astro.props as { projects: Project[] };
         gsap.set(b, { yPercent: 100 * (1 - frac) });
 
         // Parallax de imágenes: se mueven más lento que los paneles
-        const parallaxFactor = 0.45; // 0..1 (menor = más lento)
+        const parallaxFactor = 0.6; // 0..1 (menor = más lento)
         if (aInner) gsap.set(aInner, { yPercent: 100 * frac * parallaxFactor });
         if (bInner)
             gsap.set(bInner, { yPercent: -100 * (1 - frac) * parallaxFactor });
@@ -483,7 +483,7 @@ const { projects } = Astro.props as { projects: Project[] };
             if (!(interactionMode === "drag" || isDragging)) {
                 snapToNearest();
             }
-        }, snapDelayMs);
+        }, smoothDuration * 1000 - 100);
     }
 
     function snapToNearest() {
@@ -491,7 +491,7 @@ const { projects } = Astro.props as { projects: Project[] };
         virtualPosition = target;
         gsap.to(positionProxy, {
             value: target,
-            duration: 1.2,
+            duration: snapDuration,
             ease: snapEase,
             overwrite: "auto",
             onUpdate: syncFromProxy,
@@ -533,7 +533,6 @@ const { projects } = Astro.props as { projects: Project[] };
         onChangeY: (self) => {
             addDelta(self.deltaY);
         },
-        tolerance: 10,
     });
 
     document.addEventListener("keydown", (e: KeyboardEvent) => {
