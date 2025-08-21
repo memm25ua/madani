@@ -248,7 +248,7 @@ const { projects } = Astro.props as { projects: Project[] };
 
     CustomEase.create("superFastSlowEnd", "M0,0 C0.1,1 0.1,1 1,1");
     // Elige aquí el ease para el snap (puedes cambiar entre superOut1..5)
-    const snapEase = "expo.out";
+    const snapEase = "power3.inOut";
 
     const sections = gsap.utils.toArray(".screen") as HTMLElement[];
     const wrapIndex = gsap.utils.wrap(0, sections.length);
