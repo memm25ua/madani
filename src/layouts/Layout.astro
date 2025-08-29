@@ -1,26 +1,110 @@
 ---
 import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <ClientRouter />
+        <title>Astro Basics</title>
+    </head>
+    <body>
+        <Navbar />
+        <slot />
+        <Footer />
+        <div id="vt-overlay" transition:persist></div>
+    </body>
 </html>
 
 <style>
+    :root {
+        --transition-color: #d8ff00;
+    }
     html,
     body {
         margin: 0;
         width: 100%;
         height: 100%;
+        background-color: #000;
+        color: #fff;
+    }
+    #vt-overlay {
+        position: fixed;
+        inset: 0;
+        height: 100vh;
+        width: 100%;
+        background: var(--transition-color);
+        transform: scaleY(0);
+        transform-origin: bottom;
+        z-index: 10000;
+        pointer-events: none;
+        will-change: transform;
     }
 </style>
+
+<!-- View Transitions enabled via ClientRouter; removed custom GSAP transition script -->
+<script is:inline>
+    (function () {
+        if (window.__vtOverlayInit) return;
+        window.__vtOverlayInit = true;
+
+        const DURATION = 750;
+        const EASING = "cubic-bezier(0.83, 0, 0.17, 1)";
+        const overlay = document.getElementById("vt-overlay");
+        if (!overlay) return;
+
+        const setScale = (s) => {
+            overlay.style.transform = `scaleY(${s})`;
+        };
+
+        async function animate(from, to, origin) {
+            overlay.style.transformOrigin = origin;
+            overlay.style.transform = `scaleY(${from})`;
+            const anim = overlay.animate(
+                [
+                    { transform: `scaleY(${from})` },
+                    { transform: `scaleY(${to})` },
+                ],
+                { duration: DURATION, easing: EASING, fill: "forwards" },
+            );
+            try {
+                await anim.finished;
+            } catch {}
+        }
+
+        async function cover() {
+            await animate(0, 1, "bottom");
+        }
+        async function reveal() {
+            await animate(1, 0, "top");
+        }
+
+        // Initial state on first load
+        setScale(0);
+
+        // Start cover before loading the next page
+        document.addEventListener("astro:before-preparation", (event) => {
+            const originalLoader = event.loader;
+            event.loader = async function () {
+                await cover();
+                await originalLoader();
+            };
+        });
+
+        // After swap, reveal the new page
+        document.addEventListener("astro:after-swap", () => {
+            overlay.style.transformOrigin = "top";
+            overlay.style.transform = "scaleY(1)";
+            requestAnimationFrame(() => {
+                reveal();
+            });
+        });
+    })();
+</script>

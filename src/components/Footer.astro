@@ -1,0 +1,99 @@
+---
+// FOOTER
+---
+
+<style>
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5em;
+        display: flex;
+        z-index: 2;
+    }
+
+    .footer-col {
+        width: 100%;
+        flex: 1;
+        display: flex;
+    }
+
+    .footer-col:nth-child(1) {
+        display: flex;
+        gap: 1.5em;
+    }
+
+    .footer-sub-col {
+        flex: 1;
+    }
+
+    .footer-col:nth-child(2) {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    @media (max-width: 900px) {
+        .footer-col:nth-child(2) {
+            display: none;
+        }
+
+        .footer-sub-col:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+    }
+</style>
+
+<div class="footer">
+    <div class="footer-col">
+        <div class="footer-sub-col">
+            <div class="footer-link">
+                <a
+                    href="mailto:madani.devel@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    &#x2192; madani.devel@gmail.com
+                </a>
+            </div>
+            <div class="footer-link">
+                <a
+                    href="https://www.linkedin.com/in/madani-el-mrabet/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    &#x2192; LinkedIn
+                </a>
+            </div>
+        </div>
+        <div class="footer-sub-col">
+            <div class="footer-link">
+                <a
+                    href="https://www.instagram.com/studiomadani/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    &#x2192; Instagram
+                </a>
+            </div>
+            <div class="footer-link">
+                <a
+                    href="https://www.instagram.com/codegridweb/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    &#x2192; Chat
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-col">
+        <div class="footer-link">
+            <p>&copy; Madani Studio 2025</p>
+        </div>
+    </div>
+</div>
