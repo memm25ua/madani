@@ -43,7 +43,7 @@ export default function ProjectsLenisGsap() {
           ease: "none",
           scrollTrigger: {
             trigger: project,
-            start: "center center",
+            start: "top top",
             end: "bottom top",
             scrub: true,
           },

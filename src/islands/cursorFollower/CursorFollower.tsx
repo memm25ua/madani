@@ -15,8 +15,8 @@ export default function CursorFollower() {
     const cursor = document.querySelector(".cursor-follower");
     function move(e: MouseEvent) {
       gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
+        x: e.clientX + 30 ,
+        y: e.clientY + 30 ,
         ease: "power3.out",
         duration: 0.8,
       });
