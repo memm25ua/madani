@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
+import CursorFollower from "../islands/cursorFollower/CursorFollower";
 ---
 
 <!doctype html>
@@ -13,17 +14,18 @@ import { ClientRouter } from "astro:transitions";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <ClientRouter />
-        <title>Astro Basics</title>
+        <title>Madani Studio</title>
     </head>
     <body>
         <Navbar />
         <slot />
+        <CursorFollower client:load />
         <Footer />
         <div id="vt-overlay" transition:persist></div>
     </body>
 </html>
 
-<style>
+<style is:global>
     :root {
         --transition-color: #d8ff00;
     }
@@ -47,64 +49,223 @@ import { ClientRouter } from "astro:transitions";
         pointer-events: none;
         will-change: transform;
     }
+
+    .hero-header {
+        width: 100dvw;
+        height: 100dvh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #text {
+        width: 50%;
+    }
+
+    .line {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .word {
+        color: var(--color-text, #fff);
+        font-size: clamp(2rem, 6vw, 10rem);
+        font-weight: 500;
+        line-height: 110%;
+        margin: 0rem;
+        text-transform: uppercase;
+        transition: opacity 250ms ease;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    #text:has(.fancy:hover) .word:not(.fancy:hover) {
+        opacity: 0.2;
+    }
+
+    .fancy span {
+        display: inline-block;
+    }
+
+    .fancy > .outer {
+        transition: transform 350ms ease;
+    }
+
+    .fancy:hover > .outer {
+        transition-duration: 800ms;
+    }
+
+    .fancy:hover > .outer > .inner {
+        animation: float 5s ease infinite;
+    }
+
+    .fancy:hover > .outer:nth-child(1) {
+        transform: translate(-80%, 60%) rotate(8deg);
+    }
+
+    .fancy:hover > .outer:nth-child(2) {
+        transform: translate(-40%, 20%) rotate(4deg);
+    }
+
+    .fancy:hover > .outer:nth-child(3) {
+        transform: translate(-10%, 60%) rotate(-6deg);
+    }
+
+    .fancy:hover > .outer:nth-child(4) {
+        transform: translate(0%, 8%) rotate(-8deg);
+    }
+
+    .fancy:hover > .outer:nth-child(5) {
+        transform: translate(0%, -20%) rotate(5deg);
+    }
+
+    .fancy:hover > .outer:nth-child(6) {
+        transform: translate(0%, 20%) rotate(-3deg);
+    }
+
+    .fancy:hover > .outer:nth-child(7) {
+        transform: translate(0%, -40%) rotate(-5deg);
+    }
+
+    .fancy:hover > .outer:nth-child(8) {
+        transform: translate(0%, 15%) rotate(10deg);
+    }
+
+    .fancy:hover > .outer:nth-child(9) {
+        transform: translate(0%, -50%) rotate(8deg);
+    }
+
+    .fancy:hover > .outer:nth-child(10) {
+        transform: translate(0%, 15%) rotate(-6deg);
+    }
+
+    .fancy:hover > .outer:nth-child(11) {
+        transform: translate(50%, -10%) rotate(-3deg);
+    }
+
+    .fancy:hover > .outer:nth-child(12) {
+        transform: translate(120%, -30%) rotate(-10deg);
+    }
+
+    @keyframes float {
+        from,
+        to {
+            transform: translateY(-0%);
+        }
+        50% {
+            transform: translateY(-3%);
+        }
+    }
+
+    @media (max-width: 900px) {
+        #text {
+            width: 70%;
+        }
+    }
 </style>
 
 <!-- View Transitions enabled via ClientRouter; removed custom GSAP transition script -->
 <script is:inline>
     (function () {
-        if (window.__vtOverlayInit) return;
-        window.__vtOverlayInit = true;
+        // =============== OVERLAY & ENHANCE LINKS (ya lo tenías) ===============
+        if (!window.__vtOverlayInit) {
+            window.__vtOverlayInit = true;
 
-        const DURATION = 750;
-        const EASING = "cubic-bezier(0.83, 0, 0.17, 1)";
-        const overlay = document.getElementById("vt-overlay");
-        if (!overlay) return;
+            const DURATION = 750;
+            const EASING = "cubic-bezier(0.83, 0, 0.17, 1)";
+            const overlay = document.getElementById("vt-overlay");
+            if (overlay) {
+                const setScale = (s) => {
+                    overlay.style.transform = `scaleY(${s})`;
+                };
 
-        const setScale = (s) => {
-            overlay.style.transform = `scaleY(${s})`;
-        };
+                async function animate(from, to, origin) {
+                    overlay.style.transformOrigin = origin;
+                    overlay.style.transform = `scaleY(${from})`;
+                    const anim = overlay.animate(
+                        [
+                            { transform: `scaleY(${from})` },
+                            { transform: `scaleY(${to})` },
+                        ],
+                        {
+                            duration: DURATION,
+                            easing: EASING,
+                            fill: "forwards",
+                        },
+                    );
+                    try {
+                        await anim.finished;
+                    } catch {}
+                }
 
-        async function animate(from, to, origin) {
-            overlay.style.transformOrigin = origin;
-            overlay.style.transform = `scaleY(${from})`;
-            const anim = overlay.animate(
-                [
-                    { transform: `scaleY(${from})` },
-                    { transform: `scaleY(${to})` },
-                ],
-                { duration: DURATION, easing: EASING, fill: "forwards" },
-            );
-            try {
-                await anim.finished;
-            } catch {}
+                async function cover() {
+                    await animate(0, 1, "bottom");
+                }
+                async function reveal() {
+                    await animate(1, 0, "top");
+                }
+
+                // Initial state on first load
+                setScale(0);
+
+                // Start cover before loading the next page
+                document.addEventListener(
+                    "astro:before-preparation",
+                    (event) => {
+                        const originalLoader = event.loader;
+                        event.loader = async function () {
+                            await cover();
+                            await originalLoader();
+                        };
+                    },
+                );
+
+                // After swap, reveal the new page
+                document.addEventListener("astro:after-swap", () => {
+                    overlay.style.transformOrigin = "top";
+                    overlay.style.transform = "scaleY(1)";
+                    requestAnimationFrame(() => {
+                        reveal();
+                    });
+                });
+            }
+
+            // Enhance fancy links on home on each navigation and initial load
+            function rand(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function enhance(el) {
+                if (!el || el.querySelector(".outer")) return;
+                const text = el.textContent || "";
+                el.textContent = "";
+                text.split("").forEach((value, index) => {
+                    const outer = document.createElement("span");
+                    outer.className = "outer";
+                    const inner = document.createElement("span");
+                    inner.className = "inner";
+                    inner.style.animationDelay = `${rand(-5000, 0)}ms`;
+                    const letter = document.createElement("span");
+                    letter.className = "letter";
+                    letter.textContent = value;
+                    letter.style.animationDelay = `${index * 1000}ms`;
+                    inner.appendChild(letter);
+                    outer.appendChild(inner);
+                    el.appendChild(outer);
+                });
+            }
+
+            function enhanceHomeLinks() {
+                enhance(document.getElementById("hero-link-01"));
+                enhance(document.getElementById("hero-link-02"));
+            }
+
+            document.addEventListener("astro:page-load", enhanceHomeLinks);
+            // run once on initial load too
+            enhanceHomeLinks();
         }
-
-        async function cover() {
-            await animate(0, 1, "bottom");
-        }
-        async function reveal() {
-            await animate(1, 0, "top");
-        }
-
-        // Initial state on first load
-        setScale(0);
-
-        // Start cover before loading the next page
-        document.addEventListener("astro:before-preparation", (event) => {
-            const originalLoader = event.loader;
-            event.loader = async function () {
-                await cover();
-                await originalLoader();
-            };
-        });
-
-        // After swap, reveal the new page
-        document.addEventListener("astro:after-swap", () => {
-            overlay.style.transformOrigin = "top";
-            overlay.style.transform = "scaleY(1)";
-            requestAnimationFrame(() => {
-                reveal();
-            });
-        });
+        // =============== FIN OVERLAY LINKS ===============
     })();
 </script>
