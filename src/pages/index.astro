@@ -44,28 +44,3 @@ import Layout from "../layouts/Layout.astro";
         </div>
     </div>
 </Layout>
-<script>
-    if (typeof window !== "undefined") {
-        document.addEventListener("DOMContentLoaded", function () {
-            document
-                .getElementById("hero-link-01")
-                ?.addEventListener("mouseenter", function () {
-                    window.dispatchEvent(
-                        new CustomEvent("cursor-hover", {
-                            detail: { active: true },
-                        }),
-                    );
-                });
-
-            document
-                .getElementById("hero-link-02")
-                ?.addEventListener("mouseenter", function () {
-                    window.dispatchEvent(
-                        new CustomEvent("cursor-hover", {
-                            detail: { active: true },
-                        }),
-                    );
-                });
-        });
-    }
-</script>

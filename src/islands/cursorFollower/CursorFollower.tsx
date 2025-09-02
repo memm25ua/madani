@@ -9,30 +9,45 @@ export type CursorFollowerProps = {
 };
 
 export default function CursorFollower() {
-  const [isHover, setIsHover] = useState(false);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const cursor = document.querySelector(".cursor-follower");
     function move(e: MouseEvent) {
       gsap.to(cursor, {
-        x: e.clientX + 30 ,
-        y: e.clientY + 30 ,
+        x: e.clientX,
+        y: e.clientY,
         ease: "power3.out",
         duration: 0.8,
       });
     }
+
+    function showMessage(message: string) {
+      setMessage(message);
+    }
+
+    function hideMessage() {
+      setMessage("");
+    }
+
+    function setScale(scale: number) {
+      gsap.to(cursor, {
+        scale: scale,
+        duration: 0.4,
+        ease: "power3.out",
+      });
+    }
+
     window.addEventListener("mousemove", move);
 
     const handler = (ev: any) => {
-      console.log(ev);
-      if (ev.type === "cursor-hover") {
-        setIsHover(true);
-      } else if (ev.type === "gsap-animate") {
-        setIsHover(false);
+      if (ev.detail.active) {
+        showMessage(ev.detail.message || "");
+      } else {
+        setMessage("");
       }
-      gsap.to(cursor, {
-        ...ev.gsapProps,
-      });
+
+      setScale(ev.detail.scale || 1);
     };
     window.addEventListener("cursor-hover", handler);
 
@@ -42,7 +57,5 @@ export default function CursorFollower() {
     };
   }, []);
 
-  return (
-    <div className={`cursor-follower${isHover ? " cursor-link-hover" : ""}`} />
-  );
+  return <div className={`cursor-follower`}></div>;
 }

@@ -257,14 +257,45 @@ import CursorFollower from "../islands/cursorFollower/CursorFollower";
                 });
             }
 
-            function enhanceHomeLinks() {
-                enhance(document.getElementById("hero-link-01"));
-                enhance(document.getElementById("hero-link-02"));
+            function enhanceCursorFollower(el) {
+                //CursorFollower message
+                el.addEventListener("mouseenter", function () {
+                    window.dispatchEvent(
+                        new CustomEvent("cursor-hover", {
+                            detail: {
+                                active: true,
+                                message: "Abrir",
+                                scale: 4,
+                            },
+                        }),
+                    );
+                });
+
+                el.addEventListener("mouseleave", function () {
+                    window.dispatchEvent(
+                        new CustomEvent("cursor-hover", {
+                            detail: { active: false, message: "", scale: 1 },
+                        }),
+                    );
+                });
             }
 
-            document.addEventListener("astro:page-load", enhanceHomeLinks);
+            function enhanceHome() {
+                enhance(document.getElementById("hero-link-01"));
+                enhance(document.getElementById("hero-link-02"));
+                enhanceHomeWords();
+            }
+
+            function enhanceHomeWords() {
+                const words = document.querySelectorAll(".hero-header .word");
+                words.forEach((word) => {
+                    enhanceCursorFollower(word);
+                });
+            }
+
+            document.addEventListener("astro:page-load", enhanceHome);
             // run once on initial load too
-            enhanceHomeLinks();
+            enhanceHome();
         }
         // =============== FIN OVERLAY LINKS ===============
     })();

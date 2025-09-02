@@ -1,62 +1,46 @@
-### Project Overview
+# GEMINI.md
 
-This project is a personal web portfolio built with [Astro](https://astro.build/). It uses [GSAP](https://greensock.com/gsap/) for animations and features a CV section with data sourced from a `cv.json` file. The main goal is to create a modern, animated, and professional online presence.
+## Project Overview
 
-### Main Technologies
+This is a portfolio website for "Madani Studio," a web design, AI, and software studio. The site is built with [Astro](https://astro.build/) and uses [React](https://react.dev/) for interactive components (islands). It features animations powered by [GSAP](https://gsap.com/) and smooth scrolling with [Lenis](https://lenis.darkroom.engineering/). The project is configured for deployment on Cloudflare Pages, as indicated by the `wrangler.toml` file.
 
--   **Framework**: [Astro](https://astro.build/)
--   **Animations**: [GSAP (GreenSock Animation Platform)](https://greensock.com/gsap/)
--   **Deployment**: The project is intended to be deployed as a static site.
+The website has a modern, minimalist design with a focus on typography and smooth animations. It includes a home page, a projects page, and commented-out routes for "About" and "Contact" pages.
 
-### Building and Running
+## Building and Running
 
-To get started with this project, follow these steps:
+The following commands are available to run the project:
 
-1.  **Install Dependencies**:
-    ```bash
-    npm install
-    ```
-2.  **Run the Development Server**:
-    ```bash
-    npm run dev
-    ```
-    This will start a local development server at `http://localhost:4321`.
-3.  **Build for Production**:
-    ```bash
-    npm run build
-    ```
-    This will create a `dist/` directory with the production-ready files.
-4.  **Preview the Production Build**:
-    ```bash
-    npm run preview
-    ```
+*   `npm install`: Installs all the necessary dependencies.
+*   `npm run dev`: Starts the local development server at `http://localhost:4321`.
+*   `npm run build`: Builds the production-ready site to the `./dist/` directory.
+*   `npm run preview`: Previews the production build locally before deploying.
 
-### Development Conventions
+## Development Conventions
 
--   **CV Data**: All professional and personal information is stored in `cv.json`. To update the content of the portfolio, this is the primary file to modify.
--   **Styling**: The project uses standard CSS with a focus on modern design principles.
--   **Components**: Reusable UI elements are located in the `src/components/` directory.
--   **Layouts**: The main page structure is defined in `src/layouts/Layout.astro`.
+### Project Structure
 
-### Next Steps
+The project follows the standard Astro project structure:
 
--   Implement GSAP animations to enhance the user experience.
--   Create a visually appealing and responsive design for the portfolio.
--   Deploy the final version to a hosting service like Netlify or Vercel.
+*   `src/pages`: Contains the pages of the website. Each `.astro` file in this directory becomes a page.
+*   `src/layouts`: Contains the main layout component, `Layout.astro`, which defines the overall HTML structure of the pages.
+*   `src/components`: Contains reusable Astro components, such as the `Navbar.astro` and `Footer.astro`.
+*   `src/islands`: Contains interactive React components that are client-side rendered. This project uses islands for a `CursorFollower` and for the animations on the projects page.
+*   `public`: Contains static assets that are copied to the build output as-is.
 
-### Docker Setup
 
-This project includes a `Dockerfile` and `docker-compose.yml` for running the application in a containerized environment.
 
-**Building and Running with Docker:**
+### Animations
 
-1.  **Build and Run:**
-    ```bash
-    docker-compose up
-    ```
-2.  **Build and Run in Detached Mode:**
-    ```bash
-    docker-compose up -d
-    ```
+Animations are a key feature of this project. It uses:
 
-The application will be available at `http://localhost:4321`.
+*   **Astro View Transitions:** The `astro:transitions` client router is enabled in `src/layouts/Layout.astro` to provide smooth page transitions.
+*   **GSAP:** The GreenSock Animation Platform is used for more complex animations, such as the cursor follower and the scroll-based animations on the projects page.
+*   **Lenis:** Provides a smooth scrolling experience.
+
+### Page Transitions
+
+The project uses Astro's built-in View Transitions for page transitions. A custom page transition script using GSAP is also present in `src/scripts/page-transition-gsap.js`, but it is not currently being used in favor of the Astro View Transitions.
+
+### Deployment
+
+The presence of a `wrangler.toml` file suggests that the project is intended to be deployed on [Cloudflare Pages](https://pages.cloudflare.com/).
