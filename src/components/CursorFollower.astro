@@ -1,0 +1,112 @@
+<div id="cursor-follower" class="cursor-follower">
+    <span id="cursor-label" class="cursor-follower__label"></span>
+</div>
+
+<style>
+    .cursor-follower {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 2rem;
+        height: 2rem;
+        padding: 1rem;
+        background: #d8ff00;
+        border-radius: 2rem;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        color: #000;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        mix-blend-mode: difference;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cursor-follower.no-blend {
+        mix-blend-mode: normal;
+    }
+
+    .cursor-follower__label {
+        opacity: 0;
+        color: #000;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    .cursor-follower.pointer {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    import gsap from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const cursor = document.getElementById("cursor-follower");
+        const label = document.getElementById("cursor-label");
+        let currentMessage = "";
+        let timeline = gsap.timeline();
+
+        const move = (e: MouseEvent) => {
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                ease: "power3.out",
+                duration: 0.8,
+            });
+        };
+
+        const updateCursorState = (message) => {
+            if (timeline) {
+                timeline.kill();
+            }
+
+            timeline = gsap.timeline();
+
+            if (message) {
+                cursor?.classList.add("no-blend");
+                if (label) label.innerText = message;
+                timeline.to(cursor, {
+                    width: "auto",
+                    duration: 0.5,
+                    ease: "power3.inOut",
+                }).to(label, { opacity: 1, duration: 0.3 }, "-=.25");
+            } else {
+                cursor?.classList.remove("no-blend");
+                timeline.to(label, {
+                    opacity: 0,
+                    duration: 0.3,
+                }).to(
+                    cursor,
+                    { width: "2rem", duration: 0.5, ease: "power3.inOut" },
+                    "-=.1"
+                );
+            }
+        };
+
+        const handler = (ev: CustomEvent) => {
+            const { active, message: newMessage, scale } = ev.detail;
+            const nextMessage = active ? newMessage || "" : "";
+            
+            if (nextMessage !== currentMessage) {
+                currentMessage = nextMessage;
+                updateCursorState(currentMessage);
+            }
+
+            gsap.to(cursor, {
+                scale: scale || 1,
+                duration: 0.4,
+                ease: "power3.out",
+            });
+        };
+
+        window.addEventListener("mousemove", move);
+        window.addEventListener("cursor-hover", handler as EventListener);
+    });
+</script>

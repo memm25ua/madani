@@ -1,46 +1,376 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+type Project = {
+    name: string;
+    category: string;
+    img: string;
+};
+
+const projects: readonly Project[] = [
+    {
+        name: "Revive",
+        category: "Brand Identity",
+        img: "/assets/projects/project1.jpg",
+    },
+    {
+        name: "Echoes of Light",
+        category: "Digital Illustration",
+        img: "/assets/projects/project2.jpg",
+    },
+    {
+        name: "Urban Symphony",
+        category: "Environmental Design",
+        img: "/assets/projects/project3.jpg",
+    },
+    {
+        name: "Fragmented Reality",
+        category: "3D Animation",
+        img: "/assets/projects/project4.jpg",
+    },
+    {
+        name: "Luminous Flux",
+        category: "Motion Graphics",
+        img: "/assets/projects/project5.jpg",
+    },
+    {
+        name: "Reflections",
+        category: "Interactive Media",
+        img: "/assets/projects/project6.jpg",
+    },
+];
 ---
 
 <Layout>
-    <div class="hero-header">
-        <div id="text">
-            <div class="line">
-                <p class="word">Madani</p>
-                <p class="word">studio</p>
-            </div>
+    <div class="smooth-wrapper">
+        <div class="smooth-content">
+            <div class="hero-header">
+                <div id="text">
+                    <div class="line">
+                        <p class="word">Madani</p>
+                        <p class="word">studio</p>
+                    </div>
 
-            <div class="line">
-                <p class="word">diseño</p>
-                <p class="word">web</p>
-            </div>
+                    <div class="line">
+                        <p class="word">diseño</p>
+                        <p class="word">web</p>
+                    </div>
 
-            <div class="line">
-                <p class="word">ia</p>
-                <p class="word">software</p>
-            </div>
+                    <div class="line">
+                        <p class="word">ia</p>
+                        <p class="word">software</p>
+                    </div>
 
-            <div class="line">
-                <a
-                    id="hero-link-01"
-                    href="mailto:madani.devel@gmail.com"
-                    target="_blank"
-                    rel="noopener"
-                    class="word fancy"
-                >
-                    &#x2192;Email
-                </a>
+                    <div class="line">
+                        <a
+                            id="hero-link-01"
+                            href="mailto:madani.devel@gmail.com"
+                            target="_blank"
+                            rel="noopener"
+                            class="word fancy"
+                        >
+                            &#x2192;Email
+                        </a>
 
-                <a
-                    id="hero-link-02"
-                    href="https://www.instagram.com/studiomadani/"
-                    target="_blank"
-                    rel="noopener"
-                    class="word fancy"
-                >
-                    &#x2192;Insta
-                </a>
+                        <a
+                            id="hero-link-02"
+                            href="https://www.instagram.com/studiomadani/"
+                            target="_blank"
+                            rel="noopener"
+                            class="word fancy"
+                        >
+                            &#x2192;Insta
+                        </a>
+                    </div>
+                </div>
+                <div class="scroll-down-arrow">
+                    <svg
+                        id="scroll-down-arrow"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M12 5V19M12 19L19 12M12 19L5 12"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </div>
             </div>
+            <section class="projects" id="projects">
+                <div class="section-title">
+                    <h2>Proyectos</h2>
+                </div>
+                <div class="container">
+                    {
+                        projects.map((project, idx) => (
+                            <div class={`row${idx % 2 === 1 ? " even" : ""}`}>
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <a>
+                                            <img
+                                                src={project.img}
+                                                alt={project.name}
+                                                loading="lazy"
+                                            />
+                                        </a>
+                                    </div>
+                                    <div class="project-details">
+                                        <p id="project-name">
+                                            &#x2192; {project.name}
+                                        </p>
+                                        <p id="project-category">
+                                            {project.category}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
         </div>
     </div>
 </Layout>
+
+<style>
+    .smooth-wrapper {
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .smooth-content {
+        will-change: transform;
+    }
+    :global(html, body) {
+        scroll-behavior: auto;
+    }
+    .projects {
+        width: 100%;
+        min-height: 100vh;
+        padding: 10em 0;
+        overflow: hidden;
+    }
+    .container {
+        width: 75%;
+        margin: 0 auto;
+        will-change: transform;
+    }
+
+    .row {
+        width: 100%;
+        height: 900px;
+        padding: 5em 0;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .row.even {
+        justify-content: flex-end;
+    }
+
+    .project-item {
+        position: relative;
+        width: var(--project-width);
+        height: 100%;
+        border-radius: 0.5em;
+        overflow: hidden;
+        box-shadow: 0 2px 16px rgba(80, 80, 80, 0.03);
+        transition-duration: 300ms;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .project-item:hover {
+        transition-duration: 150ms;
+        box-shadow: 0 4px 24px rgba(80, 80, 80, 0.07);
+    }
+
+    .project-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5em;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .project-img img {
+        object-fit: cover;
+        display: block;
+        border-radius: 0.5em;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+
+    .project-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 0.75em 0.5em;
+        background: transparent;
+    }
+
+    .project-details p#project-name {
+        font-weight: 600;
+        color: #fff;
+        margin: 0;
+    }
+
+    .project-details p#project-category {
+        color: #fff;
+        margin: 0;
+    }
+
+    .project-details p {
+        font-size: 16px;
+    }
+
+    .scroll-down-arrow {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translate(-50%, 0);
+        }
+        40% {
+            transform: translate(-50%, -15px);
+        }
+        60% {
+            transform: translate(-50%, -7px);
+        }
+    }
+
+    .section-title {
+        width: 75%;
+        margin: 0 auto 4em auto;
+        text-align: left;
+    }
+
+    .section-title h2 {
+        font-size: clamp(2rem, 5vw, 4rem);
+        text-transform: uppercase;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    @media (max-width: 900px) {
+        .projects {
+            padding: 4em 0;
+        }
+
+        .project-item {
+            width: 100%;
+        }
+
+        .row {
+            margin: 2em 0;
+            height: 400px;
+            padding: 1em 0;
+        }
+    }
+</style>
+
+<script>
+    import Lenis from "lenis";
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1. LENIS SMOOTH SCROLL
+            const lenis = new Lenis({});
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            // 2. GSAP + SCROLLTRIGGER
+            gsap.registerPlugin(ScrollTrigger);
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    scrub: true,
+                },
+            });
+
+
+            const projects = document.querySelectorAll(".project-item");
+
+            projects.forEach((project) => {
+                tl.from(project, {
+                    translateY: 1000,
+                    scale: 0.5,
+                });
+            });
+
+            // 3. CURSOR HOVER EVENTS
+            const link1 = document.getElementById("hero-link-01");
+            const link2 = document.getElementById("hero-link-02");
+
+            const setupHover = (element, message, scale) => {
+                element?.addEventListener("mouseenter", () => {
+                    window.dispatchEvent(
+                        new CustomEvent("cursor-hover", {
+                            detail: { active: true, message, scale },
+                        }),
+                    );
+                });
+                element?.addEventListener("mouseleave", () => {
+                    window.dispatchEvent(
+                        new CustomEvent("cursor-hover", {
+                            detail: { active: false, scale: 1 },
+                        }),
+                    );
+                });
+            };
+
+            setupHover(link1, "Abrir", 1.5);
+            setupHover(link2, "Abrir", 1.5);
+
+            projects.forEach((project) => {
+                setupHover(project, "Ver", 1.5);
+            });
+
+            const words = document.querySelectorAll(".hero-header .word");
+            words.forEach((word) => {
+                word.addEventListener("mouseenter", function () {
+                    window.dispatchEvent(
+                        new CustomEvent("cursor-hover", {
+                            detail: {
+                                active: true,
+                                scale: 4,
+                            },
+                        }),
+                    );
+                });
+
+                word.addEventListener("mouseleave", function () {
+                    window.dispatchEvent(
+                        new CustomEvent("cursor-hover", {
+                            detail: { active: false, message: "", scale: 1 },
+                        }),
+                    );
+                });
+            });
+        });
+    }
+</script>
