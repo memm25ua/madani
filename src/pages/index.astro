@@ -1,45 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Projects from "../components/Projects.astro";
-
-type Project = {
-    name: string;
-    category: string;
-    img: string;
-};
-
-const projects: readonly Project[] = [
-    {
-        name: "Revive",
-        category: "Brand Identity",
-        img: "/assets/projects/project1.jpg",
-    },
-    {
-        name: "Echoes of Light",
-        category: "Digital Illustration",
-        img: "/assets/projects/project2.jpg",
-    },
-    {
-        name: "Urban Symphony",
-        category: "Environmental Design",
-        img: "/assets/projects/project3.jpg",
-    },
-    {
-        name: "Fragmented Reality",
-        category: "3D Animation",
-        img: "/assets/projects/project4.jpg",
-    },
-    {
-        name: "Luminous Flux",
-        category: "Motion Graphics",
-        img: "/assets/projects/project5.jpg",
-    },
-    {
-        name: "Reflections",
-        category: "Interactive Media",
-        img: "/assets/projects/project6.jpg",
-    },
-];
 ---
 
 <Layout>
@@ -102,9 +63,9 @@ const projects: readonly Project[] = [
                     </svg>
                 </div>
             </div>
-            <Projects />
         </div>
     </div>
+    <Projects />
 </Layout>
 
 <style>
