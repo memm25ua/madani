@@ -1,0 +1,77 @@
+---
+import cv from "../../cv.json";
+const summary =
+    "👋 Soy Madani, de Elche (orgullosamente ilicitano 😎), y la tecnología es mi lenguaje favorito desde que tengo memoria. Me encanta experimentar: he probado de todo, porque realmente disfruto con cada parte del desarrollo, ya sea frontend, backend, mobile… ¡todo me interesa!<br><br>Aun así, donde realmente vibro es creando interfaces y experiencias que marcan la diferencia para las personas. Estudié en la Universidad de Alicante, y mi meta siempre es disfrutar del proceso mientras hago que la web sea más bonita y divertida para todos.";
+---
+
+<section id="info">
+    <pre
+        class="json-style"><code>
+<span class="json-comment">// SOBRE MÍ</span>
+<span class="json-brace">&#123;</span>
+  <span class="json-key">"nombre"</span>: <span class="json-value">"Marani"</span>,
+  <span class="json-key">"lugar"</span>: <span class="json-value">"Elche, España"</span>,
+  <span class="json-key">"perfil"</span>: <span class="json-value">"Full Stack Developer"</span>,
+  <span class="json-key">"resumen"</span>: <span class="json-value">"Desarrollador apasionado por la tecnología con alma de frontend."</span>,
+  <span class="json-key">"intereses"</span>: <span class="json-bracket">[</span><span class="json-value">"Frontend"</span>, <span class="json-value">"Backend"</span>, <span class="json-value">"Mobile"</span>, <span class="json-value">"Animaciones"</span>, <span class="json-value">"UX/UI"</span><span class="json-bracket">]</span>,
+  <span class="json-key">"educacion"</span>: <span class="json-value">"Ingeniería Informática, Universidad de Alicante"</span>,
+  <span class="json-key">"stack"</span>: <span class="json-bracket">[</span><span class="json-value">"React"</span>, <span class="json-value">"Astro"</span>, <span class="json-value">"GSAP"</span>, <span class="json-value">"Spring Boot"</span>, <span class="json-value">"Shopify"</span>, <span class="json-value">"Lenis"</span><span class="json-bracket">]</span>,
+  <span class="json-key">"objetivo"</span>: <span class="json-value">"Crear experiencias web modernas y memorables, siempre aprendiendo nuevas tecnologías."</span>
+<span class="json-brace">&#125;</span>
+</code></pre>
+</section>
+
+<style>
+    #info {
+        padding: 10em 2em;
+        background-color: #111;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .json-style {
+        background: none;
+        color: #bdbdbd;
+        font-family: "Fira Mono", "Consolas", monospace;
+        font-size: 1.1rem;
+        border-radius: 0;
+        padding: 0.75em 0.5em 0.75em 0.5em;
+        line-height: 1.7;
+        box-shadow: none;
+        margin: 0;
+        width: 100vw;
+        max-width: 100vw;
+        min-height: 60vh;
+        box-sizing: border-box;
+        white-space: pre-wrap;
+        word-break: break-word;
+        overflow-x: visible;
+    }
+    .json-style ::selection {
+        background: #a6e22e33;
+    }
+
+    .json-comment {
+        color: #bdbdbd;
+    }
+    .json-brace,
+    .json-bracket {
+        color: #fff;
+    }
+    .json-key {
+        color: #a6e22e;
+    }
+    .json-value {
+        color: #fff;
+    }
+
+    @media (max-width: 600px) {
+        .json-style {
+            font-size: 0.97rem;
+            padding: 0.75em 0.2em;
+        }
+    }
+</style>

@@ -1,1 +1,169 @@
-{"basics":{"name":"Madani El Mrabet Martinez","label":null,"image":null,"bg_image":null,"email":"madani.devel@gmail.com","phone":null,"url":null,"location":{"address":null,"postal_code":null,"city":"Elche","country_code":"ES","region":null},"profiles":[{"network":"LinkedIn","username":null,"url":"https:\/\/www.linkedin.com\/in\/madani-el-mrabet-martinez-4444a7205\/","icon":null},{"network":"GitHub","username":null,"url":"https:\/\/github.com\/Madaniii","icon":null},{"network":"Email","username":null,"url":"madani.devel@gmail.com","icon":null}],"actions":[]},"about":{"summary":"\ud83d\udcbb Full Stack Software Engineer<br>\ud83d\ude80 Developer with strong experience in frontend (Angular, React) and backend (Spring Boot), involved in all stages of the software lifecycle from design to production deployment.<br>\ud83d\uded2 Worked on eCommerce projects using Shopify, developing with both Liquid and headless architectures with React frontends.<br>\ud83d\udd04 Experience working in agile teams (Scrum\/Kanban) and version control with Git.<br>\ud83d\udee0\ufe0f Technologies: Angular, React, Java (Spring Boot), Firebase, AWS\/GCP, Docker, CI\/CD (Jenkins), Python, Langchain.<br>\ud83d\udca5 Proven ability to create and deliver robust, scalable web solutions from scratch to production, quickly adapting to new technologies and requirements.<br><br>\ud83c\udf10 Languages: Spanish (native) | English (advanced)<br>\ud83c\udf93 Bachelor\u2019s Degree in Computer Engineering, University of Alicante<br>\ud83d\udcf1 Currently learning mobile development and web solutions with AI"},"media":[],"work":[{"name":"Freelance","position":"Full Stack Developer","type":null,"url":null,"start_date":"2023-01-01","end_date":null,"summary":null,"highlights":["Developed applications from scratch to production.","Deployed a self host Jenkins server for easing deployments while ensuring final product quality","Shopify headless and liquid developing some ecommerces"],"city":null,"state":null,"country":null},{"name":"Apps Square S.L.","position":"Full Stack Developer (Angular\/Java)","type":"Full-Time","url":"https:\/\/crmble.com\/trello\/","start_date":"2022-01-01","end_date":"2025-01-01","summary":"Full time full stack with front end focus developing and maintaining a CRM application with complete integration in Trello and Jira.","highlights":["Collaborated with UX\/UI designers to enhance user experience.","Implemented automated testing procedures, improving code quality.","Integrate third party APIs, Trello, Jira, Zapier, Make, and more.","Developing microservices architecture with Spring Boot (Java)","Angular, SCSS, Typescript, Java, Spring Boot, MySQL, MongoDB, REST, Microservices, Kubernetes, CI\/CD"],"city":null,"state":null,"country":null}],"volunteer":[],"education":[{"institution":"Universidad de Alicante","url":null,"area":"Software Engineering","study_type":"Bachelor's Degree","start_date":"2019-09-01","end_date":"2023-04-01","score":"8","courses":["Data Structures","Algorithms","Database Management Systems","Web Development","Software Testing and Quality Assurance"],"city":null,"state":null,"country":null},{"institution":"IES Misteri D'Elx","url":null,"area":"Secondary education","study_type":null,"start_date":"2014-09-10","end_date":"2019-05-10","score":null,"courses":[],"city":"Elche","state":null,"country":"Spain"}],"awards":[],"publications":[],"languages":[{"language":"Spanish","fluency":"Native"},{"language":"English","fluency":"Fluent"}],"certificates":[{"name":"Meta Front-End Developer Professional Certificate","date":null,"issuer":"Meta","url":null}],"skills":[{"name":"Automated Testing","keywords":[]},{"name":"Docker","keywords":[]},{"name":"Jenkins","keywords":[]},{"name":"CI\/CD","keywords":[]},{"name":"Spring Boot","keywords":[]},{"name":"AWS","keywords":[]},{"name":"Angular","keywords":[]},{"name":"Agile Methodologies","keywords":[]},{"name":"Firebase","keywords":[]}],"interests":[],"references":[{"name":"Antonio Panea - Crmble","reference":"+34 656 960 317"}],"projects":[{"name":"Portfolio","type":null,"description":"A portfolio website to showcase my projects and skills, currently under development.\nDesigned with a focus on user experience and responsive design.","highlights":[],"start_date":null,"end_date":null,"url":"https:\/\/madani.es","preview_image":null},{"name":"Bindfy","type":null,"description":"A mobile app that helps companies connect with their customers.\nUtilized Kotlin Multiplatform and Supabase for development, enhancing cross-platform functionality.","highlights":[],"start_date":null,"end_date":null,"url":null,"preview_image":null}],"links":[],"locations":[]}
+{
+  "basics": {
+    "name": "Madani El Mrabet Martinez",
+    "label": null,
+    "image": null,
+    "bg_image": null,
+    "email": "madani.devel@gmail.com",
+    "phone": null,
+    "url": null,
+    "location": {
+      "address": null,
+      "postal_code": null,
+      "city": "Elche",
+      "country_code": "ES",
+      "region": null
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": null,
+        "url": "https:\/\/www.linkedin.com\/in\/madani-el-mrabet-martinez-4444a7205\/",
+        "icon": null
+      },
+      {
+        "network": "GitHub",
+        "username": null,
+        "url": "https:\/\/github.com\/Madaniii",
+        "icon": null
+      },
+      {
+        "network": "Email",
+        "username": null,
+        "url": "madani.devel@gmail.com",
+        "icon": null
+      }
+    ],
+    "actions": []
+  },
+  "about": {
+    "summary": "\ud83d\udcbb Full Stack Software Engineer<br>\ud83d\ude80 Developer with strong experience in frontend (Angular, React) and backend (Spring Boot), involved in all stages of the software lifecycle from design to production deployment.<br>\ud83d\uded2 Worked on eCommerce projects using Shopify, developing with both Liquid and headless architectures with React frontends.<br>\ud83d\udd04 Experience working in agile teams (Scrum\/Kanban) and version control with Git.<br>\ud83d\udee0\ufe0f Technologies: Angular, React, Java (Spring Boot), Firebase, AWS\/GCP, Docker, CI\/CD (Jenkins), Python, Langchain.<br>\ud83d\udca5 Proven ability to create and deliver robust, scalable web solutions from scratch to production, quickly adapting to new technologies and requirements.<br><br>\ud83c\udf10 Languages: Spanish (native) | English (advanced)<br>\ud83c\udf93 Bachelor\u2019s Degree in Computer Engineering, University of Alicante<br>\ud83d\udcf1 Currently learning mobile development and web solutions with AI"
+  },
+  "media": [],
+  "work": [
+    {
+      "name": "Freelance",
+      "position": "Full Stack Developer",
+      "type": null,
+      "url": null,
+      "start_date": "2023-01-01",
+      "end_date": null,
+      "summary": null,
+      "highlights": [
+        "Developed applications from scratch to production.",
+        "Deployed a self host Jenkins server for easing deployments while ensuring final product quality",
+        "Shopify headless and liquid developing some ecommerces"
+      ],
+      "city": null,
+      "state": null,
+      "country": null
+    },
+    {
+      "name": "Apps Square S.L.",
+      "position": "Full Stack Developer (Angular\/Java)",
+      "type": "Full-Time",
+      "url": "https:\/\/crmble.com\/trello\/",
+      "start_date": "2022-01-01",
+      "end_date": "2025-01-01",
+      "summary": "Full time full stack with front end focus developing and maintaining a CRM application with complete integration in Trello and Jira.",
+      "highlights": [
+        "Collaborated with UX\/UI designers to enhance user experience.",
+        "Implemented automated testing procedures, improving code quality.",
+        "Integrate third party APIs, Trello, Jira, Zapier, Make, and more.",
+        "Developing microservices architecture with Spring Boot (Java)",
+        "Angular, SCSS, Typescript, Java, Spring Boot, MySQL, MongoDB, REST, Microservices, Kubernetes, CI\/CD"
+      ],
+      "city": null,
+      "state": null,
+      "country": null
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Universidad de Alicante",
+      "url": null,
+      "area": "Software Engineering",
+      "study_type": "Bachelor's Degree",
+      "start_date": "2019-09-01",
+      "end_date": "2023-04-01",
+      "score": "8",
+      "courses": [
+        "Data Structures",
+        "Algorithms",
+        "Database Management Systems",
+        "Web Development",
+        "Software Testing and Quality Assurance"
+      ],
+      "city": null,
+      "state": null,
+      "country": null
+    },
+    {
+      "institution": "IES Misteri D'Elx",
+      "url": null,
+      "area": "Secondary education",
+      "study_type": null,
+      "start_date": "2014-09-10",
+      "end_date": "2019-05-10",
+      "score": null,
+      "courses": [],
+      "city": "Elche",
+      "state": null,
+      "country": "Spain"
+    }
+  ],
+  "awards": [],
+  "publications": [],
+  "languages": [
+    { "language": "Spanish", "fluency": "Native" },
+    { "language": "English", "fluency": "Fluent" }
+  ],
+  "certificates": [
+    {
+      "name": "Meta Front-End Developer Professional Certificate",
+      "date": null,
+      "issuer": "Meta",
+      "url": null
+    }
+  ],
+  "skills": [
+    { "name": "Automated Testing", "keywords": [] },
+    { "name": "Docker", "keywords": [] },
+    { "name": "Jenkins", "keywords": [] },
+    { "name": "CI\/CD", "keywords": [] },
+    { "name": "Spring Boot", "keywords": [] },
+    { "name": "AWS", "keywords": [] },
+    { "name": "Angular", "keywords": [] },
+    { "name": "Agile Methodologies", "keywords": [] },
+    { "name": "Firebase", "keywords": [] }
+  ],
+  "interests": [],
+  "references": [
+    { "name": "Antonio Panea - Crmble", "reference": "+34 656 960 317" }
+  ],
+  "projects": [
+    {
+      "name": "Portfolio",
+      "type": null,
+      "description": "A portfolio website to showcase my projects and skills, currently under development.\nDesigned with a focus on user experience and responsive design.",
+      "highlights": [],
+      "start_date": null,
+      "end_date": null,
+      "url": "https:\/\/madani.es",
+      "preview_image": null
+    },
+    {
+      "name": "Bindfy",
+      "type": null,
+      "description": "A mobile app that helps companies connect with their customers.\nUtilized Kotlin Multiplatform and Supabase for development, enhancing cross-platform functionality.",
+      "highlights": [],
+      "start_date": null,
+      "end_date": null,
+      "url": null,
+      "preview_image": null
+    }
+  ],
+  "links": [],
+  "locations": []
+}
