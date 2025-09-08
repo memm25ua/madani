@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Projects from "../components/Projects.astro";
 
 type Project = {
     name: string;
@@ -101,43 +102,15 @@ const projects: readonly Project[] = [
                     </svg>
                 </div>
             </div>
-            <section class="projects" id="projects">
-                <div class="section-title">
-                    <h2>Proyectos</h2>
-                </div>
-                <div class="container">
-                    {
-                        projects.map((project, idx) => (
-                            <div class={`row${idx % 2 === 1 ? " even" : ""}`}>
-                                <div class="project-item">
-                                    <div class="project-img">
-                                        <a>
-                                            <img
-                                                src={project.img}
-                                                alt={project.name}
-                                                loading="lazy"
-                                            />
-                                        </a>
-                                    </div>
-                                    <div class="project-details">
-                                        <p id="project-name">
-                                            &#x2192; {project.name}
-                                        </p>
-                                        <p id="project-category">
-                                            {project.category}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
-            </section>
+            <Projects />
         </div>
     </div>
 </Layout>
 
 <style>
+    .hero-header {
+        user-select: none;
+    }
     .smooth-wrapper {
         min-height: 100vh;
         width: 100%;
@@ -311,7 +284,6 @@ const projects: readonly Project[] = [
                     scrub: true,
                 },
             });
-
 
             const projects = document.querySelectorAll(".project-item");
 

@@ -42,12 +42,22 @@
     .cursor-follower.pointer {
         cursor: pointer;
     }
+
+    @media (hover: none) {
+        .cursor-follower {
+            display: none;
+        }
+    }
 </style>
 
 <script>
     import gsap from "gsap";
 
     document.addEventListener("DOMContentLoaded", () => {
+        if (window.matchMedia("(hover: none)").matches) {
+            return;
+        }
+        
         const cursor = document.getElementById("cursor-follower");
         const label = document.getElementById("cursor-label");
         let currentMessage = "";

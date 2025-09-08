@@ -1,0 +1,352 @@
+---
+type Project = {
+    name: string;
+    category: string;
+    img: string;
+};
+
+const projects: readonly Project[] = [
+    {
+        name: "Revive",
+        category: "Brand Identity",
+        img: "/assets/projects/project1.jpg",
+    },
+    {
+        name: "Echoes of Light",
+        category: "Digital Illustration",
+        img: "/assets/projects/project2.jpg",
+    },
+    {
+        name: "Urban Symphony",
+        category: "Environmental Design",
+        img: "/assets/projects/project3.jpg",
+    },
+    {
+        name: "Fragmented Reality",
+        category: "3D Animation",
+        img: "/assets/projects/project4.jpg",
+    },
+    {
+        name: "Luminous Flux",
+        category: "Motion Graphics",
+        img: "/assets/projects/project5.jpg",
+    },
+    {
+        name: "Reflections",
+        category: "Interactive Media",
+        img: "/assets/projects/project6.jpg",
+    },
+];
+---
+
+<style is:global>
+    section.card {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .card.scroll {
+        position: relative;
+    }
+
+    .project {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        width: 85%;
+        height: 75%;
+        display: flex;
+    }
+
+    .project-copy {
+        position: relative;
+        flex: 1.75;
+        border-radius: 12px;
+        padding: 2em;
+        background: #ffffff;
+    }
+
+    .project-img {
+        flex: 3;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .project-header h3 {
+        color: #333333;
+        text-transform: uppercase;
+        font-size: 40px;
+        line-height: 100%;
+    }
+
+    .project-header p {
+        padding: 0 !important;
+    }
+
+    .project-copy p {
+        padding: 1em 0;
+    }
+
+    .project-cta {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 1em;
+        text-transform: uppercase;
+    }
+
+    .project-cta-row {
+        width: 100%;
+        display: flex;
+        gap: 1em;
+    }
+
+    .cta {
+        flex: 1;
+        padding: 0.5em 1em;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.125);
+    }
+
+    .cta span {
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+        .project {
+            flex-direction: column;
+        }
+
+        .project-header h3 {
+            font-size: 24px;
+        }
+    }
+</style>
+
+<!-- projects -->
+<section class="sticky-cards">
+    <section class="projecr-hero pinned"></section>
+
+    <section class="card pinned">
+        <div class="project">
+            <div class="project-copy">
+                <div class="project-header">
+                    <h3>Photons</h3>
+                    <p>01 - 01</p>
+                </div>
+
+                <p>
+                    NexaLink is a decentralized platform connecting users
+                    through secure and transparent blockchain technology,
+                    ensuring data integrity and privacy in every interaction.
+                </p>
+
+                <div class="project-cta">
+                    <p>Download App</p>
+                    <div class="project-cta-row">
+                        <div class="cta"><span>ios</span></div>
+                        <div class="cta"><span>android</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-img">
+                <img src="/assets/projects/project1.jpg" alt="" />
+            </div>
+        </div>
+    </section>
+
+    <section class="card pinned">
+        <div class="project">
+            <div class="project-copy">
+                <div class="project-header">
+                    <h3>EverNorm</h3>
+                    <p>01 - 02</p>
+                </div>
+                <p>
+                    EverNorm provides a robust digital identity solution,
+                    leveraging blockchain to secure personal and corporate
+                    identities with unmatched protection and authenticity.
+                </p>
+
+                <div class="project-cta">
+                    <p>Download App</p>
+                    <div class="project-cta-row">
+                        <div class="cta"><span>ios</span></div>
+                        <div class="cta"><span>android</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-img">
+                <img src="/assets/projects/project2.jpg" alt="" />
+            </div>
+        </div>
+    </section>
+
+    <section class="card pinned">
+        <div class="project">
+            <div class="project-copy">
+                <div class="project-header">
+                    <h3>StockPin</h3>
+                    <p>01 - 03</p>
+                </div>
+                <p>
+                    StockPin is an advanced blockchain-driven inventory
+                    management system that enhances transparency, accuracy, and
+                    efficiency in real-time stock monitoring.
+                </p>
+
+                <div class="project-cta">
+                    <p>Download App</p>
+                    <div class="project-cta-row">
+                        <div class="cta"><span>ios</span></div>
+                        <div class="cta"><span>android</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-img">
+                <img src="/assets/projects/project3.jpg" alt="" />
+            </div>
+        </div>
+    </section>
+
+    <section class="card pinned">
+        <div class="project">
+            <div class="project-copy">
+                <div class="project-header">
+                    <h3>PieVault</h3>
+                    <p>01 - 04</p>
+                </div>
+                <p>
+                    PieVault is a revolutionary DeFi platform, offering users
+                    comprehensive control over their financial assets with
+                    enhanced security and simplified access to financial
+                    services.
+                </p>
+
+                <div class="project-cta">
+                    <p>Download App</p>
+                    <div class="project-cta-row">
+                        <div class="cta"><span>ios</span></div>
+                        <div class="cta"><span>android</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-img">
+                <img src="/assets/projects/project4.jpg" alt="" />
+            </div>
+        </div>
+    </section>
+
+    <section class="card pinned">
+        <div class="project">
+            <div class="project-copy">
+                <div class="project-header">
+                    <h3>Konsen</h3>
+                    <p>01 - 05</p>
+                </div>
+                <p>
+                    Konsen utilizes blockchain technology to streamline
+                    organizational decision-making processes, ensuring
+                    transparency, security, and efficiency in every vote.
+                </p>
+
+                <div class="project-cta">
+                    <p>Download App</p>
+                    <div class="project-cta-row">
+                        <div class="cta"><span>ios</span></div>
+                        <div class="cta"><span>android</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-img">
+                <img src="/assets/projects/project5.jpg" alt="" />
+            </div>
+        </div>
+    </section>
+
+    <section class="card scroll">
+        <div class="project">
+            <div class="project-copy">
+                <div class="project-header">
+                    <h3>Yoshi</h3>
+                    <p>01 - 06</p>
+                </div>
+                <p>
+                    Yoshi provides a scalable blockchain infrastructure,
+                    empowering developers to build decentralized applications
+                    with robust security and seamless deployment capabilities.
+                </p>
+
+                <div class="project-cta">
+                    <p>Download App</p>
+                    <div class="project-cta-row">
+                        <div class="cta"><span>ios</span></div>
+                        <div class="cta"><span>android</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-img">
+                <img src="/assets/projects/project6.jpg" alt="" />
+            </div>
+        </div>
+    </section>
+
+    <section class="footer"></section>
+</section>
+
+<script>
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const footer = document.querySelector(".footer");
+    const lastCard = document.querySelector(".card.scroll");
+    const pinnedSections = gsap.utils.toArray(".pinned");
+
+    pinnedSections.forEach((section, index, sections) => {
+        let project = section.querySelector(".project");
+
+        let nextSection = sections[index + 1] || lastCard;
+        let endScalePoint = `top+=${nextSection.offsetTop - section.offsetTop} top`;
+
+        gsap.to(section, {
+            scrollTrigger: {
+                trigger: section,
+                start: "top top",
+                end:
+                    index === sections.length
+                        ? `+=${lastCard.offsetHeight / 2}`
+                        : footer.offsetTop - window.innerHeight,
+                pin: true,
+                pinSpacing: false,
+                scrub: 1,
+            },
+        });
+
+        gsap.fromTo(
+            project,
+            { scale: 1 },
+            {
+                scale: 0.5,
+                filter: "blur(10px)",
+                // top: "40%",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top top",
+                    end: endScalePoint,
+                    scrub: 1,
+                },
+            },
+        );
+    });
+</script>
