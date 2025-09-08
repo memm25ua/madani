@@ -306,47 +306,59 @@ const projects: readonly Project[] = [
     import gsap from "gsap";
     import ScrollTrigger from "gsap/ScrollTrigger";
 
-    gsap.registerPlugin(ScrollTrigger);
+    function animateProjects() {
+        gsap.registerPlugin(ScrollTrigger);
 
-    const footer = document.querySelector(".footer");
-    const lastCard = document.querySelector(".card.scroll");
-    const pinnedSections = gsap.utils.toArray(".pinned");
+        const footer = document.querySelector(".footer");
+        const lastCard = document.querySelector(".card.scroll");
+        const pinnedSections = gsap.utils.toArray(".pinned");
 
-    pinnedSections.forEach((section, index, sections) => {
-        let project = section.querySelector(".project");
+        if (!footer || !lastCard) {
+            console.warn(
+                "Footer or last card not found, animations might be affected.",
+            );
+            return;
+        }
 
-        let nextSection = sections[index + 1] || lastCard;
-        let endScalePoint = `top+=${nextSection.offsetTop - section.offsetTop} top`;
+        pinnedSections.forEach((section, index, sections) => {
+            let project = section.querySelector(".project");
 
-        gsap.to(section, {
-            scrollTrigger: {
-                trigger: section,
-                start: "top top",
-                end:
-                    index === sections.length
-                        ? `+=${lastCard.offsetHeight / 2}`
-                        : footer.offsetTop - window.innerHeight,
-                pin: true,
-                pinSpacing: false,
-                scrub: 1,
-            },
-        });
-
-        gsap.fromTo(
-            project,
-            { scale: 1 },
-            {
-                scale: 0.5,
-                filter: "blur(10px)",
-                // top: "40%",
-                ease: "none",
+            // Pin all sections
+            gsap.to(section, {
                 scrollTrigger: {
                     trigger: section,
                     start: "top top",
-                    end: endScalePoint,
+                    end: footer.offsetTop - window.innerHeight,
+                    pin: true,
+                    pinSpacing: false,
                     scrub: 1,
                 },
-            },
-        );
-    });
+            });
+
+            // Animate only sections that have a project inside
+            if (project) {
+                let nextSection = sections[index + 1] || lastCard;
+                let endScalePoint =
+                    `top+=${nextSection.offsetTop - section.offsetTop} top`;
+
+                gsap.fromTo(
+                    project,
+                    { scale: 1, filter: "blur(0px)" },
+                    {
+                        scale: 0.5,
+                        filter: "blur(10px)",
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top top",
+                            end: endScalePoint,
+                            scrub: 1,
+                        },
+                    },
+                );
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", animateProjects);
 </script>
