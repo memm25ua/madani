@@ -1,10 +1,11 @@
 ---
-const textoCompleto = `👋 Soy Madani, de Elche (orgullosamente ilicitano 😎). La tecnología es mi lenguaje favorito desde que tengo memoria, y disfruto cada parte del desarrollo: frontend, backend, mobile… ¡todo me interesa!
+const textoCompleto = `Holaa 👋. Soy Madani, de Elche (orgullosamente ilicitano 😎). La tecnología es mi lenguaje favorito desde que tengo memoria, y disfruto cada parte del desarrollo: frontend, backend, mobile… ¡todo me interesa!
 
-Donde realmente vibro es creando interfaces y experiencias que marcan la diferencia para las personas. Estudié en la Universidad de Alicante y mi meta es disfrutar del proceso mientras hago la web más bonita y divertida para todos.`;
+Donde realmente vibro es creando interfaces y experiencias que marcan la diferencia para las personas. Estudié en la Universidad de Alicante y mi meta es disfrutar del proceso mientras hago la web más bonita.`;
 ---
 
-<section id="info" class="info-animada">
+<section id="about" class="info-animada">
+    <h2>¿Quién?</h2>
     <div class="animated-copy">
         {
             textoCompleto.split("\n").map((parrafo, i) => (
@@ -15,17 +16,16 @@ Donde realmente vibro es creando interfaces y experiencias que marcan la diferen
             ))
         }
     </div>
+    <div class="divider"></div>
 </section>
 
 <style>
-    #info {
+    #about {
         padding: 10em 2em;
         color: #fff;
         display: flex;
         flex-direction: column;
         gap: 2.5rem;
-        justify-content: center;
-        align-items: center;
     }
 
     .animated-copy,
@@ -36,7 +36,6 @@ Donde realmente vibro es creando interfaces y experiencias que marcan la diferen
         color: #bbb;
         letter-spacing: 0.01em;
         margin: 0 auto;
-        text-align: center;
         /* Optional: smooth out character appearance */
         overflow-wrap: break-word;
         word-break: break-word;
@@ -83,8 +82,8 @@ Donde realmente vibro es creando interfaces y experiencias que marcan la diferen
 
         ScrollTrigger.create({
             trigger: el,
-            start: "top 90%",
-            end: "top 10%",
+            start: "top bottom",
+            end: "top 30%",
             scrub: 1,
             onUpdate: (self) => {
                 const progress = self.progress;
