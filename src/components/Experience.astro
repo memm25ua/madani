@@ -8,36 +8,81 @@
         <h2>Experiencia</h2>
     </div>
 
-    <svg
-        id="svg-stage"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 600 1200"
-    >
-        <path class="line01 line" d="M 10 200 600 200"></path>
-        <path class="line02 line" d="M 10 400 600 400"></path>
-        <path class="line03 line" d="M 10 600 600 600"></path>
-        <path class="line04 line" d="M 10 800 600 800"></path>
-        <path class="line05 line" d="M 10 1000 600 1000"></path>
-        <text class="text01" x="30" y="190">2018</text>
-        <text class="text02" x="30" y="390">2019</text>
-        <text class="text03" x="30" y="590">2020</text>
+    <div class="tl-container">
+        <svg
+            id="svg-stage"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 600 1200"
+        >
+            <text class="text01" x="30" y="205">2022</text>
+            <text class="text02" x="30" y="501">2023</text>
+            <text class="text03" x="30" y="805">2025</text>
 
-        <path
-            class="theLine"
-            d="M -5,0
-               Q 450 230 300 450
-               T 130 750
-               Q 100 850 300 1000
-               T 150 1200"
-            fill="none"
-            stroke-width="10px"></path>
+            <path
+                class="theLine"
+                d="M -5 0 Q 450 230 300 450 T 168 753 Q 178 824 300 1000 T 150 1200"
+                fill="none"
+                stroke-width="3px"></path>
 
-        <circle class="ball ball01" r="20" cx="50" cy="100"></circle>
-        <circle class="ball ball02" r="20" cx="278" cy="201"></circle>
-        <circle class="ball ball03" r="20" cx="327" cy="401"></circle>
-        <circle class="ball ball04" r="20" cx="203" cy="601"></circle>
-    </svg>
-    <div class="timeline">
+            <circle class="ball ball01" r="1" cx="50" cy="100"></circle>
+            <circle class="ball ball02" r="10" cx="278" cy="201"></circle>
+            <circle class="ball ball03" r="10" cx="265" cy="501"></circle>
+            <circle class="ball ball04" r="10" cx="185" cy="801"></circle>
+        </svg>
+
+        <div class="tl-card tl-item-2022">
+            <h4>CRMBLE</h4>
+            <p>
+                Frontend y backend para CRM integrado con Trello y Jira. Enfoque
+                en Angular y automatización.
+            </p>
+            <span class="card-date">2022 – 2025</span>
+            <div class="desktop-extra">
+                <h5>Desarrollador Full Stack (Angular/Java)</h5>
+                <p class="company">Apps Square S.L.</p>
+                <p>
+                    Mantenimiento y desarrollo de una aplicación CRM integrada
+                    con Trello y Jira, con enfoque en el frontend. Colaboración
+                    con diseñadores y aplicación de testing automatizado.
+                </p>
+            </div>
+        </div>
+        <div class="tl-card tl-item-2023">
+            <h4>FREELANCE</h4>
+            <p>
+                Desarrollo de webapps a medida y tiendas online. Gestión de todo
+                el ciclo de producto.
+            </p>
+            <span class="card-date">2023 – Presente</span>
+            <div class="desktop-extra">
+                <h5>Desarrollador Full Stack</h5>
+                <p class="company">Freelance</p>
+                <p>
+                    Desarrollo de aplicaciones a medida, desde el concepto
+                    inicial hasta el despliegue en producción, y creación de
+                    tiendas online con Shopify Headless.
+                </p>
+            </div>
+        </div>
+        <div class="tl-card tl-item-2025">
+            <h4>METRICA</h4>
+            <p>
+                Backend en sector bancario con Java/Spring Boot, microservicios y
+                arquitectura hexagonal.
+            </p>
+            <span class="card-date">2025 – Presente</span>
+            <div class="desktop-extra">
+                <h5>Desarrollador de Backend</h5>
+                <p class="company">Entidad Bancaria</p>
+                <p>
+                    Desarrollo de backend en el sector bancario, utilizando Java
+                    y Spring Boot dentro de una arquitectura de microservicios.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-content">
                 <h3>Desarrollador de Backend</h3>
@@ -73,7 +118,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div> -->
 </section>
 
 <style>
@@ -96,107 +141,9 @@
         margin: 0;
     }
 
-    .timeline {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .timeline::after {
-        content: "";
-        position: absolute;
-        width: 2px;
-        background-color: #222;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -1px;
-    }
-
-    .timeline-item {
-        padding: 1em 2em;
-        position: relative;
-        width: 50%;
-    }
-
-    .timeline-item:nth-child(odd) {
-        left: 0;
-        padding-left: 0;
-    }
-
-    .timeline-item:nth-child(even) {
-        left: 50%;
-        padding-right: 0;
-    }
-
-    .timeline-item::after {
-        content: "";
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        right: -8px;
-        background-color: #fff;
-        border: 2px solid #222;
-        top: 1.5em;
-        border-radius: 50%;
-        z-index: 1;
-    }
-
-    .timeline-item:nth-child(even)::after {
-        left: -8px;
-    }
-
-    .timeline-content {
-        padding: 1.5em;
-        background-color: #111;
-        border-radius: 0.5em;
-    }
-
-    .timeline-content h3 {
-        margin-top: 0;
-    }
-
-    .company {
-        font-weight: bold;
-    }
-
-    .date {
-        font-size: 0.9em;
-        color: #888;
-    }
-
-    ul {
-        padding-left: 1.2em;
-    }
-
-    @media (max-width: 768px) {
-        .timeline::after {
-            left: 20px;
-        }
-
-        .timeline-item {
-            width: 100%;
-            padding-left: 50px;
-            padding-right: 10px;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 0;
-        }
-
-        .timeline-item::after {
-            left: 12px;
-        }
-    }
-
     #svg-stage {
         max-width: 600px;
         overflow: visible;
-        margin-top: 60vh;
     }
 
     .ball {
@@ -219,6 +166,94 @@
     .theLine {
         stroke: #fff;
     }
+
+    .tl-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .tl-card {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 230px;
+        max-width: 300px;
+        color: #fff;
+        border-radius: 1.2em;
+        padding: 1.2em 1.4em 1.1em 1.4em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4em;
+        z-index: 10;
+        visibility: hidden;
+        backdrop-filter: blur(3px);
+        box-sizing: border-box;
+        /* Make sure relative for card-date absolute positioning */
+        position: absolute;
+    }
+    .tl-card:hover {
+        box-shadow: 0 8px 32px 0 rgb(18 18 35 / 28%);
+    }
+    .tl-card h4 {
+        margin: 0 0 0.12em 0;
+        font-size: 1.15em;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: #fff;
+    }
+    .tl-card p {
+        margin: 0 0 0.12em 0;
+        font-size: 0.99em;
+        color: #fff;
+        line-height: 1.4;
+    }
+    .card-date {
+        position: absolute;
+        top: 0.6em;
+        right: 1em;
+        font-size: 0.75em;
+        color: #a0a0a0;
+        font-style: italic;
+        margin: 0;
+        padding: 0 0.3em;
+        background: rgba(22, 22, 22, 0.8);
+        border-radius: 0.6em;
+        z-index: 15;
+        letter-spacing: 0.04em;
+        pointer-events: none;
+    }
+    .tl-item-2022 {
+        top: 14%;
+    }
+    .tl-item-2023 {
+        top: 40%;
+    }
+    .tl-item-2025 {
+        top: 65%;
+    }
+    .desktop-extra {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+    @media (min-width: 900px) {
+        #svg-stage {
+            margin-right: 600px;
+        }
+        .tl-card {
+            max-width: 600px;
+            left: 60%;
+        }
+        .desktop-extra {
+            display: block;
+            margin-top: 0.8em;
+            opacity: 1;
+        }
+    }
 </style>
 
 <script>
@@ -231,16 +266,16 @@
     const pulses = gsap
         .timeline({
             defaults: {
-                duration: 0.05,
+                duration: 0.3,
                 autoAlpha: 1,
-                scale: 2,
+                scale: 1.01,
                 transformOrigin: "center",
                 ease: "elastic(2.5, 1)",
             },
         })
-        .to(".ball02, .text01", {}, 0.2)
-        .to(".ball03, .text02", {}, 0.33)
-        .to(".ball04, .text03", {}, 0.46);
+        .to(".ball02, .text01, .tl-item-2022", {}, 0.2)
+        .to(".ball03, .text02, .tl-item-2023", {}, 0.4)
+        .to(".ball04, .text03, .tl-item-2025", {}, 0.61);
 
     const main = gsap
         .timeline({
@@ -248,7 +283,7 @@
             scrollTrigger: {
                 trigger: "#svg-stage",
                 scrub: true,
-                start: "top center",
+                start: "top bottom",
                 end: "bottom center",
             },
         })
