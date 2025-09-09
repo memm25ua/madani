@@ -1,18 +1,20 @@
 ---
-const parrafos = [
-    "👋 Soy Madani, de Elche (orgullosamente ilicitano 😎). La tecnología es mi lenguaje favorito desde que tengo memoria, y disfruto cada parte del desarrollo: frontend, backend, mobile… ¡todo me interesa!",
-    "Donde realmente vibro es creando interfaces y experiencias que marcan la diferencia para las personas. Estudié en la Universidad de Alicante y mi meta es disfrutar del proceso mientras hago la web más bonita y divertida para todos.",
-];
+const textoCompleto = `👋 Soy Madani, de Elche (orgullosamente ilicitano 😎). La tecnología es mi lenguaje favorito desde que tengo memoria, y disfruto cada parte del desarrollo: frontend, backend, mobile… ¡todo me interesa!
+
+Donde realmente vibro es creando interfaces y experiencias que marcan la diferencia para las personas. Estudié en la Universidad de Alicante y mi meta es disfrutar del proceso mientras hago la web más bonita y divertida para todos.`;
 ---
 
 <section id="info" class="info-animada">
-    {
-        parrafos.map((texto, idx) => (
-            <p class="animated-copy" data-index={idx}>
-                {texto}
-            </p>
-        ))
-    }
+    <div class="animated-copy">
+        {
+            textoCompleto.split("\n").map((parrafo, i) => (
+                <>
+                    <p>{parrafo}</p>
+                    <br />
+                </>
+            ))
+        }
+    </div>
 </section>
 
 <style>
@@ -26,8 +28,9 @@ const parrafos = [
         align-items: center;
     }
 
-    .animated-copy {
-        font-size: 1.3rem;
+    .animated-copy,
+    .animated-copy p {
+        font-size: 1.3rem !important;
         line-height: 1.7;
         max-width: 700px;
         color: #bbb;
@@ -63,23 +66,23 @@ const parrafos = [
 
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    document.querySelectorAll(".animated-copy").forEach((parrafo) => {
-        const split = SplitText.create(parrafo, {
+    // Sólo afecta al conjunto entero, no a párrafos por separado
+    const el = document.querySelector(".animated-copy");
+    if (el) {
+        const split = SplitText.create(el, {
             type: "chars",
             charsClass: "char",
         });
         const chars = split.chars;
 
-        // Setup: letras inician color gris
         gsap.set(chars, { color: "#646464", opacity: 1 });
 
-        // Estado temporal y timers (como AnimatedCopy.jsx)
         let lastProgress = 0;
         let colorTimers = new Map();
         let completed = new Set();
 
         ScrollTrigger.create({
-            trigger: parrafo,
+            trigger: el,
             start: "top 90%",
             end: "top 10%",
             scrub: 1,
@@ -90,7 +93,6 @@ const parrafos = [
                 const currIdx = Math.floor(progress * totalChars);
 
                 chars.forEach((char, idx) => {
-                    // Si hacemos scroll up, resetea letras futuras
                     if (!goingDown && idx >= currIdx) {
                         if (colorTimers.has(idx)) {
                             clearTimeout(colorTimers.get(idx));
@@ -107,7 +109,6 @@ const parrafos = [
 
                     if (idx <= currIdx) {
                         gsap.set(char, { color: "#abff02" });
-                        // Programa transición fugaz a blanco
                         if (!colorTimers.has(idx)) {
                             const timer = setTimeout(() => {
                                 if (!completed.has(idx)) {
@@ -138,5 +139,5 @@ const parrafos = [
                 gsap.set(chars, { color: "#dddddd" });
             },
         });
-    });
+    }
 </script>
