@@ -1,11 +1,8 @@
 ---
-const textoCompleto = `Holaa 👋. Soy Madani, de Elche (orgullosamente ilicitano 😎). La tecnología es mi lenguaje favorito desde que tengo memoria, y disfruto cada parte del desarrollo: frontend, backend, mobile… ¡todo me interesa!
-
-Donde realmente vibro es creando interfaces y experiencias que marcan la diferencia para las personas. Estudié en la Universidad de Alicante y mi meta es disfrutar del proceso mientras hago la web más bonita.`;
+const textoCompleto = `Desarrollador full stack enfocado en crear experiencias digitales que importen.\nTrabajando con startups, agencias y empresas de todo tipo.`;
 ---
 
 <section id="about" class="info-animada">
-    <h2>¿Quién?</h2>
     <div class="animated-copy">
         {
             textoCompleto.split("\n").map((parrafo, i) => (
@@ -21,7 +18,6 @@ Donde realmente vibro es creando interfaces y experiencias que marcan la diferen
 
 <style>
     #about {
-        padding: 10em 2em;
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -30,15 +26,15 @@ Donde realmente vibro es creando interfaces y experiencias que marcan la diferen
 
     .animated-copy,
     .animated-copy p {
-        font-size: 1.3rem !important;
+        font-size: 4rem;
         line-height: 1.7;
-        max-width: 700px;
         color: #bbb;
         letter-spacing: 0.01em;
-        margin: 0 auto;
-        /* Optional: smooth out character appearance */
-        overflow-wrap: break-word;
-        word-break: break-word;
+        font-weight: 800;
+        padding-left: 2.5em;
+        padding-right: 2.5em;
+
+        white-space: pre-line;
     }
     .char {
         display: inline-block;
@@ -46,14 +42,13 @@ Donde realmente vibro es creando interfaces y experiencias que marcan la diferen
         will-change: opacity, transform, color;
     }
 
-    @media (max-width: 600px) {
-        #info {
-            padding: 6em 0.5em;
-        }
-        .animated-copy {
-            font-size: 1.02rem;
-            padding-left: 0.2em;
-            padding-right: 0.2em;
+    @media (max-width: 950px) {
+        .animated-copy,
+        .animated-copy p {
+            font-size: 2rem;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            margin: 0;
         }
     }
 </style>
@@ -82,8 +77,8 @@ Donde realmente vibro es creando interfaces y experiencias que marcan la diferen
 
         ScrollTrigger.create({
             trigger: el,
-            start: "top bottom",
-            end: "top 30%",
+            start: "top 75%",
+            end: "top 25%",
             scrub: 1,
             onUpdate: (self) => {
                 const progress = self.progress;
@@ -135,7 +130,7 @@ Donde realmente vibro es creando interfaces y experiencias que marcan la diferen
                 colorTimers.forEach((timer) => clearTimeout(timer));
                 colorTimers.clear();
                 completed.clear();
-                gsap.set(chars, { color: "#dddddd" });
+                //gsap.set(chars, { color: "#dddddd" });
             },
         });
     }

@@ -33,8 +33,7 @@
         <div class="tl-card tl-item-2022">
             <h4>CRMBLE</h4>
             <p>
-                Frontend y backend para CRM integrado con Trello y Jira. Enfoque
-                en Angular y automatización.
+                Full Stack para CRM integrado con Trello y Jira. Angular y Java
             </p>
             <span class="card-date">2022 – 2025</span>
             <div class="desktop-extra">
@@ -50,8 +49,8 @@
         <div class="tl-card tl-item-2023">
             <h4>FREELANCE</h4>
             <p>
-                Desarrollo de webapps a medida y tiendas online. Gestión de todo
-                el ciclo de producto.
+                Desarrollo de webapps a medida. Gestión de todo el ciclo de
+                producto.
             </p>
             <span class="card-date">2023 – Presente</span>
             <div class="desktop-extra">
@@ -68,7 +67,7 @@
             <h4>METRICA</h4>
             <p>
                 Backend en sector bancario con Java/Spring Boot, microservicios
-                y arquitectura hexagonal.
+                y hexagonal.
             </p>
             <span class="card-date">2025 – Presente</span>
             <div class="desktop-extra">
@@ -248,6 +247,12 @@
                 scrub: true,
                 start: "top bottom",
                 end: "bottom center",
+                onLeave: () => {
+                    gsap.to(".ball01", { duration: 0.01, autoAlpha: 0 });
+                },
+                onEnterBack: () => {
+                    gsap.to(".ball01", { duration: 0.01, autoAlpha: 1 });
+                },
             },
         })
         .to(".ball01", { duration: 0.01, autoAlpha: 1 })
