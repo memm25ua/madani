@@ -57,7 +57,7 @@
         if (window.matchMedia("(hover: none)").matches) {
             return;
         }
-        
+
         const cursor = document.getElementById("cursor-follower");
         const label = document.getElementById("cursor-label");
         let currentMessage = "";
@@ -72,7 +72,7 @@
             });
         };
 
-        const updateCursorState = (message) => {
+        const updateCursorState = (message: string) => {
             if (timeline) {
                 timeline.kill();
             }
@@ -82,28 +82,32 @@
             if (message) {
                 cursor?.classList.add("no-blend");
                 if (label) label.innerText = message;
-                timeline.to(cursor, {
-                    width: "auto",
-                    duration: 0.5,
-                    ease: "power3.inOut",
-                }).to(label, { opacity: 1, duration: 0.3 }, "-=.25");
+                timeline
+                    .to(cursor, {
+                        width: "auto",
+                        duration: 0.5,
+                        ease: "power3.inOut",
+                    })
+                    .to(label, { opacity: 1, duration: 0.3 }, "-=.25");
             } else {
                 cursor?.classList.remove("no-blend");
-                timeline.to(label, {
-                    opacity: 0,
-                    duration: 0.3,
-                }).to(
-                    cursor,
-                    { width: "2rem", duration: 0.5, ease: "power3.inOut" },
-                    "-=.1"
-                );
+                timeline
+                    .to(label, {
+                        opacity: 0,
+                        duration: 0.3,
+                    })
+                    .to(
+                        cursor,
+                        { width: "2rem", duration: 0.5, ease: "power3.inOut" },
+                        "-=.1",
+                    );
             }
         };
 
         const handler = (ev: CustomEvent) => {
             const { active, message: newMessage, scale } = ev.detail;
             const nextMessage = active ? newMessage || "" : "";
-            
+
             if (nextMessage !== currentMessage) {
                 currentMessage = nextMessage;
                 updateCursorState(currentMessage);

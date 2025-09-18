@@ -142,7 +142,9 @@ import Experience from "../components/Experience.astro";
                 },
             });
 
-            const projects = document.querySelectorAll(".project-item");
+            const projects = document.querySelectorAll(
+                ".project-item",
+            ) as NodeListOf<HTMLElement>;
 
             projects.forEach((project) => {
                 tl.from(project, {
@@ -152,7 +154,11 @@ import Experience from "../components/Experience.astro";
             });
 
             // CURSOR HOVER EVENTS
-            const setupHover = (element, message, scale) => {
+            const setupHover = (
+                element: HTMLElement,
+                message: string,
+                scale: number,
+            ) => {
                 element?.addEventListener("mouseenter", () => {
                     window.dispatchEvent(
                         new CustomEvent("cursor-hover", {

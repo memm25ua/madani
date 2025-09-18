@@ -121,8 +121,8 @@ const projects: readonly Project[] = [
         .project-header h3 {
             font-size: 24px;
         }
-        
-        .pill{
+
+        .pill {
             padding: 0.5em 1em;
             border-radius: 12px;
             background: #eee;
@@ -179,8 +179,8 @@ const projects: readonly Project[] = [
     function animateProjects() {
         gsap.registerPlugin(ScrollTrigger);
 
-        const footer = document.querySelector(".footer");
-        const lastCard = document.querySelector(".card.scroll");
+        const footer = document.querySelector(".footer") as HTMLElement;
+        const lastCard = document.querySelector(".card.scroll") as HTMLElement;
         const pinnedSections = gsap.utils.toArray(".pinned");
 
         if (!footer || !lastCard) {
@@ -190,7 +190,7 @@ const projects: readonly Project[] = [
             return;
         }
 
-        pinnedSections.forEach((section, index, sections) => {
+        pinnedSections.forEach((section: any, index, sections) => {
             let project = section.querySelector(".project");
 
             // Pin all sections
@@ -207,7 +207,8 @@ const projects: readonly Project[] = [
 
             // Animate only sections that have a project inside
             if (project) {
-                let nextSection = sections[index + 1] || lastCard;
+                let nextSection =
+                    (sections[index + 1] as HTMLElement) || lastCard;
                 let endScalePoint = `top+=${nextSection.offsetTop - section.offsetTop} top`;
 
                 gsap.fromTo(

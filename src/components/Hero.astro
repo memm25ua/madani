@@ -114,7 +114,7 @@
             // 1. LENIS SMOOTH SCROLL solo si min-width: 768px
             if (window.matchMedia("(min-width: 768px)").matches) {
                 const lenis = new Lenis({});
-                function raf(time) {
+                function raf(time: number) {
                     lenis.raf(time);
                     requestAnimationFrame(raf);
                 }
@@ -125,7 +125,11 @@
             const link1 = document.getElementById("hero-link-01");
             const link2 = document.getElementById("hero-link-02");
 
-            const setupHover = (element, message, scale) => {
+            const setupHover = (
+                element: HTMLElement | null,
+                message: string,
+                scale: number,
+            ) => {
                 element?.addEventListener("mouseenter", () => {
                     window.dispatchEvent(
                         new CustomEvent("cursor-hover", {
